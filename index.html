@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Korea Trip Guide 2026 · Hotels, Food & Attractions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Noto+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d0d0d;--bg2:#161616;--bg3:#1e1e1e;--bg4:#272727;
+  --border:#2a2a2a;--border2:#383838;
+  --text:#ede9e1;--muted:#7a7570;--faint:#454035;
+  --gold:#c8a24a;--gold2:#e6c97c;--gold-bg:rgba(200,162,74,.08);
+  --teal:#3db8a5;--teal-bg:rgba(61,184,165,.08);
+  --red:#e05252;--red-bg:rgba(224,82,82,.08);
+  --green:#4bba7c;--green-bg:rgba(75,186,124,.08);
+  --amber:#e09c3a;--amber-bg:rgba(224,156,58,.08);
+  --purple:#9b7fe8;--purple-bg:rgba(155,127,232,.08);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:"Noto Sans",system-ui,sans-serif;font-size:14px;line-height:1.65}
+
+/* HERO */
+.hero{text-align:center;padding:3.5rem 2rem 2.5rem;border-bottom:1px solid var(--border);background:linear-gradient(180deg,#090e0d 0%,var(--bg) 100%);position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 90% 50% at 50% -5%,rgba(200,162,74,.07) 0%,transparent 70%)}
+.hero-tag{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-bottom:.5rem}
+.hero-h1{font-family:"Playfair Display",Georgia,serif;font-size:clamp(2.2rem,5vw,3.6rem);font-weight:900;line-height:1.1;color:#fff;margin-bottom:.4rem}
+.hero-h1 span{color:var(--gold)}
+.hero-sub{font-size:13px;color:var(--muted);margin-bottom:1.4rem;max-width:540px;margin-left:auto;margin-right:auto}
+.hero-chips{display:flex;justify-content:center;flex-wrap:wrap;gap:6px;margin-bottom:1.8rem}
+.chip{font-size:11px;padding:3px 10px;border-radius:20px;border:1px solid var(--border2);color:var(--muted)}
+.chip.gold{border-color:rgba(200,162,74,.45);color:var(--gold2)}
+.budget-row{display:inline-grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:640px}
+.b-item{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:9px 14px;text-align:left}
+.b-city{font-size:11px;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:3px}
+.b-range{font-size:14px;font-weight:700;color:var(--gold2)}
+.b-note{font-size:10px;color:var(--faint);margin-top:2px}
+
+/* STICKY NAV */
+.sticky{position:sticky;top:0;z-index:200;background:rgba(10,10,10,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
+.city-nav{display:flex;overflow-x:auto;padding:0 1.5rem;scrollbar-width:none}
+.city-nav::-webkit-scrollbar{display:none}
+.cnav-btn{flex-shrink:0;background:none;border:none;color:var(--muted);font-size:12.5px;font-weight:500;padding:13px 15px;cursor:pointer;border-bottom:2px solid transparent;transition:.2s;white-space:nowrap}
+.cnav-btn:hover{color:var(--text)}
+.cnav-btn.on{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* SUB NAV */
+.sub-nav{display:flex;gap:6px;padding:.8rem 1.5rem;border-bottom:1px solid var(--border);overflow-x:auto;scrollbar-width:none;background:var(--bg2)}
+.sub-nav::-webkit-scrollbar{display:none}
+.snav-btn{flex-shrink:0;background:var(--bg3);border:1px solid var(--border);border-radius:20px;color:var(--muted);font-size:12px;padding:5px 14px;cursor:pointer;transition:.2s}
+.snav-btn:hover{border-color:var(--border2);color:var(--text)}
+.snav-btn.on{background:var(--gold-bg);border-color:rgba(200,162,74,.4);color:var(--gold2)}
+.snav-btn.teal-on{background:var(--teal-bg);border-color:rgba(61,184,165,.4);color:var(--teal)}
+
+/* PAGE / TAB */
+.city-page{display:none}
+.city-page.on{display:block}
+.sub-tab{display:none}
+.sub-tab.on{display:block}
+.content{max-width:1200px;margin:0 auto;padding:1.8rem 1.5rem 3rem}
+
+/* SECTION */
+.sec{margin-bottom:2.2rem}
+.sec-head{display:flex;align-items:center;gap:10px;margin-bottom:1rem;padding-bottom:.6rem;border-bottom:1px solid var(--border)}
+.sec-lbl{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);flex:1}
+.sec-lbl.teal{color:var(--teal)}
+.sec-lbl.gold{color:var(--gold)}
+.sec-cnt{font-size:10.5px;color:var(--faint)}
+.prio-row{margin-bottom:1.4rem}
+.prio-lbl{font-size:10.5px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--faint);display:flex;align-items:center;gap:8px;margin-bottom:.75rem}
+.prio-lbl::after{content:"";flex:1;height:1px;background:var(--border)}
+
+/* CARD GRIDS */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(295px,1fr));gap:12px}
+.spot-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:12px}
+.food-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+
+/* HOTEL CARD */
+.hcard{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:15px;transition:.18s}
+.hcard:hover{border-color:var(--border2);transform:translateY(-1px)}
+.hcard[data-r="top"]{border-top:2.5px solid var(--gold)}
+.hcard[data-r="good"]{border-top:2.5px solid var(--green)}
+.hcard[data-r="ok"]{border-top:2.5px solid var(--amber)}
+.hcard[data-r="skip"]{border-top:2.5px solid var(--red);opacity:.7}
+.hcard.hanok{background:linear-gradient(140deg,#131a17 0%,var(--bg2) 100%)}
+.hcard.over{opacity:.55;border-top:2.5px solid var(--red) !important}
+
+.hhead{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;margin-bottom:8px}
+.hname{font-family:"Playfair Display",serif;font-size:1rem;font-weight:700;color:#fff;line-height:1.3;flex:1}
+.hbadges{display:flex;flex-direction:column;gap:3px;align-items:flex-end}
+.hb{font-size:9.5px;font-weight:700;letter-spacing:.05em;padding:2px 7px;border-radius:3px}
+.hb-top{background:rgba(200,162,74,.15);color:var(--gold);border:1px solid rgba(200,162,74,.3)}
+.hb-good{background:rgba(75,186,124,.12);color:var(--green);border:1px solid rgba(75,186,124,.25)}
+.hb-ok{background:rgba(224,156,58,.12);color:var(--amber);border:1px solid rgba(224,156,58,.25)}
+.hb-over{background:rgba(224,82,82,.1);color:var(--red);border:1px solid rgba(224,82,82,.2)}
+.hb-type{background:rgba(61,184,165,.1);color:var(--teal);border:1px solid rgba(61,184,165,.2)}
+.hb-new{background:rgba(155,127,232,.12);color:var(--purple);border:1px solid rgba(155,127,232,.25)}
+
+.price-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);margin-bottom:8px}
+.pr-eur{font-size:14px;font-weight:700}
+.pr-fits{color:var(--green)}
+.pr-tight{color:var(--amber)}
+.pr-over{color:var(--red)}
+.pr-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:3px}
+.pt-fits{background:var(--green-bg);color:var(--green);border:1px solid rgba(75,186,124,.25)}
+.pt-tight{background:var(--amber-bg);color:var(--amber);border:1px solid rgba(224,156,58,.25)}
+.pt-over{background:var(--red-bg);color:var(--red);border:1px solid rgba(224,82,82,.2)}
+.pr-vnd{font-size:10px;color:var(--faint);margin-left:auto}
+
+.hrating{display:flex;align-items:center;gap:7px;margin-bottom:5px}
+.stars{font-size:12px;font-weight:700;color:var(--gold2)}
+.rcount{font-size:10.5px;color:var(--faint)}
+.hloc{font-size:11px;color:var(--muted);margin-bottom:6px}
+
+.scores{display:flex;gap:11px;margin-bottom:7px}
+.sc{display:flex;flex-direction:column;align-items:center;gap:2px}
+.sc-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
+.sc-dots{display:flex;gap:2px}
+.dot{width:6px;height:6px;border-radius:50%;background:var(--border2)}
+.dot.on{background:var(--teal)}
+
+.pc{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:7px}
+.pc-t{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin-bottom:3px}
+.pros .pc-t{color:var(--green)}
+.cons .pc-t{color:var(--red)}
+.plist{list-style:none;display:flex;flex-direction:column;gap:2px}
+.plist li{font-size:11px;color:var(--muted);padding-left:10px;position:relative;line-height:1.4}
+.pros .plist li::before,.cons .plist li::before{content:"";position:absolute;left:2px;top:5px;width:4px;height:4px;border-radius:50%}
+.pros .plist li::before{background:rgba(75,186,124,.55)}
+.cons .plist li::before{background:rgba(224,82,82,.45)}
+
+.htags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
+.ht{font-size:10px;padding:2px 6px;border-radius:3px;background:var(--bg4);color:var(--faint);border:1px solid var(--border)}
+.ht.g{background:var(--gold-bg);color:var(--gold);border-color:rgba(200,162,74,.2)}
+.ht.t{background:var(--teal-bg);color:var(--teal);border-color:rgba(61,184,165,.2)}
+.ht.gr{background:var(--green-bg);color:var(--green);border-color:rgba(75,186,124,.2)}
+
+.hnote{font-size:11px;padding:6px 10px;border-radius:4px;margin-top:5px;line-height:1.5}
+.hn-gold{background:var(--gold-bg);color:var(--gold2);border:1px solid rgba(200,162,74,.18)}
+.hn-red{background:var(--red-bg);color:#f4a0a0;border:1px solid rgba(224,82,82,.18)}
+.hn-green{background:var(--green-bg);color:#8addb2;border:1px solid rgba(75,186,124,.18)}
+
+/* ATTRACTION CARD */
+.acard{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;transition:.18s;position:relative}
+.acard:hover{border-color:var(--border2);transform:translateY(-1px)}
+.acard.top{border-top:2.5px solid var(--gold)}
+.acard.good{border-top:2.5px solid var(--teal)}
+.a-icon-row{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.a-icon{font-size:1.5rem}
+.a-title-block{flex:1}
+.a-name{font-family:"Playfair Display",serif;font-size:1rem;font-weight:700;color:#fff;line-height:1.2}
+.a-type{font-size:10px;color:var(--muted);margin-top:2px}
+.a-tiktok{font-size:9.5px;padding:2px 7px;border-radius:3px;background:rgba(255,0,80,.1);color:#ff6090;border:1px solid rgba(255,0,80,.2);margin-left:auto;flex-shrink:0}
+.a-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:7px}
+.a-meta-item{font-size:11px;color:var(--muted)}
+.a-meta-item strong{color:var(--text)}
+.a-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:7px}
+.a-tip{font-size:11px;padding:5px 9px;background:var(--teal-bg);border-left:2px solid var(--teal);color:#88d8cc;border-radius:0 4px 4px 0;margin-top:4px}
+.a-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:6px}
+.a-tag{font-size:10px;padding:2px 6px;border-radius:3px;background:var(--bg4);color:var(--faint);border:1px solid var(--border)}
+
+/* FOOD CARD */
+.fcard{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px;transition:.18s}
+.fcard:hover{border-color:var(--border2);transform:translateY(-1px)}
+.fcard.must{border-top:2.5px solid var(--amber)}
+.fcard.good{border-top:2.5px solid var(--green)}
+.f-head{display:flex;align-items:flex-start;gap:8px;margin-bottom:8px}
+.f-emoji{font-size:1.8rem;flex-shrink:0;line-height:1}
+.f-info{flex:1}
+.f-name{font-family:"Playfair Display",serif;font-size:.98rem;font-weight:700;color:#fff;line-height:1.2}
+.f-sub{font-size:10.5px;color:var(--muted);margin-top:2px}
+.f-price{font-size:13px;font-weight:700;color:var(--amber);margin-bottom:4px}
+.f-must{display:inline-block;font-size:10px;padding:2px 7px;border-radius:3px;background:var(--amber-bg);color:var(--amber);border:1px solid rgba(224,156,58,.3);margin-bottom:5px}
+.f-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.f-hours{font-size:11px;color:var(--faint);margin-top:5px}
+.f-tiktok{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 7px;border-radius:3px;background:rgba(255,0,80,.08);color:#ff6090;border:1px solid rgba(255,0,80,.15);margin-top:5px}
+
+/* CALLOUT */
+.callout{font-size:13px;padding:10px 14px;border-radius:0 6px 6px 0;line-height:1.5;margin-bottom:1.2rem}
+.c-info{background:var(--teal-bg);border-left:3px solid var(--teal);color:#88d8cc}
+.c-warn{background:var(--amber-bg);border-left:3px solid var(--amber);color:#efc97a}
+.c-good{background:var(--green-bg);border-left:3px solid var(--green);color:#8addb2}
+
+/* TIPS */
+.tips{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:16px;margin-top:1.8rem}
+.tips-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--teal);margin-bottom:10px}
+.tips-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:7px}
+.tip{font-size:12px;color:var(--muted);padding:8px 11px;background:var(--bg3);border-radius:6px;border-left:2px solid var(--gold);line-height:1.5}
+
+/* DIVIDER */
+.divider{height:1px;background:var(--border);margin:1.5rem 0}
+
+/* FOOTER */
+footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px;border-top:1px solid var(--border)}
+footer a{color:var(--teal);text-decoration:none}
+
+@media(max-width:600px){
+  .budget-row{grid-template-columns:1fr 1fr}
+  .card-grid,.spot-grid,.food-grid{grid-template-columns:1fr}
+  .pc{grid-template-columns:1fr}
+  .content{padding:1.5rem 1rem 3rem}
+  .budget-row{max-width:100%}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-tag">June 2026 · Korea Travel Guide · Couple Edition</div>
+  <h1 class="hero-h1">Korea <span>2026</span> Travel Guide</h1>
+  <p class="hero-sub">Hotels · Hanoks · Must-See Attractions · Food & Nightlife<br>Designed for young couples who love food, culture, vibes &amp; nightlife</p>
+  <div class="hero-chips">
+    <span class="chip gold">✓ Private Bathroom</span>
+    <span class="chip gold">✓ No Dorms</span>
+    <span class="chip gold">✓ Couple Rooms</span>
+    <span class="chip">Prices Verified</span>
+    <span class="chip">TikTok Trending Spots</span>
+    <span class="chip">Budget Within 10%</span>
+    <span class="chip">Public Transport Focus</span>
+  </div>
+  <div class="budget-row">
+    <div class="b-item"><div class="b-city">📍 Seoul</div><div class="b-range">€50–60/night</div><div class="b-note">Max €66 (+10%)</div></div>
+    <div class="b-item"><div class="b-city">📍 Jeonju</div><div class="b-range">€30–40/night</div><div class="b-note">Max €44 (+10%)</div></div>
+    <div class="b-item"><div class="b-city">📍 Busan</div><div class="b-range">€35–45/night</div><div class="b-note">Max €49.5 (+10%)</div></div>
+    <div class="b-item"><div class="b-city">📍 Jeju</div><div class="b-range">€30–40/night</div><div class="b-note">Max €44 (+10%)</div></div>
+  </div>
+</header>
+
+<div class="sticky" id="main-nav">
+  <div class="city-nav">
+    <button class="cnav-btn on" onclick="showCity('seoul',this)">🏙 Seoul</button>
+    <button class="cnav-btn" onclick="showCity('jeonju',this)">🏮 Jeonju</button>
+    <button class="cnav-btn" onclick="showCity('busan-sea',this)">🌊 Busan · Sea</button>
+    <button class="cnav-btn" onclick="showCity('busan-city',this)">🏢 Busan · City</button>
+    <button class="cnav-btn" onclick="showCity('jeju',this)">🌺 Jeju</button>
+  </div>
+  <div class="sub-nav" id="sub-seoul"><button class="snav-btn on" onclick="showSub('seoul','seoul-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('seoul','seoul-hanoks')">🏯 Hanoks</button><button class="snav-btn " onclick="showSub('seoul','seoul-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('seoul','seoul-food')">🍽 Food & Drinks</button></div>
+  <div class="sub-nav" id="sub-jeonju"><button class="snav-btn on" onclick="showSub('jeonju','jeonju-hanoks')">🏯 Hanoks</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-food')">🍽 Food & Drinks</button></div>
+  <div class="sub-nav" id="sub-busan-sea"><button class="snav-btn on" onclick="showSub('busan-sea','busan-sea-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('busan-sea','busan-sea-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('busan-sea','busan-sea-food')">🍽 Food & Drinks</button></div>
+  <div class="sub-nav" id="sub-busan-city"><button class="snav-btn on" onclick="showSub('busan-city','busan-city-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('busan-city','busan-city-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('busan-city','busan-city-food')">🍽 Food & Drinks</button></div>
+  <div class="sub-nav" id="sub-jeju"><button class="snav-btn on" onclick="showSub('jeju','jeju-hotels')">🏨 Hotels/Pensions</button><button class="snav-btn " onclick="showSub('jeju','jeju-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('jeju','jeju-food')">🍽 Food & Drinks</button></div>
+</div>
+
+<div class="city-page on" id="city-seoul"><div class="sub-tab on" id="seoul-hotels"><div class="content"><div class="callout c-info">✅ <strong>Seoul Budget Reality:</strong> Target €50–60/night. M&LUCKY HOTEL (NEW, ~€59 June) and Hotel DaeYoung are your closest matches. Travelodge hotels are beautifully located but at €110–138, far over budget.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Hotels</div><div class="sec-cnt">8 properties</div></div><div class="prio-row"><div class="prio-lbl">🏆 Top Picks — Within Budget</div><div class="card-grid"><div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Hotel DaeYoung Seoul</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€55–68/night</span><span class="pr-tag pt-tight">⚠ Borderline</span></div>
+  <div class="hrating"><span class="stars">★ 4.4</span><span class="rcount">(289 reviews)</span></div>
+  <div class="hloc">📍 Jung-gu · 200m Hoehyeon Stn · 550m Myeongdong</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Best staff rating among Seoul budget hotels (9.2/10)</li><li>200m to Hoehyeon subway (Line 4)</li><li>Free tea, coffee, bottled water + bidet</li><li>550m to Myeongdong street food & shopping</li><li>24h front desk</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Small rooms (only 27 rooms total)</li><li>Hidden alleyway entrance</li><li>No restaurant on-site</li></ul></div></div>
+  <div class="htags"><span class="ht g">Best Value</span><span class="ht ">Myeongdong 550m</span><span class="ht t">Bidet ✓</span><span class="ht ">24h Desk</span></div>
+  <div class="hnote hn-gold">💡 Book 6–8 weeks early. Consistent value within budget. Best match for Seoul.</div>
+</div>
+<div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">M&LUCKY HOTEL</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Boutique Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€50–59/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫1,275,362</span></div>
+  <div class="hrating"><span class="stars">★ 4.0</span><span class="rcount">(58 reviews)</span></div>
+  <div class="hloc">📍 Jongno-gu · Insadong area · Near Jonggak Station</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Stylish warm-toned boutique interior</li><li>Great Insadong neighborhood — cafes & culture</li><li>Free WiFi, clean modern rooms</li><li>Near multiple subway lines</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Fewer amenities than chain hotels</li><li>Limited reviews</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht t">Boutique Style</span><span class="ht ">Insadong Area</span><span class="ht ">Near Jonggak Stn</span></div>
+  <div class="hnote hn-gold">✦ Newly added from your Google Maps list. ₫1,275,362 off-peak = ~€47; June peak ~€59. Fits!</div>
+</div>
+<div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Step Inn Myeongdong 1</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€43–60/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(465 reviews)</span></div>
+  <div class="hloc">📍 Jung-gu · On Myeongdong Night Market street</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Night market literally outside the door</li><li>Free breakfast every morning</li><li>Metro 5 min both ways</li><li>English-speaking staff</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Very small rooms with limited luggage space</li><li>Noise from street-facing rooms</li></ul></div></div>
+  <div class="htags"><span class="ht gr">Free Breakfast</span><span class="ht g">Night Market Doorstep</span><span class="ht ">Metro 5min</span></div>
+  
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">24 Guest House Seoul Station</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Guesthouse</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€38–55/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.2</span><span class="rcount">(340 reviews)</span></div>
+  <div class="hloc">📍 Jung-gu · 1 min walk from Seoul Station</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>1-min walk to Seoul Station → AREX to Incheon!</li><li>Best choice for Jun 28 final night</li><li>Friendly staff, clean private rooms</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Small rooms typical of budget Seoul</li><li>Limited leisure amenities</li></ul></div></div>
+  <div class="htags"><span class="ht g">★ Jun 28 Last Night</span><span class="ht t">Seoul Station 1min</span><span class="ht ">AREX to Incheon</span></div>
+  <div class="hnote hn-gold">🏆 Top pick for your final night. AREX from Seoul Station to Incheon: 50 min, €9.</div>
+</div></div></div>
+<div class="prio-row"><div class="prio-lbl">⚡ OK Options + Over-Budget Reference</div><div class="card-grid"><div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Coups Hotel Seoul</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€32–48/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 3.9</span><span class="rcount">(156 reviews)</span></div>
+  <div class="hloc">📍 Jongno-gu · Dongdaemun/Insadong area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Most affordable private double in Seoul</li><li>Clean, AC, fridge, WiFi</li><li>Near Dongdaemun DDP & Insadong</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Basic décor, limited amenities</li><li>Fewer reviews</li></ul></div></div>
+  <div class="htags"><span class="ht g">Budget Pick</span><span class="ht ">DDP Nearby</span><span class="ht ">Insadong</span></div>
+  <div class="hnote hn-gold">📌 Budget safety net. Kayak shows $34–49/night.</div>
+</div>
+<div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">Seoul N Hotel Dongdaemun</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€40–56/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 3.8</span><span class="rcount">(879 reviews)</span></div>
+  <div class="hloc">📍 Jongno-gu · Dongmyo Station</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Separate shower & toilet</li><li>Bus and subway close</li><li>Fits budget reliably</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Average quality</li><li>Less vibrant neighborhood</li></ul></div></div>
+  <div class="htags"><span class="ht t">Separate Shower</span><span class="ht ">Budget Safe</span></div>
+  
+</div>
+<div class="hcard over" data-r="ok">
+  <div class="hhead"><div class="hname">Hotel The Designers Dongdaemun</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-over">€63–79/night</span><span class="pr-tag pt-over">✗ Over Budget</span><span class="pr-vnd">₫1,700,410</span></div>
+  <div class="hrating"><span class="stars">★ 3.3</span><span class="rcount">(532 reviews)</span></div>
+  <div class="hloc">📍 Jung-gu · Dongdaemun area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Striking golden tower exterior</li><li>Near Dongdaemun DDP</li><li>Various room sizes</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Low rating (3.3★) — quality concerns</li><li>₫1,700,410 = ~€79 in June → over budget</li><li>Mixed reviews</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht ">DDP Nearby</span></div>
+  <div class="hnote hn-red">❌ June peak ~€79 is over budget. Low 3.3★ rating is concerning.</div>
+</div>
+<div class="hcard over" data-r="skip">
+  <div class="hhead"><div class="hname">Travelodge Myeongdong Euljiro</div><div class="hbadges"><span class="hb hb-over">SKIP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-over">€110–138/night</span><span class="pr-tag pt-over">✗ Over Budget</span><span class="pr-vnd">₫2,972,310</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(2005 reviews)</span></div>
+  <div class="hloc">📍 Jung-gu · Myeongdong central</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Free breakfast included!</li><li>Excellent Myeongdong location</li><li>Large property, well-reviewed</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>₫2,972,310 = €110 base → June ~€138 — FAR over budget</li><li>Budget was €50–60</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht gr">Free Breakfast</span><span class="ht ">Myeongdong</span></div>
+  <div class="hnote hn-red">❌ Way over budget at ~€110–138. Listed here for reference only. Remove if budget is firm.</div>
+</div>
+<div class="hcard over" data-r="skip">
+  <div class="hhead"><div class="hname">Travelodge Dongdaemun Seoul</div><div class="hbadges"><span class="hb hb-over">SKIP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-over">€115–144/night</span><span class="pr-tag pt-over">✗ Over Budget</span><span class="pr-vnd">₫3,103,422</span></div>
+  <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(1442 reviews)</span></div>
+  <div class="hloc">📍 Jongno-gu · Dongdaemun</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Well-rated (4.3★)</li><li>Near Dongdaemun DDP</li><li>Modern facilities</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>₫3,103,422 = €115 → June ~€144 — over budget</li><li>Free WiFi only, no breakfast</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht ">DDP Nearby</span></div>
+  <div class="hnote hn-red">❌ Over budget at ~€115–144. Consider only if the others are fully booked.</div>
+</div></div></div></div>
+<div class="tips"><div class="tips-h">💡 Tips & Local Knowledge</div><div class="tips-g"><div class="tip">📅 Book 6–8 weeks early for June — Step Inn Myeongdong and M&LUCKY sell out fast</div><div class="tip">🚄 <strong>Jun 28 last night:</strong> 24 Guest House Seoul Station (1 min walk) → AREX to Incheon: 50 min, €9</div><div class="tip">🌡 June = 26–30°C and humid. Confirm AC works in hanok rooms before booking</div><div class="tip">💳 Get a T-money card at any convenience store (₩5,000 deposit) — works on all subway + buses</div><div class="tip">🌧 June = rainy season. Pack a compact umbrella. Hotel near subway is essential</div></div></div></div></div><div class="sub-tab" id="seoul-hanoks"><div class="content"><div class="callout c-warn">⚠️ <strong>Hanok Price Reality:</strong> Premium hanoks (Rakkojae, Hanok 201) cost €170–320/night. The three below are the only hanoks in Seoul that realistically approach your €50–60 target.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🏯 Hanok Stays</div><div class="sec-cnt">3 options · Traditional Korean Houses</div></div>teal
+<div class="prio-row"><div class="prio-lbl">🏆 Best Hanoks Within Budget</div><div class="card-grid"><div class="hcard hanok" data-r="top">
+  <div class="hhead"><div class="hname">Dajayon Hanok Stay</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hanok</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€50–65/night</span><span class="pr-tag pt-tight">⚠ Borderline</span></div>
+  <div class="hrating"><span class="stars">★ 4.9</span><span class="rcount">(7 reviews)</span></div>
+  <div class="hloc">📍 Ikseon-dong · Metro Lines 1,3,5</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Highest-rated Seoul hanok (4.9★)</li><li>In Ikseon-dong: trendiest café street 2025–26</li><li>3 metro lines within short walk</li><li>Couple suite with private bathroom</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Only 7 reviews (all exceptional)</li><li>Ondol floor sleeping</li><li>May hit €65 on weekends</li></ul></div></div>
+  <div class="htags"><span class="ht g">Ikseon-dong Cafes</span><span class="ht t">3 Metro Lines</span><span class="ht gr">Private Bath ✓</span></div>
+  
+</div>
+<div class="hcard hanok" data-r="top">
+  <div class="hhead"><div class="hname">Bukchonmaru Hanok GH</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hanok</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€50–66/night</span><span class="pr-tag pt-tight">⚠ Borderline</span></div>
+  <div class="hrating"><span class="stars">★ 4.5</span><span class="rcount">(64 reviews)</span></div>
+  <div class="hloc">📍 Bukchon · Between Gyeongbokgung & Changdeokgung</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Authentic 100-yr family-run hanok</li><li>Homemade Korean breakfast</li><li>Bus stop right outside</li><li>Between 2 royal palaces</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Subway >10 min steep uphill</li><li>Some rooms share bathroom — ask for en-suite</li></ul></div></div>
+  <div class="htags"><span class="ht g">2 Palaces</span><span class="ht t">Homemade Breakfast</span><span class="ht ">Family-run</span></div>
+  <div class="hnote hn-gold">⚠ Always ask: 'double room with PRIVATE en-suite bathroom?' when booking.</div>
+</div>
+<div class="hcard hanok" data-r="good">
+  <div class="hhead"><div class="hname">Hanok GH Suni</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Hanok</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€38–58/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.7</span><span class="rcount">(29 reviews)</span></div>
+  <div class="hloc">📍 Seongbuk-gu · Quiet residential</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Rated 9.7/10 on Booking.com</li><li>Daily different homemade breakfast</li><li>Owner Suni lives on-site = max safety</li><li>AC in rooms (rare for hanok)</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Bathroom in shared corridor, not en-suite</li><li>Less central (~20 min to Myeongdong)</li></ul></div></div>
+  <div class="htags"><span class="ht g">9.7 on Booking</span><span class="ht t">Daily Diff Breakfast</span><span class="ht gr">Cheapest Hanok</span></div>
+  
+</div></div></div></div></div></div><div class="sub-tab" id="seoul-spots"><div class="content"><div class="callout c-info">🗺️ <strong>Seoul Highlights for Young Couples:</strong> Seongsu-dong + Ikseon-dong are THE trending neighbourhoods in 2025–26. Han River picnic is unmissable. Gyeongbokgung at sunrise = zero crowds.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See Attractions</div><div class="sec-cnt">8 spots · Trending for couples</div></div>gold
+<div class="prio-row"><div class="prio-lbl">🏆 Absolute Must-Do</div><div class="spot-grid"><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🏯</span><div class="a-title-block"><div class="a-name">Gyeongbokgung Palace</div><div class="a-type">Royal Palace · UNESCO Heritage</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>9 AM – 6 PM (closed Tue)</strong></span><span class="a-meta-item">💰 <strong>₩3,000 (~€2)</strong></span></div>
+  <div class="a-desc">Korea's grandest 14th-century royal palace. Changing of the guard ceremony at 10 AM and 2 PM is a must-watch. Rent a hanbok at the entrance to enter FREE and get incredible photos.</div>
+  <div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Hanbok</span><span class="a-tag">Photos</span><span class="a-tag">UNESCO</span></div>
+  <div class="a-tip">💡 Arrive at 9 AM sharp to get shots before tour groups arrive. The north gate (Gyeonghoeru Pavilion reflection pool) is the most photogenic.</div>
+</div>
+<div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">☕</span><div class="a-title-block"><div class="a-name">Ikseon-dong Café Street</div><div class="a-type">Trending Hanok Café District</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Shops open 11 AM–10 PM · Bars till 2 AM</strong></span><span class="a-meta-item">💰 <strong>Free to walk</strong></span></div>
+  <div class="a-desc">Seoul's most-filmed neighbourhood on TikTok/YouTube 2025–26. Hanok alleyways lined with specialty coffee, Korean cocktail bars, and fusion restaurants. The contrast of 100-year-old walls and neon signs is electric.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Cafés</span><span class="a-tag">Cocktails</span><span class="a-tag">Golden Hour</span></div>
+  <div class="a-tip">💡 Visit at 5–6 PM: golden hour lighting is stunning for photos. Then stay for dinner and cocktails.</div>
+</div>
+<div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🌊</span><div class="a-title-block"><div class="a-name">Han River Picnic (치맥)</div><div class="a-type">Iconic Korean Experience</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7 · Best at sunset/night</strong></span><span class="a-meta-item">💰 <strong>₩0 + food budget</strong></span></div>
+  <div class="a-desc">BUY: fried chicken (치킨) + beer (맥주) from a nearby chicken shop or CU/GS25 convenience store, grab a blue mat, and watch the Seoul skyline across the Han River. This is the ultimate Korean couple date activity and a massive TikTok trend.</div>
+  <div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">TikTok</span><span class="a-tag">Nightlife</span><span class="a-tag">Picnic</span></div>
+  <div class="a-tip">💡 Go to Yeouido Hangang Park on a Friday evening. Cycle rental ₩6,000/hr. Buy Baekjeong fried chicken nearby.</div>
+</div>
+<div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🎨</span><div class="a-title-block"><div class="a-name">Seongsu-dong (Seoul's Brooklyn)</div><div class="a-type">Trending Creative District 2025–26</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Shops 11 AM–9 PM · Cafes open till midnight</strong></span><span class="a-meta-item">💰 <strong>Free to walk</strong></span></div>
+  <div class="a-desc">THE trending neighbourhood for 2025–26. Industrial buildings transformed into concept stores, galleries, specialty roasters, and pop-up exhibitions. Every major brand has an experimental flagship here. The 'Seoul Forest' park is steps away.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Art</span><span class="a-tag">Coffee</span><span class="a-tag">Pop-ups</span></div>
+  <div class="a-tip">💡 Take Line 2 to Seongsu Station. Start at Daelim Warehouse café, then explore small alley shops. Very walkable.</div>
+</div></div></div>
+<div class="prio-row"><div class="prio-lbl">✅ Highly Recommended</div><div class="spot-grid"></div></div></div>
+<div class="spot-grid"><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🏯</span><div class="a-title-block"><div class="a-name">Gyeongbokgung Palace</div><div class="a-type">Royal Palace · UNESCO Heritage</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>9 AM – 6 PM (closed Tue)</strong></span><span class="a-meta-item">💰 <strong>₩3,000 (~€2)</strong></span></div>
+  <div class="a-desc">Korea's grandest 14th-century royal palace. Changing of the guard ceremony at 10 AM and 2 PM is a must-watch. Rent a hanbok at the entrance to enter FREE and get incredible photos.</div>
+  <div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Hanbok</span><span class="a-tag">Photos</span><span class="a-tag">UNESCO</span></div>
+  <div class="a-tip">💡 Arrive at 9 AM sharp to get shots before tour groups arrive. The north gate (Gyeonghoeru Pavilion reflection pool) is the most photogenic.</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">☕</span><div class="a-title-block"><div class="a-name">Ikseon-dong Café Street</div><div class="a-type">Trending Hanok Café District</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Shops open 11 AM–10 PM · Bars till 2 AM</strong></span><span class="a-meta-item">💰 <strong>Free to walk</strong></span></div>
+  <div class="a-desc">Seoul's most-filmed neighbourhood on TikTok/YouTube 2025–26. Hanok alleyways lined with specialty coffee, Korean cocktail bars, and fusion restaurants. The contrast of 100-year-old walls and neon signs is electric.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Cafés</span><span class="a-tag">Cocktails</span><span class="a-tag">Golden Hour</span></div>
+  <div class="a-tip">💡 Visit at 5–6 PM: golden hour lighting is stunning for photos. Then stay for dinner and cocktails.</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🌊</span><div class="a-title-block"><div class="a-name">Han River Picnic (치맥)</div><div class="a-type">Iconic Korean Experience</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7 · Best at sunset/night</strong></span><span class="a-meta-item">💰 <strong>₩0 + food budget</strong></span></div>
+  <div class="a-desc">BUY: fried chicken (치킨) + beer (맥주) from a nearby chicken shop or CU/GS25 convenience store, grab a blue mat, and watch the Seoul skyline across the Han River. This is the ultimate Korean couple date activity and a massive TikTok trend.</div>
+  <div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">TikTok</span><span class="a-tag">Nightlife</span><span class="a-tag">Picnic</span></div>
+  <div class="a-tip">💡 Go to Yeouido Hangang Park on a Friday evening. Cycle rental ₩6,000/hr. Buy Baekjeong fried chicken nearby.</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🎨</span><div class="a-title-block"><div class="a-name">Seongsu-dong (Seoul's Brooklyn)</div><div class="a-type">Trending Creative District 2025–26</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Shops 11 AM–9 PM · Cafes open till midnight</strong></span><span class="a-meta-item">💰 <strong>Free to walk</strong></span></div>
+  <div class="a-desc">THE trending neighbourhood for 2025–26. Industrial buildings transformed into concept stores, galleries, specialty roasters, and pop-up exhibitions. Every major brand has an experimental flagship here. The 'Seoul Forest' park is steps away.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Art</span><span class="a-tag">Coffee</span><span class="a-tag">Pop-ups</span></div>
+  <div class="a-tip">💡 Take Line 2 to Seongsu Station. Start at Daelim Warehouse café, then explore small alley shops. Very walkable.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🏘</span><div class="a-title-block"><div class="a-name">Bukchon Hanok Village</div><div class="a-type">Traditional Hanok Neighbourhood</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7 · Quiet after 5 PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">735 traditional Korean houses (hanok) on a hillside. Walk the alleyways for stunning Seoul skyline views against tiled rooftops. Very photogenic at dawn (6–8 AM) with minimal crowds.</div>
+  <div class="a-tags"><span class="a-tag">Hanok</span><span class="a-tag">Photos</span><span class="a-tag">Cultural</span><span class="a-tag">Sunrise</span></div>
+  <div class="a-tip">💡 Go at 7 AM for peaceful photos. Avoid 10 AM–4 PM when tour buses arrive. Area 2 and the Gahoe-dong alley have the best views.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🗼</span><div class="a-title-block"><div class="a-name">Namsan N Seoul Tower</div><div class="a-type">Iconic City Landmark</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Cable car 10 AM–11 PM · Tower 10 AM–11 PM</strong></span><span class="a-meta-item">💰 <strong>Cable car ₩16,000 return (~€11)</strong></span></div>
+  <div class="a-desc">Iconic beacon atop Namsan Mountain. Panoramic city view by day, magical at night. The infamous 'lock of love' fence surrounds the tower. Cable car ride is part of the experience.</div>
+  <div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">Night Views</span><span class="a-tag">Iconic</span><span class="a-tag">Cable Car</span></div>
+  <div class="a-tip">💡 Take cable car up (10 min), not the walking path. Best at 7–8 PM: sunset + city lights turn on.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🌌</span><div class="a-title-block"><div class="a-name">Dongdaemun Design Plaza (DDP)</div><div class="a-type">Zaha Hadid Architecture · Night Light</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7 (outdoor) · Markets till 5 AM</strong></span><span class="a-meta-item">💰 <strong>Free to walk</strong></span></div>
+  <div class="a-desc">Zaha Hadid's iconic neo-futuristic building glows blue at night. The surrounding 24-hour fashion market is full of surprises. Night market stalls, local design shops, and the famous media wall make this a unique after-midnight Seoul experience.</div>
+  <div class="a-tags"><span class="a-tag">Architecture</span><span class="a-tag">Night</span><span class="a-tag">Markets</span><span class="a-tag">Late Night</span></div>
+  <div class="a-tip">💡 Come after 8 PM for the full light display. The Dongdaemun Market runs until 5 AM — great for unique shopping.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🛍</span><div class="a-title-block"><div class="a-name">Mangwon Saturday Market</div><div class="a-type">Local Food Market · Less Touristy</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Saturday 10 AM – 4 PM (seasonal)</strong></span><span class="a-meta-item">💰 <strong>Free entry, ₩3,000–8,000 per dish</strong></span></div>
+  <div class="a-desc">Locals-favourite market at the entrance to Mangwon Hangang Park. Find artisan foods, coffee, vintage clothes and handmade goods. Much less crowded than Gwangjang Market. Combine with a Han River picnic nearby.</div>
+  <div class="a-tags"><span class="a-tag">Local</span><span class="a-tag">Food</span><span class="a-tag">Saturday</span><span class="a-tag">Low Tourist</span></div>
+  <div class="a-tip">💡 Pair with a river picnic: buy snacks at the market, walk 5 minutes to Mangwon Hangang Park.</div>
+</div></div></div></div><div class="sub-tab" id="seoul-food"><div class="content"><div class="callout c-good">🍽 <strong>Seoul Food Scene:</strong> Gwangjang Market for authentic Korean, Myeongdong for street food spectacle, Han River for chimaek (fried chicken + beer). Korean BBQ AYCE is a must at least once.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks</div><div class="sec-cnt">6 must-eats · Verified local picks</div></div>gold
+<div class="food-grid"><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🥞</span><div class="f-info"><div class="f-name">Gwangjang Market (광장시장)</div><div class="f-sub">Daily 8 AM–11 PM · Some stalls open later</div></div></div>
+  <span class="f-must">Must Order: Bindaetteok + Mayak Gimbap</span>
+  <div class="f-price">₩5,000–8,000 per item · €4–6</div>
+  <div class="f-desc">Seoul's oldest and most authentic market. Bindaetteok (mung bean pancakes, fried crispy at live stalls) and mayak gimbap (bite-sized seaweed rice rolls with sesame) are the two iconic dishes. Eat at the women's stall tables with makgeolli (rice wine).</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🍗</span><div class="f-info"><div class="f-name">Han River Chimaek (치맥)</div><div class="f-sub">Order from local fried chicken shops or convenience stores · Available 24/7</div></div></div>
+  <span class="f-must">Must Order: Fried chicken + Maekju (beer)</span>
+  <div class="f-price">₩15,000–25,000 for 2 pax · €11–18</div>
+  <div class="f-desc">Korea's most iconic couple date activity. Buy half-and-half fried chicken (반반), 2 cans of beer, and go sit on the Han River grass with a blue mat (buy at convenience store ₩2,000). Yeouido Hangang Park is the most popular spot.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🌮</span><div class="f-info"><div class="f-name">Myeongdong Night Market Street Food</div><div class="f-sub">Every evening 5 PM–11 PM</div></div></div>
+  <span class="f-must">Must Order: Tornado Potato + Grilled Cheese</span>
+  <div class="f-price">₩3,000–8,000 per item · €2–6</div>
+  <div class="f-desc">The nightly outdoor food market on Myeongdong's main pedestrian street. Try: tornado potato (₩4,000), cheese lobster skewer (₩8,000), hotteok (sweet pancake ₩2,000), tteokbokki (spicy rice cakes ₩4,000). Very TikTok-friendly visuals.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🔥</span><div class="f-info"><div class="f-name">Korean BBQ AYCE (삼겹살)</div><div class="f-sub">Open daily 11 AM–midnight (most restaurants)</div></div></div>
+  <span class="f-must">Must Order: Samgyeopsal + Soju</span>
+  <div class="f-price">₩13,000–18,000 AYCE per person · €10–13</div>
+  <div class="f-desc">All-you-can-eat Korean BBQ is mandatory in Seoul. Grill samgyeopsal (pork belly) on a table grill, wrap in lettuce with garlic, kimchi and ssamjang paste, wash down with soju or maekju. Try: Mapo Galmaegi (Hongdae area) or any street restaurant near your hotel.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🏪</span><div class="f-info"><div class="f-name">Convenience Store Mukbang</div><div class="f-sub">Open 24/7</div></div></div>
+  <span class="f-must">Must Order: Cup Ramen + Triangle Gimbap + Hotdog</span>
+  <div class="f-price">₩800–3,000 per item · €1–2</div>
+  <div class="f-desc">A Korean cultural institution — sitting outside CU or GS25 at a plastic table at midnight with cup ramyeon, triangle gimbap and a beer. The hot dog on a stick (₩1,200) from inside the store is oddly incredible. A genuine TikTok trend globally.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🧊</span><div class="f-info"><div class="f-name">Bingsu (팥빙수) at Sulbing</div><div class="f-sub">Open daily 10 AM–10 PM</div></div></div>
+  <span class="f-must">Must Order: Strawberry / Injeolmi Bingsu</span>
+  <div class="f-price">₩7,000–12,000 · €5–9</div>
+  <div class="f-desc">Korean shaved ice dessert. Mountains of soft shaved milk ice topped with sweet red beans, mochi, condensed milk and fresh fruit. Perfect for hot June weather. Sulbing chain is reliable and everywhere. The injeolmi (roasted soy powder) version is the most Korean.</div>
+  
+</div></div></div></div></div></div>
+<div class="city-page" id="city-jeonju"><div class="sub-tab on" id="jeonju-hanoks"><div class="content"><div class="callout c-good">✅ <strong>Jeonju Budget — Best Value on Trip!</strong> Most hanoks hit €28–42. The 알콩달콩 다락방 (4.7★, breakfast incl.) and Bugyeongdang (free breakfast!) are exceptional finds from your Google Maps list.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🏯 Hanok Stays</div><div class="sec-cnt">9 options · All verified from your list</div></div>teal
+<div class="prio-row"><div class="prio-lbl">🏆 Top Picks — Best Rated</div><div class="card-grid"><div class="hcard hanok" data-r="top">
+  <div class="hhead"><div class="hname">알콩달콩 다락방</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hanok Holiday Home</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€31–38/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫844,012</span></div>
+  <div class="hrating"><span class="stars">★ 4.7</span><span class="rcount">(103 reviews)</span></div>
+  <div class="hloc">📍 Hyanggyo-gil · Hanok Village</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Highest rated Jeonju hanok (4.7★, 103 reviews)</li><li>Breakfast served every morning</li><li>Loft-style room — unique, romantic</li><li>Great value at only €31–38</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Loft stairs — be careful at night</li><li>Ondol floor sleeping</li></ul></div></div>
+  <div class="htags"><span class="ht g">Best Jeonju Hanok</span><span class="ht t">4.7★ Top Rated</span><span class="ht gr">Breakfast Incl</span><span class="ht ">Loft Room</span></div>
+  <div class="hnote hn-gold">🏆 No.1 pick for Jeonju. Highest rated + breakfast + great price.</div>
+</div>
+<div class="hcard hanok" data-r="top">
+  <div class="hhead"><div class="hname">Bugyeongdang</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hanok 2★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€30–36/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫815,035</span></div>
+  <div class="hrating"><span class="stars">★ 4.6</span><span class="rcount">(110 reviews)</span></div>
+  <div class="hloc">📍 Jeonju Hanok Village</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>FREE breakfast included (rare for this price!)</li><li>4.6★ with 110 reviews — very reliable</li><li>Beautiful hanok courtyard garden</li><li>Traditional atmosphere at best price</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Traditional floor sleeping (ondol)</li><li>June is humid</li></ul></div></div>
+  <div class="htags"><span class="ht gr">Free Breakfast ✓</span><span class="ht g">4.6★ 110 Reviews</span><span class="ht t">Best Price</span></div>
+  <div class="hnote hn-green">✅ Free breakfast + 4.6★ + €30/night = best overall value in Jeonju.</div>
+</div>
+<div class="hcard hanok" data-r="top">
+  <div class="hhead"><div class="hname">Baeghui</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hanok 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€35–42/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫954,149</span></div>
+  <div class="hrating"><span class="stars">★ 4.5</span><span class="rcount">(46 reviews)</span></div>
+  <div class="hloc">📍 Jeonju Hanok Village center</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Modern interior, traditional exterior</li><li>Comfortable beds (not just floor)</li><li>Air-conditioned rooms</li><li>Clean private bathroom confirmed</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Slightly pricier than others (€35–42)</li><li>Fewer reviews</li></ul></div></div>
+  <div class="htags"><span class="ht g">Modern Comfort</span><span class="ht t">AC Available</span><span class="ht gr">Private Bath ✓</span></div>
+  
+</div>
+<div class="hcard hanok" data-r="good">
+  <div class="hhead"><div class="hname">Dream Hanok Stay</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Hanok</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€35–47/night</span><span class="pr-tag pt-tight">⚠ Borderline</span></div>
+  <div class="hrating"><span class="stars">★ 4.7</span><span class="rcount">(37 reviews)</span></div>
+  <div class="hloc">📍 Hyanggyo-gil · Center of Hanok Village</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Host drove to bus terminal to return forgotten phone!</li><li>English-speaking host</li><li>Walk to all village restaurants</li><li>Private bathroom confirmed</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Reaches €45–47 in June peak</li><li>Ondol floor sleeping</li></ul></div></div>
+  <div class="htags"><span class="ht t">Private Bath ✓</span><span class="ht gr">English Host</span><span class="ht ">Walk Everywhere</span></div>
+  <div class="hnote hn-gold">🏆 Famous for legendary hospitality. Book 8 weeks ahead.</div>
+</div>
+<div class="hcard hanok" data-r="good">
+  <div class="hhead"><div class="hname">The Hanok, JeonJu</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Hanok 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€30–44/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.6</span><span class="rcount">(39 reviews)</span></div>
+  <div class="hloc">📍 Eunhaeng-ro · Heart of Village · Open 24h</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Open 24 hours — most flexible check-in</li><li>Bed option (not just floor)</li><li>Traditional breakfast served</li><li>English-speaking hostess</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Simple breakfast (toast, fruits)</li><li>Basic décor</li></ul></div></div>
+  <div class="htags"><span class="ht g">Open 24h</span><span class="ht t">Bed Option</span><span class="ht ">English Host</span></div>
+  
+</div></div></div>
+<div class="prio-row"><div class="prio-lbl">✅ Recommended</div><div class="card-grid"><div class="hcard hanok" data-r="ok">
+  <div class="hhead"><div class="hname">Gaeunchae</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hanok 2★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€38–46/night</span><span class="pr-tag pt-tight">⚠ Borderline</span><span class="pr-vnd">₫1,024,016</span></div>
+  <div class="hrating"><span class="stars">★ 4.0</span><span class="rcount">(105 reviews)</span></div>
+  <div class="hloc">📍 Hanji-gil · Hanok Village area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Good location in hanok area</li><li>Traditional atmosphere</li><li>Terrace and garden</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>4.0★ is below average for hanoks</li><li>₫1,024,016 → ~€46 in June = slightly over</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht ">Garden/Terrace</span><span class="ht ">Traditional Feel</span></div>
+  
+</div>
+<div class="hcard hanok" data-r="good">
+  <div class="hhead"><div class="hname">마당예쁜집 (Pretty Yard)</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hanok 2★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€30–36/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫811,910</span></div>
+  <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(90 reviews)</span></div>
+  <div class="hloc">📍 Hanok Village · 마당예쁜집</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Lovely hanok courtyard yard (unique!)</li><li>4.3★ with 90 reviews — reliable</li><li>Budget-friendly at €30</li><li>Free WiFi</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Basic amenities</li><li>Traditional floor sleeping</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht t">Hanok Courtyard</span><span class="ht gr">Budget Friendly</span></div>
+  
+</div>
+<div class="hcard hanok" data-r="good">
+  <div class="hhead"><div class="hname">Yangsajae</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Guesthouse</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€28–38/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.5</span><span class="rcount">(82 reviews)</span></div>
+  <div class="hloc">📍 Jeonju Hanok Village</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>4.5★ with 82 reviews — excellent quality</li><li>DEAL: 17% less than usual price</li><li>Inside Hanok Village walking distance</li><li>Well-reviewed by couples</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Price not confirmed (DEAL price)</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht gr">DEAL 17% Off</span><span class="ht t">4.5★ 82 reviews</span></div>
+  <div class="hnote hn-gold">📌 Shown with 17% discount in your Google Maps. Likely €28–38. Confirm on Booking.com.</div>
+</div>
+<div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">Laon Hanok Gguljam</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">3★ Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€33–40/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫903,923</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(106 reviews)</span></div>
+  <div class="hloc">📍 Hanji-gil · Traditional Architecture</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Traditional hanok-style architecture</li><li>Free WiFi, modern amenities</li><li>106 reviews — reliable</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>4.1★ is lower than other Jeonju picks</li><li>Basic hanok feel, more hotel-like</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht t">Traditional Style</span><span class="ht gr">Fits Budget</span></div>
+  
+</div></div></div></div></div></div><div class="sub-tab" id="jeonju-hotels"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Modern Hotels</div><div class="sec-cnt">3 options near Hanok Village</div></div><div class="prio-row"><div class="prio-lbl">✅ Recommended</div><div class="card-grid"><div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Sarangroo</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Guesthouse</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€31–40/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(120 reviews)</span></div>
+  <div class="hloc">📍 Near Jeonjucheon Stream · Hanok Village</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>24h front desk (rare for budget Jeonju)</li><li>Garden and terrace with stream views</li><li>Free parking on-site</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>10 min walk to center of Hanok Village</li></ul></div></div>
+  <div class="htags"><span class="ht g">24h Desk</span><span class="ht t">Stream Views</span><span class="ht ">Free Parking</span></div>
+  
+</div>
+<div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">Kama Hotel</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€36–49/night</span><span class="pr-tag pt-tight">⚠ Borderline</span></div>
+  <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(195 reviews)</span></div>
+  <div class="hloc">📍 Wansan-gu · 5 min taxi to village</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Most spacious modern rooms in Jeonju</li><li>Rain shower, computer in room</li><li>English-speaking staff</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Not inside Hanok Village (5 min taxi)</li><li>€36–49 is slightly over target</li></ul></div></div>
+  <div class="htags"><span class="ht g">Modern Comfort</span><span class="ht t">Rain Shower</span></div>
+  
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Jeonju Intl Guesthouse</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Guesthouse</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€24–35/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(89 reviews)</span></div>
+  <div class="hloc">📍 Near Hanok Village & Deokjin Park</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Cheapest reliable option in Jeonju</li><li>Private room with bathroom available</li><li>International-friendly staff</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Basic facilities</li><li>Slightly farther from center</li></ul></div></div>
+  <div class="htags"><span class="ht gr">Cheapest</span><span class="ht ">Int'l Friendly</span></div>
+  
+</div></div></div></div></div></div><div class="sub-tab" id="jeonju-spots"><div class="content"><div class="callout c-info">🗺️ <strong>Jeonju Is About Slow Travel:</strong> Walk the village at dawn, eat bibimbap for lunch, sip moju wine by the stream at evening. Only 2–3 attractions needed — quality over quantity here.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See & Do</div><div class="sec-cnt">5 spots · Hanok village & beyond</div></div>gold
+<div class="spot-grid"><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🏮</span><div class="a-title-block"><div class="a-name">Jeonju Hanok Village (한옥마을)</div><div class="a-type">750+ Traditional Hanok Houses</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7 · Best before 9 AM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Korea's most famous hanok preservation district with 735 traditional houses, winding alleys, artisan shops and street food stalls. Rent a hanbok from nearby shops for the full experience. Beautiful lanterns at night.</div>
+  <div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Hanbok</span><span class="a-tag">Iconic</span><span class="a-tag">Romantic</span></div>
+  <div class="a-tip">💡 Dawn (6–7 AM) is magical with morning mist. After dark, the lanterns create a fairytale atmosphere perfect for couples.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">⛩</span><div class="a-title-block"><div class="a-name">Gyeonggijeon Shrine</div><div class="a-type">Historic Royal Shrine</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>9 AM – 7 PM (Jun)</strong></span><span class="a-meta-item">💰 <strong>₩3,000 (~€2)</strong></span></div>
+  <div class="a-desc">The best free secret inside the Hanok Village — a tranquil bamboo forest pathway behind the shrine. Most visitors skip this. The bamboo grove is a perfect photo spot.</div>
+  <div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Bamboo Forest</span><span class="a-tag">Photos</span><span class="a-tag">Calm</span></div>
+  <div class="a-tip">💡 Skip the main shrine hall (basic) and head straight to the bamboo forest on the left side. Perfect couple photo.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🌙</span><div class="a-title-block"><div class="a-name">Jeonjucheon Stream Evening Walk</div><div class="a-type">Romantic Night Walk</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7 · Best 7–10 PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">The stream cutting through the city is lit with warm lights every evening, reflecting off the water. Couples walk the riverside path with street food in hand. Very romantic atmosphere in June.</div>
+  <div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">Night</span><span class="a-tag">Free</span><span class="a-tag">Local</span></div>
+  <div class="a-tip">💡 Buy moju rice wine (₩3,000) from a village stall and stroll the stream banks after dinner.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🌄</span><div class="a-title-block"><div class="a-name">Omokdae & Imokdae Pavilions</div><div class="a-type">Hilltop City Panorama</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Two traditional pavilions on a hill above the Hanok Village offer the best aerial views of the hanok rooftops stretching into the city. Visit at sunrise (5:30–6 AM in June) for golden light on the tiles.</div>
+  <div class="a-tags"><span class="a-tag">Views</span><span class="a-tag">Sunrise</span><span class="a-tag">Free</span><span class="a-tag">Photos</span></div>
+  <div class="a-tip">💡 5-minute uphill walk from village center. Sunrise shot here is THE shot for a Jeonju Instagram/TikTok.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🛒</span><div class="a-title-block"><div class="a-name">Nambu Market (남부시장)</div><div class="a-type">Traditional Local Market · Food Paradise</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Daily 8 AM – 6 PM</strong></span><span class="a-meta-item">💰 <strong>Free to browse, ₩1,500–5,000 food</strong></span></div>
+  <div class="a-desc">Jeonju's oldest traditional market. Buy the famous Jeonju croquette (크로켓) — a local street food that went viral on YouTube. Also has cheap fresh produce, banchan stalls and traditional Korean snacks.</div>
+  <div class="a-tags"><span class="a-tag">Street Food</span><span class="a-tag">Local</span><span class="a-tag">Market</span><span class="a-tag">TikTok</span></div>
+  <div class="a-tip">💡 Find the croquette stall near the market entrance — there's always a small queue. ₩1,500 each.</div>
+</div></div></div></div></div><div class="sub-tab" id="jeonju-food"><div class="content"><div class="callout c-good">🍽 <strong>Jeonju = Korea's Food Capital:</strong> UNESCO City of Gastronomy. The bibimbap here has 30+ ingredients vs standard 10. Don't leave without trying the croquette from Nambu Market.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Local Specialties</div><div class="sec-cnt">6 must-eats</div></div>gold
+<div class="food-grid"><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🍲</span><div class="f-info"><div class="f-name">Jeonju Bibimbap at Gogung (고궁)</div><div class="f-sub">Daily 9 AM – 9 PM · Queue expected at lunch</div></div></div>
+  <span class="f-must">Must Order: Traditional Bibimbap Set</span>
+  <div class="f-price">₩13,000–16,000 · €10–12</div>
+  <div class="f-desc">The original Jeonju bibimbap — sizzling stone pot (dolsot) filled with seasoned vegetables, raw egg, gochujang paste and rice. Jeonju style has 30+ ingredients vs. regular versions. Gogung restaurant near Gyeonggijeon Shrine is the most famous.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🥐</span><div class="f-info"><div class="f-name">Jeonju Croquette (크로켓)</div><div class="f-sub">Nambu Market stall · Daily 8 AM – 6 PM</div></div></div>
+  <span class="f-must">Must Order: Warm Freshly Fried Croquette</span>
+  <div class="f-price">₩1,500 each · €1–1.50</div>
+  <div class="f-desc">Jeonju's most viral street food that YouTube food channels can't stop talking about. Light, crispy fried pastry shells filled with potato and vegetables. The Nambu Market croquette stall has been open for 50+ years. Cost: ₩1,500 each.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍳</span><div class="f-info"><div class="f-name">알콩달콩 Loft Breakfast</div><div class="f-sub">Served 7:30–9:30 AM at your hanok</div></div></div>
+  <span class="f-must">Must Order: Included with Hanok Stay</span>
+  <div class="f-price">Included in room rate · €0 (included)</div>
+  <div class="f-desc">Multiple hanoks in Jeonju Village serve traditional Korean breakfast: dosirak rice with banchan side dishes, soup, egg. At Bugyeongdang and Dream Hanok Stay, it's included free with room. Eat in the hanok courtyard.</div>
+  
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍜</span><div class="f-info"><div class="f-name">Kongnamul Gukbap (콩나물국밥)</div><div class="f-sub">Early morning breakfast specialty · Open 6 AM – 2 PM</div></div></div>
+  <span class="f-must">Must Order: Bean Sprout Soup Rice</span>
+  <div class="f-price">₩7,000–9,000 · €5–7</div>
+  <div class="f-desc">Jeonju's traditional breakfast: hearty bean sprout soup with rice, kimchi and pickled radish. Eaten as a hangover cure by locals. A uniquely Jeonju dish you can't get like this elsewhere. Try Hyundai Okne restaurant near the market.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍶</span><div class="f-info"><div class="f-name">Moju Rice Wine (모주)</div><div class="f-sub">Village market stalls · Daily 10 AM–9 PM</div></div></div>
+  <span class="f-must">Must Order: Traditional Rice Wine</span>
+  <div class="f-price">₩3,000–5,000 per bowl · €2–4</div>
+  <div class="f-desc">Jeonju's signature golden-colored rice wine, lighter and sweeter than regular makgeolli. Served warm in a gourd bowl at village stalls. Very low alcohol — fine for drinking while walking the hanok alleys. A distinctive Jeonju experience.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍡</span><div class="f-info"><div class="f-name">Injeolmi Tteok (인절미)</div><div class="f-sub">Village market · Daily 9 AM–7 PM</div></div></div>
+  <span class="f-must">Must Order: Pounded Sticky Rice Cakes</span>
+  <div class="f-price">₩3,000–5,000 per box · €2–4</div>
+  <div class="f-desc">Soft glutinous rice cakes rolled in roasted soybean powder (injeolmi) or sesame. Made fresh in the village — you can watch the pounding process. Take a box as snacks for your hanok evening.</div>
+  
+</div></div></div>
+<div class="tips"><div class="tips-h">💡 Tips & Local Knowledge</div><div class="tips-g"><div class="tip">🍚 Best bibimbap time: 11 AM–1 PM when everything is freshest. Gogung restaurant: arrive 10 min before opening to avoid queue</div><div class="tip">🏮 Many hanoks include free hanbok rental — wear it while eating croquette and sipping moju for maximum TikTok content</div><div class="tip">🚕 KTX to Jeonju Stn → taxi ₩8,000–10,000 (15 min) to Hanok Village entrance</div><div class="tip">🕐 Village is most magical: 5:30–8 AM (dawn mist) and 7–9 PM (lanterns lit)</div></div></div></div></div></div>
+<div class="city-page" id="city-busan-sea"><div class="sub-tab on" id="busan-sea-hotels"><div class="content"><div class="callout c-warn">🌊 <strong>Sea View Price Reality:</strong> Budget hotels with actual ocean view run €30–52 in June. Gwanganri HOTEL OCEANVIEW ($33 avg) and Hotel Marine View (from $39) are your best value. Lavalse Hotel (4.5★) is stunning but €56–70.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Hotels with Sea View</div><div class="sec-cnt">7 options · Gwangalli & Haeundae</div></div><div class="prio-row"><div class="prio-lbl">🏆 Best Value Sea View</div><div class="card-grid"><div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Gwanganri HOTEL OCEANVIEW</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hotel 2★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€30–48/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(180 reviews)</span></div>
+  <div class="hloc">📍 Suyeong-gu · Steps from Gwangalli Beach</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Average $33/night — most affordable sea view</li><li>Direct ocean view + balcony rooms</li><li>Free breakfast (continental)</li><li>Rooftop terrace, bidet, 24h desk</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Located on 13F–14F of mixed building (lifts slow)</li><li>Breakfast is basic</li></ul></div></div>
+  <div class="htags"><span class="ht g">Cheapest Sea View</span><span class="ht t">Balcony ✓</span><span class="ht gr">Free Breakfast</span></div>
+  <div class="hnote hn-gold">🏆 Best value sea view. Book 'ocean view double' explicitly.</div>
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Hotel Marine View</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€36–50/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.4</span><span class="rcount">(226 reviews)</span></div>
+  <div class="hloc">📍 Gwanganhaebyeon-ro · Gwangalli area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Verified from $39 (Kayak)</li><li>Pillowtop beds, premium bedding</li><li>Free breakfast + free parking</li><li>Soundproof rooms, private sitting area</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>10–15 min walk to nearest subway</li></ul></div></div>
+  <div class="htags"><span class="ht g">From $39 Verified</span><span class="ht t">Free Breakfast+Parking</span><span class="ht ">Pillowtop Beds</span></div>
+  
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Haeundae Marianne Hotel</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€35–43/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫938,857</span></div>
+  <div class="hrating"><span class="stars">★ 3.7</span><span class="rcount">(497 reviews)</span></div>
+  <div class="hloc">📍 Haeundae · Near beach</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Fits budget at ~€35–43</li><li>Haeundae beach proximity</li><li>490+ reviews — well-established</li><li>Has outdoor pool</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>3.7★ — below average rating (check recent reviews)</li><li>Not the best quality for the price</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht t">Haeundae Area</span><span class="ht ">Outdoor Pool</span></div>
+  <div class="hnote hn-warn">⚠ 3.7★ rating — read recent reviews before booking. Budget fits at ₫938,857.</div>
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Gwangalli Gray 193 Hotel</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€36–52/night</span><span class="pr-tag pt-tight">⚠ Borderline</span></div>
+  <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(110 reviews)</span></div>
+  <div class="hloc">📍 Millaksubyeon-ro · Gwangalli beachfront</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Ocean view rooms at lower price</li><li>Gwangalli sunset views</li><li>Friendly helpful staff</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Wet/dry bathroom not separated</li><li>Hard beds</li><li>Strong scent in lobby</li></ul></div></div>
+  <div class="htags"><span class="ht g">Beach Front</span><span class="ht t">Sunset View</span></div>
+  
+</div>
+<div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">NO25 Hotel Gwanganri</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€27–46/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.2</span><span class="rcount">(312 reviews)</span></div>
+  <div class="hloc">📍 Suyeong-gu · Gwangalli area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Very affordable from €27/night</li><li>Near Gwangalli boardwalk cafes</li><li>Private double rooms available</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Basic facilities</li><li>10–15 min to nearest subway</li></ul></div></div>
+  <div class="htags"><span class="ht g">Budget Sea View</span><span class="ht ">Gwangalli Board.</span></div>
+  
+</div></div></div>
+<div class="prio-row"><div class="prio-lbl">⚠ Over Budget (shown for reference)</div><div class="card-grid"><div class="hcard over" data-r="skip">
+  <div class="hhead"><div class="hname">Lavalse Hotel</div><div class="hbadges"><span class="hb hb-over">SKIP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-over">€56–70/night</span><span class="pr-tag pt-over">✗ Over Budget</span><span class="pr-vnd">₫1,509,444</span></div>
+  <div class="hrating"><span class="stars">★ 4.5</span><span class="rcount">(2448 reviews)</span></div>
+  <div class="hloc">📍 Busan Harbor area · City + sea panorama</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Exceptional rating 4.5★ / 2,448 reviews</li><li>Stunning harbor & bridge views</li><li>DEAL 19% off!</li><li>One of Busan's best-loved hotels</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>₫1,509,444 → June ~€70 = over budget (max €49.5)</li><li>Best for those with flexible budget</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht t">4.5★ 2,448 Reviews</span><span class="ht gr">DEAL 19% Off</span></div>
+  <div class="hnote hn-red">❌ Over budget at ~€56–70. But exceptional quality — consider for a special night.</div>
+</div>
+<div class="hcard over" data-r="skip">
+  <div class="hhead"><div class="hname">Haeundae Seacloud Hotel</div><div class="hbadges"><span class="hb hb-over">SKIP</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 4★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-over">€54–68/night</span><span class="pr-tag pt-over">✗ Over Budget</span><span class="pr-vnd">₫1,467,995</span></div>
+  <div class="hrating"><span class="stars">★ 3.8</span><span class="rcount">(1796 reviews)</span></div>
+  <div class="hloc">📍 Haeundae Beach area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>4-star hotel with pool</li><li>Right in Haeundae Beach area</li><li>Large property, well-known</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>₫1,467,995 → June ~€68 = over budget</li><li>3.8★ is below average for a 4-star</li><li>Mixed reviews</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht ">Outdoor Pool</span><span class="ht t">Haeundae</span></div>
+  <div class="hnote hn-red">❌ Over budget and below-average rating for a 4-star. Not recommended.</div>
+</div></div></div></div>
+<div class="tips"><div class="tips-h">💡 Tips & Local Knowledge</div><div class="tips-g"><div class="tip">🌉 <strong>Gwangalli vs Haeundae:</strong> Gwangalli = trendier, younger, drone show, Gwangan Bridge views. Haeundae = longer beach, more touristy, higher prices</div><div class="tip">🎆 Gwangalli drone show: Fri/Sat/Sun 9 PM. Buy convenience store beer, sit on sand, watch for free</div><div class="tip">🌡 Confirm individual room AC — some hotels use seasonal central AC that may not be active in early June</div><div class="tip">⭐ For the sea view stay: book 'ocean view double room' specifically — basic rooms face the street</div></div></div></div></div><div class="sub-tab" id="busan-sea-spots"><div class="content"><div class="callout c-info">🗺️ <strong>Busan Has the Best TikTok Spots in Korea:</strong> Sky Capsule is a must-book (sells out 2–4 weeks ahead), Gamcheon Village is iconic, and Haedong Temple at sunrise is breathtaking.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See Attractions</div><div class="sec-cnt">6 spots · Gwangalli & Haeundae area</div></div>gold
+<div class="spot-grid"><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🚠</span><div class="a-title-block"><div class="a-name">Sky Capsule — Blueline Park 🎢</div><div class="a-type">Colorful Coastal Capsule Train</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Mon–Fri 9AM–7PM, Sat–Sun 8AM–8PM</strong></span><span class="a-meta-item">💰 <strong>₩20,000 per person (~€14)</strong></span></div>
+  <div class="a-desc">THE most viral Busan attraction on TikTok/YouTube. Small colorful glass-walled capsules run on a coastal railway above the sea between Cheongsapo and Mipo. Absolutely stunning ocean views. Book online 2–4 weeks before — it SELLS OUT.</div>
+  <div class="a-tags"><span class="a-tag">🔥 TikTok Viral</span><span class="a-tag">Capsule Train</span><span class="a-tag">Ocean View</span><span class="a-tag">Couple Must</span></div>
+  <div class="a-tip">💡 Book the morning 9 AM slot for clearest blue water. Pair with Haeundae Beach walk after.</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🌉</span><div class="a-title-block"><div class="a-name">Gwangalli Beach + Drone Show</div><div class="a-type">Trendy Beach · Gwangan Bridge</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Beach 24/7 · Drone show Fri/Sat/Sun 9 PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Korea's most instagrammable beach with the iconic twin-deck Gwangan Bridge as backdrop. The Friday–Sunday drone show at 9 PM features hundreds of drones forming Korean cultural imagery over the bridge. Watch from the beach or your hotel balcony with beer.</div>
+  <div class="a-tags"><span class="a-tag">Drone Show</span><span class="a-tag">Beach</span><span class="a-tag">Night</span><span class="a-tag">Romantic</span><span class="a-tag">Free</span></div>
+  <div class="a-tip">💡 Buy beers/snacks from the 7-Eleven on the beach strip, sit on the sand and watch the drone show. Most romantic free activity in Busan.</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🏯</span><div class="a-title-block"><div class="a-name">Haedong Yonggungsa Temple</div><div class="a-type">Oceanside Buddhist Temple</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Sunrise–Sunset daily (5 AM–7 PM)</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Unlike typical hillside temples, this 14th-century Buddhist temple sits dramatically on seaside cliffs with waves crashing around it. One of the most photogenic temples in Korea — a TikTok and Instagram staple.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Temple</span><span class="a-tag">Ocean</span><span class="a-tag">Sunrise</span><span class="a-tag">Photos</span></div>
+  <div class="a-tip">💡 Go at sunrise (5:30 AM in June) — near-empty and golden. Take Bus 181 from Haeundae.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🎨</span><div class="a-title-block"><div class="a-name">Gamcheon Culture Village</div><div class="a-type">Colorful Hillside Art Village</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>9 AM – 6 PM</strong></span><span class="a-meta-item">💰 <strong>₩2,000 stamp map (~€1.5)</strong></span></div>
+  <div class="a-desc">Called the 'Machu Picchu of Korea' and the 'Santorini of Busan' online. Pastel-colored houses cascade down a hillside, connected by winding staircases and alleyways filled with murals, sculptures and art installations.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Art</span><span class="a-tag">Photos</span><span class="a-tag">Iconic</span><span class="a-tag">Murals</span></div>
+  <div class="a-tip">💡 Buy the ₩2,000 stamp map at the village entrance and follow the route to all art spots. Allow 2–3 hours. Weekdays are much less crowded.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🚡</span><div class="a-title-block"><div class="a-name">Songdo Beach Cable Car</div><div class="a-type">Coastal Cable Car Ride</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>9 AM – 9 PM daily</strong></span><span class="a-meta-item">💰 <strong>₩15,000 return (~€10)</strong></span></div>
+  <div class="a-desc">Transparent-floor gondolas float above the coastline of Songdo Beach offering spectacular views of the sea and rocky cliffs below. Less crowded than Sky Capsule. Pair with a sunset walk on Songdo Beach.</div>
+  <div class="a-tags"><span class="a-tag">Cable Car</span><span class="a-tag">Ocean View</span><span class="a-tag">Couple</span><span class="a-tag">Sunset</span></div>
+  <div class="a-tip">💡 Take the transparent-floor cabin for the best experience. Visit at golden hour 6–7 PM.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🎬</span><div class="a-title-block"><div class="a-name">Busan Cinema Center (BIFF)</div><div class="a-type">Guinness Record LED Roof</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Outdoor: 24/7 · LED show: from 8 PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Holds the Guinness World Record for the world's largest cantilever roof covered in LED lights. Every evening the building transforms into a light show. The BIFF Square adjacent is lined with movie star handprints and street food stalls.</div>
+  <div class="a-tags"><span class="a-tag">Free</span><span class="a-tag">Night Light</span><span class="a-tag">Architecture</span><span class="a-tag">Cinema</span></div>
+  <div class="a-tip">💡 Come at 9 PM when the LED ceiling show is running. Combined with BIFF Square street food = perfect night out.</div>
+</div></div></div></div></div><div class="sub-tab" id="busan-sea-food"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks</div><div class="sec-cnt">6 must-eats · Seafood + Beach Vibes</div></div>gold
+<div class="food-grid"><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🍺</span><div class="f-info"><div class="f-name">Gwangalli Seaside Beer & Snacks</div><div class="f-sub">Convenience stores 24/7 · Friday–Sunday drone show at 9 PM</div></div></div>
+  <span class="f-must">Must Order: 치맥 with Gwangan Bridge View</span>
+  <div class="f-price">₩15,000–20,000 for 2 · €11–15</div>
+  <div class="f-desc">Buy fried chicken and canned beer from the 7-Eleven on the Gwangalli beachfront, sit on the sand, and watch the Gwangan Bridge drone show at 9 PM on weekends. Possibly the most romantic free evening activity in Korea.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🐡</span><div class="f-info"><div class="f-name">Raw Fish Set at Jagalchi (모듬회)</div><div class="f-sub">Daily 6 AM – 9 PM at Jagalchi 2F restaurants</div></div></div>
+  <span class="f-must">Must Order: Mixed Sashimi Platter</span>
+  <div class="f-price">₩40,000–60,000 for 2 · €29–44</div>
+  <div class="f-desc">Buy a live fish from the ground floor of Jagalchi Market and have it prepared as sashimi (회) at the 2F restaurant for a processing fee (₩5,000–8,000). Freshest possible sashimi you'll ever have. The haenyeo women divers also sell sea urchin (성게) outside.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">☕</span><div class="f-info"><div class="f-name">Gwangalli Café Hopping (카페 거리)</div><div class="f-sub">Cafés open 9 AM – 11 PM</div></div></div>
+  <span class="f-must">Must Order: Specialty Coffee + Ocean View</span>
+  <div class="f-price">₩5,500–9,000 per drink · €4–7</div>
+  <div class="f-desc">The Gwangalli Beach strip has dozens of rooftop and terrace cafés with Gwangan Bridge views. Most popular: Blanc et Rouge (rooftop, reservation recommended), Wave On Coffee (beachside). Perfect for a late-afternoon date.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🥞</span><div class="f-info"><div class="f-name">Ssiat Hotteok at BIFF Square</div><div class="f-sub">Daily 10 AM – 9 PM (closes when sold out — come early!)</div></div></div>
+  <span class="f-must">Must Order: Famous Black Sesame Hotteok</span>
+  <div class="f-price">₩1,500 per hotteok · €1</div>
+  <div class="f-desc">The most famous street food in Busan. A freshly fried flour pancake filled with black sesame seeds and sugar, slightly chewy and incredibly fragrant. The single stall in BIFF Square has a permanent queue. Worth every minute of waiting.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🍲</span><div class="f-info"><div class="f-name">Dwaeji Gukbap (돼지국밥)</div><div class="f-sub">Daily 6 AM – 10 PM</div></div></div>
+  <span class="f-must">Must Order: Busan Pork Soup with Rice</span>
+  <div class="f-price">₩8,000–11,000 · €6–8</div>
+  <div class="f-desc">Busan's soul food — milky pork bone broth soup served with rice, kimchi, sliced pork and green onion. Every Busan local has a favourite gukbap restaurant. Try it for breakfast (6–8 AM) when local workers flood the restaurants. Hyeopseongdong neighbourhood is the gukbap hub.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍢</span><div class="f-info"><div class="f-name">Eomuk (어묵) at Gukje Market</div><div class="f-sub">Daily 9 AM – 8 PM</div></div></div>
+  <span class="f-must">Must Order: Hot Fish Cake Skewers</span>
+  <div class="f-price">₩1,000–2,000 per skewer · €0.75–1.50</div>
+  <div class="f-desc">Busan-style fish cake (eomuk) is different from Seoul — thicker, chewier, more flavourful. Pick skewers from giant pots of simmering hot broth. Free broth cups are given to sip. A ₩3,000 budget feeds you continuously while you browse the market.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div></div></div></div></div></div>
+<div class="city-page" id="city-busan-city"><div class="sub-tab on" id="busan-city-hotels"><div class="content"><div class="callout c-good">✅ <strong>City Center Budget:</strong> Seomyeon is your best bet — Broa Hotel and H-AVENUE are excellent value within budget. Toyoko Inn Busan (NEW, free breakfast) is slightly over but very high quality. Connect Busan Hotel (NEW) fits budget well.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Hotels · City Center</div><div class="sec-cnt">6 options · Seomyeon & Nampo</div></div><div class="prio-row"><div class="prio-lbl">🏆 Top Picks</div><div class="card-grid"><div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Busan Seomyeon Broa Hotel</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€36–50/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.5</span><span class="rcount">(20 reviews)</span></div>
+  <div class="hloc">📍 Busanjin-gu · Seomyeon · Near subway</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Brand new — cleanest option in Seomyeon</li><li>Bathtub in rooms (rare at this price)</li><li>24h front desk, CCTV luggage storage</li><li>Coffee & microwave on 1F all day</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Only 20 reviews</li><li>No daily cleaning unless requested</li></ul></div></div>
+  <div class="htags"><span class="ht g">Newest & Cleanest</span><span class="ht t">Bathtub ✓</span><span class="ht ">24h Desk</span></div>
+  <div class="hnote hn-gold">🏆 Best city-center pick. New property = no wear-and-tear.</div>
+</div>
+<div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">H-AVENUE Hotel Seomyeon</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€38–52/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.4</span><span class="rcount">(97 reviews)</span></div>
+  <div class="hloc">📍 Bujeon-ro · Seomyeon Station Lines 1&2</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Samsung AirDresser in room!</li><li>Spacious comfortable rooms</li><li>Seomyeon Station right outside (L1&L2)</li><li>Young Street shops/nightlife steps away</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Check-in only from 4 PM</li><li>Area can feel rough at night</li></ul></div></div>
+  <div class="htags"><span class="ht g">Samsung AirDresser</span><span class="ht t">Metro L1+L2</span><span class="ht ">Young Street</span></div>
+  
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Toyoko Inn Busan Seomyeon</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-tight">€44–55/night</span><span class="pr-tag pt-tight">⚠ Borderline</span><span class="pr-vnd">₫1,181,444</span></div>
+  <div class="hrating"><span class="stars">★ 4.2</span><span class="rcount">(1817 reviews)</span></div>
+  <div class="hloc">📍 Seomyeon · Near subway · Free breakfast</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Free breakfast every morning!</li><li>4.2★ with 1,817 reviews — very reliable</li><li>Japanese chain = consistent quality</li><li>Good subway access</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>₫1,181,444 → June ~€55 = slightly over target</li><li>Compact Japanese-style rooms</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht gr">Free Breakfast</span><span class="ht t">1,817 Reviews</span><span class="ht ">Reliable Chain</span></div>
+  <div class="hnote hn-warn">⚠ June ~€55 is slightly over €45 target but high review count. Free breakfast offsets cost.</div>
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Connect Busan Hotel</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€39–49/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫1,048,352</span></div>
+  <div class="hrating"><span class="stars">★ 4.0</span><span class="rcount">(490 reviews)</span></div>
+  <div class="hloc">📍 Busan central area · Free WiFi</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Fits budget reliably at ~€39</li><li>490 reviews — established property</li><li>Good city center location</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>4.0★ — acceptable but check recent reviews</li><li>Room quality may vary</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht ">490 Reviews</span><span class="ht gr">Fits Budget</span></div>
+  
+</div></div></div>
+<div class="prio-row"><div class="prio-lbl">✅ OK — Budget Options</div><div class="card-grid"><div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">Brown-Dot Hotel Seomyeon</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€33–47/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(289 reviews)</span></div>
+  <div class="hloc">📍 Seojeon-ro · Seomyeon</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Free unlimited bottled water</li><li>4-type phone chargers at bedside</li><li>Microwave on every floor</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Check-in from 5 PM (very late!)</li><li>Inconsistent cleanliness</li></ul></div></div>
+  <div class="htags"><span class="ht t">Free Unlimited Water</span><span class="ht ">4-Type Charger</span><span class="ht ">Near Subway</span></div>
+  
+</div>
+<div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">K-Guesthouse Premium Nampo</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-type">Guesthouse</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€26–40/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(425 reviews)</span></div>
+  <div class="hloc">📍 Nampo-gil · Jagalchi area · Jung-gu</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Cheapest option in Busan city</li><li>Steps from Jagalchi Fish Market</li><li>BIFF Square & harbor nearby</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Very small rooms — confirm 'double private bath'</li><li>Shower may share sink area</li></ul></div></div>
+  <div class="htags"><span class="ht gr">Cheapest Option</span><span class="ht g">Jagalchi Mkt</span><span class="ht t">BIFF Square</span></div>
+  <div class="hnote hn-warn">⚠ Write in booking notes: 'double room, private en-suite bathroom required'.</div>
+</div></div></div></div>
+<div class="tips"><div class="tips-h">💡 Tips & Local Knowledge</div><div class="tips-g"><div class="tip">🚄 <strong>Gyeongju day trip (Jun 23):</strong> Seomyeon → metro to Busan Station → KTX to Gyeongju, 30 min, ₩8,900 each way. Total ₩18,000/person</div><div class="tip">🗺 Seomyeon is Busan's centre: Line 1 & 2 intersection. Reach any part of Busan in under 30 min</div><div class="tip">🌃 Young Street and Seomyeon underground shopping mall are free to explore — great for a rainy evening</div><div class="tip">🐟 From Seomyeon, Jagalchi is 10 min by subway (Jagalchi Station, Line 1)</div></div></div></div></div><div class="sub-tab" id="busan-city-spots"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See · City Center</div><div class="sec-cnt">4 highlights</div></div>gold
+<div class="spot-grid"><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🐟</span><div class="a-title-block"><div class="a-name">Jagalchi Fish Market (자갈치)</div><div class="a-type">Korea's Largest Seafood Market</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Daily 5 AM – 10 PM</strong></span><span class="a-meta-item">💰 <strong>Free (food from ₩30,000)</strong></span></div>
+  <div class="a-desc">Korea's largest seafood market is an experience unlike any other. Ground floor: raw, live seafood. Head to the 2F restaurant floor to buy fresh fish and have it prepared right there as sashimi (회). Haenyeo (women divers) sell sea urchin and shellfish on the street outside.</div>
+  <div class="a-tags"><span class="a-tag">Iconic</span><span class="a-tag">Fresh Seafood</span><span class="a-tag">Market</span><span class="a-tag">Local</span></div>
+  <div class="a-tip">💡 Go at 8–10 AM for the freshest selection and least crowds. Two people: buy a mixed platter (모듬회) for ₩40,000–50,000.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🏖</span><div class="a-title-block"><div class="a-name">Haeundae Beach</div><div class="a-type">Korea's Most Famous Beach</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Korea's most visited beach, 1.5km of white sand. Popular for morning jogs, sunset watching and late-night walks. The beach turns into a lively party zone in June evenings with street performers and food trucks.</div>
+  <div class="a-tags"><span class="a-tag">Beach</span><span class="a-tag">Sunrise</span><span class="a-tag">Nightlife</span><span class="a-tag">Famous</span></div>
+  <div class="a-tip">💡 Visit at 6 AM for a peaceful sunrise walk and cool temperatures. Return at 9 PM for the atmospheric night scene.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🛍</span><div class="a-title-block"><div class="a-name">Gukje Market (국제시장)</div><div class="a-type">Busan's Oldest General Market</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Daily 9 AM – 8 PM (most stalls)</strong></span><span class="a-meta-item">💰 <strong>Free + ₩1,000–3,000 street food</strong></span></div>
+  <div class="a-desc">Busan's iconic general market featured in the film 'Ode to My Father'. Labyrinthine alleyways with street food vendors, vintage goods, fabrics and souvenirs. Try eomuk (fish cake) and hotteok from street stalls.</div>
+  <div class="a-tags"><span class="a-tag">Market</span><span class="a-tag">Street Food</span><span class="a-tag">Cultural</span><span class="a-tag">Film Location</span></div>
+  <div class="a-tip">💡 Combine with BIFF Square next door. The market alley from Gukje to BIFF is the best street food walk in Busan.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🌊</span><div class="a-title-block"><div class="a-name">Dalmaji Hill Café Road</div><div class="a-type">Scenic Hillside Café Street</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Cafés open 10 AM – 10 PM</strong></span><span class="a-meta-item">💰 <strong>Free to walk, ₩6,000–12,000 per drink</strong></span></div>
+  <div class="a-desc">A winding coastal road between Haeundae and Songjeong lined with cafés overlooking the East Sea. Less crowded than Haeundae, with beautiful ocean views from café terraces. Perfect for a peaceful afternoon date.</div>
+  <div class="a-tags"><span class="a-tag">Cafés</span><span class="a-tag">Ocean View</span><span class="a-tag">Romantic</span><span class="a-tag">Peaceful</span></div>
+  <div class="a-tip">💡 Visit at 3–5 PM for the best window seats with sea views. Some cafés require advance reservation on weekends.</div>
+</div></div></div></div></div><div class="sub-tab" id="busan-city-food"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks · City Center</div><div class="sec-cnt">4 local specialties</div></div>gold
+<div class="food-grid"><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🍜</span><div class="f-info"><div class="f-name">Milmyeon (밀면) Noodles</div><div class="f-sub">Daily 11 AM – 9 PM</div></div></div>
+  <span class="f-must">Must Order: Cold Wheat Noodles in Broth</span>
+  <div class="f-price">₩8,000–11,000 · €6–8</div>
+  <div class="f-desc">Busan's unique dish: cold wheat noodles in a chilled beef broth, topped with sliced beef, cucumber and chilli. Invented in Busan during the Korean War and unavailable elsewhere. Try Gaya Milmyeon restaurant near Seomyeon for the most authentic.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🌅</span><div class="f-info"><div class="f-name">Toyoko Inn Seomyeon Breakfast</div><div class="f-sub">Served 6:30–9 AM</div></div></div>
+  <span class="f-must">Must Order: Free Breakfast with Room</span>
+  <div class="f-price">Included in room rate · €0 (included)</div>
+  <div class="f-desc">The Toyoko Inn chain (Japanese) provides simple free breakfast: rice, miso soup, bread, eggs. If you're staying at Toyoko Inn Seomyeon, this saves ₩5,000–8,000 each morning. Good for an early Gyeongju day-trip departure.</div>
+  
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🥘</span><div class="f-info"><div class="f-name">Seomyeon Young Street (영 스트리트)</div><div class="f-sub">Daily from 5 PM · Peaks at 9 PM–1 AM</div></div></div>
+  <span class="f-must">Must Order: Korean Street Food + BBQ Street</span>
+  <div class="f-price">₩3,000–15,000 · €2–11</div>
+  <div class="f-desc">Seomyeon Young Street is Busan's young nightlife street. Outdoor pojangmacha (street food tents), BBQ restaurants and bars fill the alleyways from 9 PM. Try: tteokbokki, Korean corn dogs (hotdogs in rice flour batter), fish cake soup.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍜</span><div class="f-info"><div class="f-name">Naengmyeon (냉면) Cold Noodles</div><div class="f-sub">Daily 11 AM – 9 PM</div></div></div>
+  <span class="f-must">Must Order: Buckwheat Cold Noodles</span>
+  <div class="f-price">₩9,000–13,000 · €7–10</div>
+  <div class="f-desc">Thin buckwheat noodles in ice-cold beef broth — perfect for Busan's hot June weather. Comes with a half hard-boiled egg, cucumber, sliced beef and radish kimchi. Add a splash of vinegar and mustard from the table for the authentic flavour.</div>
+  
+</div></div></div></div></div></div>
+<div class="city-page" id="city-jeju"><div class="sub-tab on" id="jeju-hotels"><div class="content"><div class="callout c-good">✅ <strong>Jeju Budget — Fits Well:</strong> Most options are €22–40. Yeha Guesthouse is the logistics winner (5 min to Bus Terminal). Jeju R Hotel and Hotel The Lua are newly added from your Maps list — both within budget.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Hotels & Pensions</div><div class="sec-cnt">6 options · Verified prices</div></div>
+<div class="prio-row"><div class="prio-lbl">🏆 Top Picks</div><div class="card-grid"><div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Yeha Guesthouse</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Guesthouse 2★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€24–38/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.4</span><span class="rcount">(279 reviews)</span></div>
+  <div class="hloc">📍 Jeju City · 5 min to Bus Terminal</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>5 min to Jeju Intercity Bus Terminal</li><li>Private room + private bathroom available</li><li>Free breakfast, shared kitchen</li><li>15 min bus to airport</li><li>Scooter rental shop next door</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Must book 'private room with private bathroom' explicitly</li><li>Common spaces shared with dorm guests</li></ul></div></div>
+  <div class="htags"><span class="ht g">Best for Bus Travel</span><span class="ht t">5min to Terminal</span><span class="ht gr">Free Breakfast</span><span class="ht ">Scooter Rental</span></div>
+  <div class="hnote hn-gold">🏆 No.1 for Jeju without a car. Book private room option explicitly.</div>
+</div>
+<div class="hcard" data-r="top">
+  <div class="hhead"><div class="hname">Ganderak Guesthouse</div><div class="hbadges"><span class="hb hb-top">TOP</span><span class="hb hb-type">Guesthouse</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€24–38/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.4</span><span class="rcount">(81 reviews)</span></div>
+  <div class="hloc">📍 Ganwoldong-ro · South Jeju</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Beautiful café/library on-site</li><li>Modern, very clean rooms</li><li>Heated mattress</li><li>GS25 next door</li><li>Owner waited until 11 PM for late guest</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Closed Saturdays — confirm Jun 27 arrival</li><li>Less central than Yeha</li></ul></div></div>
+  <div class="htags"><span class="ht g">Café & Library</span><span class="ht t">Heated Mattress</span><span class="ht ">Modern Clean</span></div>
+  
+</div>
+<div class="hcard" data-r="good">
+  <div class="hhead"><div class="hname">Jeju R Hotel</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 2★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€26–31/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫695,987</span></div>
+  <div class="hrating"><span class="stars">★ 4.1</span><span class="rcount">(237 reviews)</span></div>
+  <div class="hloc">📍 Seogwang-ro · Jeju City · Near airport</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>English-speaking friendly owner</li><li>Clean rooms</li><li>Near airport (bus)</li><li>Common kitchen available</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Reservation cancellation incidents reported</li><li>Some rooms reported cold</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht t">English Owner</span><span class="ht ">Near Airport</span></div>
+  <div class="hnote hn-warn">⚠ Call to confirm reservation 24–48h before check-in.</div>
+</div></div></div>
+<div class="prio-row"><div class="prio-lbl">✅ Budget Options</div><div class="card-grid"><div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">Charlie Hotel</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-type">Hotel</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€22–34/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 3.9</span><span class="rcount">(26 reviews)</span></div>
+  <div class="hloc">📍 Seosa-ro · Jeju City · Near Bus Terminal</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Cheapest hotel option in Jeju City</li><li>Netflix in every room</li><li>Near bus terminal for island trips</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Older building, some odor complaints</li><li>Few reviews</li></ul></div></div>
+  <div class="htags"><span class="ht gr">Cheapest Jeju</span><span class="ht ">Netflix TV</span><span class="ht t">Near Terminal</span></div>
+  
+</div>
+<div class="hcard" data-r="ok">
+  <div class="hhead"><div class="hname">Hotel The Lua</div><div class="hbadges"><span class="hb hb-ok">OK</span><span class="hb hb-new">NEW ✦</span><span class="hb hb-type">Hotel 3★</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€24–29/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span><span class="pr-vnd">₫650,918</span></div>
+  <div class="hrating"><span class="stars">★ 3.4</span><span class="rcount">(125 reviews)</span></div>
+  <div class="hloc">📍 Jeju City area</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Very affordable at €24–29</li><li>Free WiFi</li><li>Standard hotel amenities</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>3.4★ — low rating, check recent reviews</li><li>Basic quality</li></ul></div></div>
+  <div class="htags"><span class="ht g">NEW ✦</span><span class="ht gr">Very Affordable</span></div>
+  <div class="hnote hn-warn">⚠ Low rating (3.4★). Use as last resort if others are full.</div>
+</div>
+<div class="hcard hanok" data-r="good">
+  <div class="hhead"><div class="hname">Jeju Soo Pension</div><div class="hbadges"><span class="hb hb-good">GOOD</span><span class="hb hb-type">Pension</span></div></div>
+  <div class="price-row"><span class="pr-eur pr-fits">€26–40/night</span><span class="pr-tag pt-fits">✓ Fits Budget</span></div>
+  <div class="hrating"><span class="stars">★ 4.4</span><span class="rcount">(55 reviews)</span></div>
+  <div class="hloc">📍 Andeok-myeon · Seogwipo · Ocean view</div>
+  <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div></div>
+  <div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>Ocean view from private balcony</li><li>Private kitchenette in room</li><li>Peaceful nature, kind owner</li><li>Near Seogwipo waterfalls</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Far from Jeju City (bus/taxi needed)</li><li>Fewer food options walking</li></ul></div></div>
+  <div class="htags"><span class="ht g">Ocean Balcony</span><span class="ht t">Private Kitchen</span><span class="ht ">Seogwipo Area</span></div>
+  
+</div></div></div></div>
+<div class="tips"><div class="tips-h">💡 Tips & Local Knowledge</div><div class="tips-g"><div class="tip">🚌 Without a car: stay at Yeha Guesthouse (5 min to bus terminal). Buses 201 & 202 circle the island every 30 min</div><div class="tip">🌧 June = Jeju rainy season. Pack light rain jacket. Check weather each morning before planning outdoor activities</div><div class="tip">⭐ If staying at Ganderak, note it closes Saturdays — plan arrival on any other day</div><div class="tip">✈️ Flight from Busan (Gimhae) to Jeju takes ~1 hour. Book on Jeju Air or Air Busan for cheapest fares (~€30–50 each)</div></div></div></div></div><div class="sub-tab" id="jeju-spots"><div class="content"><div class="callout c-info">🗺️ <strong>Jeju TikTok Essentials:</strong> Seongsan Ilchulbong sunrise, Udo Island peanut ice cream, O'Sulloc tea fields and Camellia Hill are the 4 most filmed spots on the island. Sky Capsule equivalent: rent a scooter on Udo Island.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See Attractions</div><div class="sec-cnt">6 spots · Trending + Cultural</div></div>gold
+<div class="spot-grid"><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🌋</span><div class="a-title-block"><div class="a-name">Seongsan Ilchulbong (성산일출봉)</div><div class="a-type">UNESCO Sunrise Crater</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>6 AM – 8 PM · Sunrise: ~5:30 AM (June)</strong></span><span class="a-meta-item">💰 <strong>₩5,000 (~€3.5)</strong></span></div>
+  <div class="a-desc">A 182m tuff cone crater that emerges from the sea — one of Korea's most iconic images and a TikTok staple. The sunrise from the crater rim is breathtaking. Only accessible before 8 AM for the sunrise experience.</div>
+  <div class="a-tags"><span class="a-tag">🔥 TikTok Viral</span><span class="a-tag">UNESCO</span><span class="a-tag">Sunrise</span><span class="a-tag">Iconic</span><span class="a-tag">Must-Do</span></div>
+  <div class="a-tip">💡 Stay at Seongsan the night before. Arrive at crater entrance 5 AM for the 20-min climb before sunrise. Pack a jacket (windy at top).</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🏝</span><div class="a-title-block"><div class="a-name">Udo Island Day Trip (우도)</div><div class="a-type">Turquoise Sea Island Getaway</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Ferries 7:30 AM – 5:30 PM</strong></span><span class="a-meta-item">💰 <strong>Ferry ₩3,000 + scooter rental ₩30,000/day</strong></span></div>
+  <div class="a-desc">Small island off Seongsan accessible by 15-min ferry. Famous for peanut ice cream (땅콩 아이스크림), turquoise Jongdal Coast, and scooter rides along the coastline. One of the most TikTok-worthy day trips in Korea.</div>
+  <div class="a-tags"><span class="a-tag">🔥 TikTok Viral</span><span class="a-tag">Island</span><span class="a-tag">Scooter</span><span class="a-tag">Peanut Ice Cream</span><span class="a-tag">Couple</span></div>
+  <div class="a-tip">💡 Rent a 50cc scooter on the island and circle it in 2–3 hours. Stop for peanut ice cream at every stall you see.</div>
+</div><div class="acard top">
+  <div class="a-icon-row"><span class="a-icon">🍵</span><div class="a-title-block"><div class="a-name">O'Sulloc Tea Museum</div><div class="a-type">Matcha Paradise · Instagram Famous</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>9 AM – 7 PM daily</strong></span><span class="a-meta-item">💰 <strong>Free entry, ₩5,500 soft serve</strong></span></div>
+  <div class="a-desc">Nestled among rolling green tea fields, this museum/café is a visual and culinary dream. Free to visit the fields and museum. The green tea soft serve is the star item. The surrounding Innisfree Jeju House has free green tea sampling.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Matcha</span><span class="a-tag">Green Tea</span><span class="a-tag">Photos</span><span class="a-tag">Free Entry</span></div>
+  <div class="a-tip">💡 Visit 9–10 AM when the fields are misty and crowd-free. The matcha opera cake (₩7,500) pairs perfectly with an afternoon photo session.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">⛰</span><div class="a-title-block"><div class="a-name">Hallasan Mountain Hike</div><div class="a-type">Korea's Highest Peak (1,950m)</div></div></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Eorimok trail entrance closes 12 PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">Hike to the peak of the dormant volcano at the center of Jeju. The Eorimok trail (5.3km, ~3hr up) passes through a Tolkien-like fairytale forest. In June, rhododendrons may still be blooming near the summit.</div>
+  <div class="a-tags"><span class="a-tag">Hike</span><span class="a-tag">Nature</span><span class="a-tag">Volcano</span><span class="a-tag">Challenge</span></div>
+  <div class="a-tip">💡 Start by 9 AM from Eorimok trailhead. The trail gates close at 12 PM — arrivals after this cannot summit. Pack water and snacks.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🌸</span><div class="a-title-block"><div class="a-name">Camellia Hill (카멜리아힐)</div><div class="a-type">Dreamlike Botanical Garden</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>8:30 AM – 7 PM (Jun)</strong></span><span class="a-meta-item">💰 <strong>₩9,000 (~€6)</strong></span></div>
+  <div class="a-desc">An enchanting botanical garden with 500+ camellia varieties, hidden ponds, European-style gardens and red brick pathways. Very Instagram and TikTok popular — has been featured in countless K-drama shoots.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Garden</span><span class="a-tag">Romantic</span><span class="a-tag">K-Drama</span><span class="a-tag">Photos</span></div>
+  <div class="a-tip">💡 Early morning visit (8:30–10 AM) before tour buses. The fog over the pond at dawn is magical.</div>
+</div><div class="acard good">
+  <div class="a-icon-row"><span class="a-icon">🌊</span><div class="a-title-block"><div class="a-name">Hamdeok Beach (함덕 해수욕장)</div><div class="a-type">Trending Transparent Water Beach</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div>
+  <div class="a-meta"><span class="a-meta-item">🕐 <strong>Open 24/7</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div>
+  <div class="a-desc">The most photogenic beach in Jeju — transparent jade-green water with black volcanic rocks and lush green hills as backdrop. Less crowded than Haeundae. Very popular on TikTok for the 'natural pool' aesthetic.</div>
+  <div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Beach</span><span class="a-tag">Transparent Water</span><span class="a-tag">Snorkel</span><span class="a-tag">Sunrise</span></div>
+  <div class="a-tip">💡 Visit at 7–8 AM for perfectly still turquoise water with zero crowd. Bring snorkeling gear — the water is crystal clear.</div>
+</div></div></div></div></div><div class="sub-tab" id="jeju-food"><div class="content"><div class="callout c-good">🍽 <strong>Jeju Food = Island Exclusives:</strong> Black pork, abalone and hallabong citrus are found at their best on Jeju. The peanut ice cream on Udo Island is the most viral Korea food on TikTok worldwide.</div>
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks</div><div class="sec-cnt">6 Jeju exclusives</div></div>gold
+<div class="food-grid"><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🥩</span><div class="f-info"><div class="f-name">Heukdwaeji BBQ (흑돼지)</div><div class="f-sub">Daily 5 PM – 11 PM · Black Pork Street near Jeju City</div></div></div>
+  <span class="f-must">Must Order: Jeju Black Pork Belly BBQ</span>
+  <div class="f-price">₩20,000–30,000 per person · €15–22</div>
+  <div class="f-desc">Jeju's black-coated native pig has a completely different flavour from mainland pork — sweeter, more marbled, richer. Grilled over charcoal tableside. The Heukdwaeji street near Jeju City has 20+ restaurants all specializing in this. This is THE Jeju meal.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard must">
+  <div class="f-head"><span class="f-emoji">🍦</span><div class="f-info"><div class="f-name">Udo Peanut Ice Cream (땅콩 아이스크림)</div><div class="f-sub">Daily 9 AM – 6 PM on Udo Island</div></div></div>
+  <span class="f-must">Must Order: Peanut Soft Serve on Udo Island</span>
+  <div class="f-price">₩2,500 per cone · €2</div>
+  <div class="f-desc">The single most TikTok-viral food item from Jeju. Udo Island is famous for growing peanuts, and every shop sells peanut soft serve ice cream. Creamy, nutty, different from anything you've had. You MUST try this on the Udo Island day trip.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍊</span><div class="f-info"><div class="f-name">Hallabong Juice & Desserts (한라봉)</div><div class="f-sub">Shops open daily 9 AM – 9 PM</div></div></div>
+  <span class="f-must">Must Order: Jeju's Signature Citrus</span>
+  <div class="f-price">₩3,000–5,000 · €2–4</div>
+  <div class="f-desc">Hallabong is Jeju's signature bumpy-orange hybrid citrus — sweeter and more complex than regular oranges. Fresh-squeezed juice, hallabong cheesecake and hallabong sorbet are everywhere. The souvenir jelly boxes (₩8,000–12,000) make great gifts.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🫙</span><div class="f-info"><div class="f-name">Abalone Porridge (전복죽)</div><div class="f-sub">Daily 7 AM – 3 PM (breakfast/lunch specialty)</div></div></div>
+  <span class="f-must">Must Order: Creamy Abalone Rice Porridge</span>
+  <div class="f-price">₩13,000–18,000 · €10–13</div>
+  <div class="f-desc">Jeju's signature breakfast dish: slow-cooked rice in a rich stock with whole abalone (전복). Served with a small selection of side dishes. The haenyeo women divers harvest the abalone fresh each morning. Find it on Seogwipo's seafood restaurant row.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🍵</span><div class="f-info"><div class="f-name">O'Sulloc Matcha Soft Serve</div><div class="f-sub">Daily 9 AM – 7 PM at O'Sulloc Tea Museum</div></div></div>
+  <span class="f-must">Must Order: Matcha Soft Serve Ice Cream</span>
+  <div class="f-price">₩5,500 · €4</div>
+  <div class="f-desc">Bright green matcha soft serve made from Jeju green tea. Served at the O'Sulloc Tea Museum surrounded by the green tea fields. The most photogenic dessert in Jeju. Combine with the free museum visit and tea field walk.</div>
+  <span class="f-tiktok">🎵 TikTok Viral</span>
+</div><div class="fcard good">
+  <div class="f-head"><span class="f-emoji">🐟</span><div class="f-info"><div class="f-name">Okdom Grilled Fish (옥돔구이)</div><div class="f-sub">Daily lunch & dinner at Seogwipo seafood restaurants</div></div></div>
+  <span class="f-must">Must Order: Jeju's Signature Grilled Fish</span>
+  <div class="f-price">₩25,000–35,000 per fish · €18–26</div>
+  <div class="f-desc">A flat white fish unique to Jeju's waters, salted and grilled until golden. Served whole with seaweed soup, rice and 10+ side dishes. The fish has delicate, slightly salty flavour. Seogwipo city has the best okdom restaurants.</div>
+  
+</div></div></div></div></div></div>
+
+<footer>
+  <p>🇰🇷 Korea Trip Guide 2026 · Built with ❤️ for couple travel</p>
+  <p style="margin-top:5px">Prices verified via Google Maps, Booking.com, Agoda, Kayak · 1 EUR ≈ 27,000 VND · All prices per room/2 people/night</p>
+  <p style="margin-top:5px;color:#2a2a2a">Always verify on Booking.com with your exact June 2026 dates · Attractions + hours may change · Check official sites before visiting</p>
+</footer>
+
+<script>
+const CITY_SUB = {
+  'seoul':['seoul-hotels','seoul-hanoks','seoul-spots','seoul-food'],
+  'jeonju':['jeonju-hanoks','jeonju-hotels','jeonju-spots','jeonju-food'],
+  'busan-sea':['busan-sea-hotels','busan-sea-spots','busan-sea-food'],
+  'busan-city':['busan-city-hotels','busan-city-spots','busan-city-food'],
+  'jeju':['jeju-hotels','jeju-spots','jeju-food'],
+};
+
+function showCity(id, btn) {
+  document.querySelectorAll('.city-page').forEach(p=>p.classList.remove('on'));
+  document.querySelectorAll('.cnav-btn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.sub-nav').forEach(n=>n.style.display='none');
+  document.getElementById('city-'+id).classList.add('on');
+  btn.classList.add('on');
+  const sn = document.getElementById('sub-'+id);
+  if(sn) sn.style.display='flex';
+  // show first sub-tab
+  const subs = CITY_SUB[id];
+  if(subs){
+    subs.forEach(s=>{const el=document.getElementById(s);if(el)el.classList.remove('on');});
+    const first=document.getElementById(subs[0]);
+    if(first)first.classList.add('on');
+    // update sub buttons
+    const btns=sn?sn.querySelectorAll('.snav-btn'):[];
+    btns.forEach((b,i)=>b.classList.toggle('on',i===0));
+  }
+  window.scrollTo({top:document.getElementById('main-nav').offsetTop-2,behavior:'smooth'});
+}
+
+function showSub(cityId, subId) {
+  const subs = CITY_SUB[cityId];
+  if(subs) subs.forEach(s=>{const el=document.getElementById(s);if(el)el.classList.remove('on');});
+  const el=document.getElementById(subId);
+  if(el)el.classList.add('on');
+  // update sub buttons
+  const sn=document.getElementById('sub-'+cityId);
+  if(sn){
+    const btns=sn.querySelectorAll('.snav-btn');
+    btns.forEach(b=>b.classList.remove('on'));
+    const idx=subs?subs.indexOf(subId):-1;
+    if(idx>=0&&btns[idx])btns[idx].classList.add('on');
+  }
+}
+
+// Init: show only seoul sub-nav
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.sub-nav').forEach(n=>n.style.display='none');
+  const sn=document.getElementById('sub-seoul');
+  if(sn)sn.style.display='flex';
+});
+</script>
+</body>
+</html>
