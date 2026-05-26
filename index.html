@@ -11,7 +11,7 @@
 :root{
   --bg:#0d0d0d;--bg2:#161616;--bg3:#1e1e1e;--bg4:#272727;
   --border:#2a2a2a;--border2:#383838;
-  --text:#ede9e1;--muted:#7a7570;--faint:#454035;
+  --text:#ede9e1;--muted:#a8a29e;--faint:#78716c;
   --gold:#c8a24a;--gold2:#e6c97c;--gold-bg:rgba(200,162,74,.08);
   --teal:#3db8a5;--teal-bg:rgba(61,184,165,.08);
   --red:#e05252;--red-bg:rgba(224,82,82,.08);
@@ -102,7 +102,7 @@ body{background:var(--bg);color:var(--text);font-family:"Noto Sans",system-ui,sa
 .hrating{display:flex;align-items:center;gap:7px;margin-bottom:5px}
 .stars{font-size:12px;font-weight:700;color:var(--gold2)}
 .rcount{font-size:10.5px;color:var(--faint)}
-.hloc{font-size:11px;color:var(--muted);margin-bottom:6px}
+.hloc{font-size:11px;color:#b0aaa6;margin-bottom:6px}
 .scores{display:flex;gap:11px;margin-bottom:7px}
 .sc{display:flex;flex-direction:column;align-items:center;gap:2px}
 .sc-lbl{font-size:9px;text-transform:uppercase;letter-spacing:.06em;color:var(--faint)}
@@ -170,7 +170,7 @@ body{background:var(--bg);color:var(--text);font-family:"Noto Sans",system-ui,sa
 .a-meta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:6px}
 .a-meta-item{font-size:11px;color:var(--muted)}
 .a-meta-item strong{color:var(--text)}
-.a-desc{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:6px}
+.a-desc{font-size:12px;color:#c4bdb8;line-height:1.5;margin-bottom:6px}
 .a-tip{font-size:11px;padding:5px 9px;background:var(--teal-bg);border-left:2px solid var(--teal);color:#88d8cc;border-radius:0 4px 4px 0;margin-top:4px}
 .a-tags{display:flex;flex-wrap:wrap;gap:3px;margin-top:5px}
 .a-tag{font-size:10px;padding:2px 6px;border-radius:3px;background:var(--bg4);color:var(--faint);border:1px solid var(--border)}
@@ -186,7 +186,7 @@ body{background:var(--bg);color:var(--text);font-family:"Noto Sans",system-ui,sa
 .f-sub{font-size:10.5px;color:var(--muted);margin-top:2px}
 .f-price{font-size:13px;font-weight:700;color:var(--amber);margin-bottom:4px}
 .f-must{display:inline-block;font-size:10px;padding:2px 7px;border-radius:3px;background:var(--amber-bg);color:var(--amber);border:1px solid rgba(224,156,58,.3);margin-bottom:4px}
-.f-desc{font-size:12px;color:var(--muted);line-height:1.5}
+.f-desc{font-size:12px;color:#c4bdb8;line-height:1.5}
 .f-tiktok{display:inline-flex;align-items:center;gap:4px;font-size:10px;padding:2px 7px;border-radius:3px;background:rgba(255,0,80,.08);color:#ff6090;border:1px solid rgba(255,0,80,.15);margin-top:5px}
 
 /* CALLOUT & TIPS */
@@ -205,20 +205,196 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
   .pc{grid-template-columns:1fr}
   .content{padding:1.5rem 1rem 3rem}
 }
+
+
+/* ══════════════════════════════════════════════
+   MYEONGDONG SPOTLIGHT — full redesign
+   ══════════════════════════════════════════════ */
+:root {
+  --neon:#ff4d6d; --neon2:#ff8fa3;
+  --lime:#c9f542; --lime-dim:rgba(201,245,66,.12);
+  --cream:#fdf6ec; --cream-dim:rgba(253,246,236,.06);
+}
+
+/* HERO BANNER */
+.md-hero{
+  position:relative;border-radius:16px;overflow:hidden;margin-bottom:2rem;
+  background:linear-gradient(135deg,#1a0a00 0%,#2d1200 40%,#0d1a0a 100%);
+  border:1px solid rgba(255,77,109,.2);padding:28px 24px 24px;
+}
+.md-hero::before{
+  content:"명동";position:absolute;right:-10px;top:-20px;
+  font-size:9rem;font-weight:900;color:rgba(255,255,255,.03);
+  font-family:"Playfair Display",serif;line-height:1;pointer-events:none;
+}
+.md-hero-tag{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--neon);font-weight:700;margin-bottom:6px}
+.md-hero-title{font-family:"Playfair Display",serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:6px}
+.md-hero-title em{color:var(--neon);font-style:normal}
+.md-hero-sub{font-size:12px;color:rgba(255,255,255,.55);margin-bottom:16px;max-width:480px}
+.md-meta-row{display:flex;flex-wrap:wrap;gap:8px}
+.md-chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:4px 12px;border-radius:20px;font-weight:500}
+.md-chip.metro{background:rgba(61,184,165,.12);color:var(--teal);border:1px solid rgba(61,184,165,.25)}
+.md-chip.hours{background:rgba(255,77,109,.1);color:var(--neon2);border:1px solid rgba(255,77,109,.2)}
+.md-chip.area{background:rgba(201,245,66,.1);color:var(--lime);border:1px solid rgba(201,245,66,.2)}
+
+/* CATEGORY DIVIDER */
+.md-cat{display:flex;align-items:center;gap:12px;margin:1.8rem 0 1rem;position:relative}
+.md-cat-pill{
+  display:inline-flex;align-items:center;gap:7px;padding:5px 16px 5px 12px;border-radius:20px;
+  font-size:10.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0
+}
+.md-cat-pill.meal{background:linear-gradient(90deg,rgba(224,156,58,.2),rgba(224,156,58,.08));color:var(--amber);border:1px solid rgba(224,156,58,.3)}
+.md-cat-pill.street{background:linear-gradient(90deg,rgba(255,77,109,.2),rgba(255,77,109,.08));color:var(--neon);border:1px solid rgba(255,77,109,.3)}
+.md-cat-pill.bfast{background:linear-gradient(90deg,rgba(75,186,124,.2),rgba(75,186,124,.08));color:var(--green);border:1px solid rgba(75,186,124,.3)}
+.md-cat-pill .cat-icon{font-size:14px}
+.md-cat-line{flex:1;height:1px;background:var(--border)}
+
+/* RESTAURANT CARD */
+.md-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  overflow:hidden;transition:transform .2s,box-shadow .2s,border-color .2s;
+  display:flex;flex-direction:column;
+}
+.md-card:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(0,0,0,.4);border-color:var(--border2)}
+.md-card.meal{border-top:3px solid var(--amber)}
+.md-card.bbq{border-top:3px solid var(--neon)}
+.md-card.bfast{border-top:3px solid var(--green)}
+.md-card.bfast2{border-top:3px solid var(--lime)}
+
+/* PHOTO SLOT */
+.md-photo{height:180px;position:relative;overflow:hidden;background:var(--bg3);flex-shrink:0}
+.md-photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.md-card:hover .md-photo img{transform:scale(1.06)}
+.md-photo-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:4rem;background:linear-gradient(135deg,#1a1a1a,#252525)}
+.md-badge{position:absolute;top:10px;left:10px;font-size:9.5px;font-weight:800;letter-spacing:.06em;padding:3px 10px;border-radius:6px;text-transform:uppercase}
+.md-badge.michelin{background:var(--gold);color:#000}
+.md-badge.must{background:var(--amber);color:#000}
+.md-badge.viral{background:var(--neon);color:#fff}
+.md-badge.bfast{background:var(--green);color:#000}
+.md-badge.ayce{background:var(--lime);color:#000}
+.md-photo-overlay{position:absolute;bottom:0;left:0;right:0;height:60px;background:linear-gradient(transparent,rgba(0,0,0,.7))}
+
+/* CARD BODY */
+.md-body{padding:16px;flex:1;display:flex;flex-direction:column;gap:8px}
+.md-name{font-family:"Playfair Display",serif;font-size:1.05rem;font-weight:800;color:#fff;line-height:1.2}
+.md-korean{font-size:11px;color:var(--gold);margin-top:1px;font-weight:500}
+.md-info-row{display:flex;flex-direction:column;gap:3px}
+.md-addr{font-size:11px;color:var(--teal);display:flex;align-items:flex-start;gap:4px;line-height:1.4}
+.md-area{font-size:10.5px;color:#b0aaa6}
+.md-hours{font-size:10.5px;color:#a0948f;display:flex;align-items:center;gap:4px}
+
+/* MENU ITEMS */
+.md-menu{display:flex;flex-direction:column;gap:5px;flex:1}
+.md-item{
+  background:var(--bg3);border:1px solid var(--border);border-radius:8px;
+  padding:7px 10px;display:flex;align-items:flex-start;justify-content:space-between;gap:8px;
+}
+.md-item.star{border-color:rgba(224,156,58,.3);background:linear-gradient(90deg,rgba(200,162,74,.07) 0%,var(--bg3) 100%)}
+.md-item.star .md-iname{color:var(--gold2)}
+.md-iname{font-size:12px;font-weight:700;color:var(--text);margin-bottom:1px}
+.md-idesc{font-size:10.5px;color:#b0aaa6;line-height:1.35}
+.md-iprice{font-size:12.5px;font-weight:800;color:var(--amber);flex-shrink:0;margin-top:1px}
+
+/* TIP / WARNING */
+.md-tip{background:rgba(61,184,165,.06);border-left:2.5px solid var(--teal);padding:7px 11px;border-radius:0 6px 6px 0;font-size:11px;color:#88d8cc;line-height:1.5;margin-top:2px}
+.md-warn{background:rgba(224,156,58,.07);border-left:2.5px solid var(--amber);padding:7px 11px;border-radius:0 6px 6px 0;font-size:11px;color:#efc97a;line-height:1.5;margin-top:2px}
+.md-hot{background:rgba(255,77,109,.07);border-left:2.5px solid var(--neon);padding:7px 11px;border-radius:0 6px 6px 0;font-size:11px;color:#ff8fa3;line-height:1.5;margin-top:2px}
+
+/* RATING ROW */
+.md-rating{display:flex;align-items:center;gap:6px;margin-top:4px;flex-wrap:wrap}
+.md-stars{font-size:11px;color:var(--gold2);font-weight:700}
+.md-revs{font-size:10px;color:var(--faint)}
+.md-tag{font-size:9.5px;padding:2px 7px;border-radius:4px;background:var(--bg4);color:var(--faint);border:1px solid var(--border)}
+
+/* GRIDS */
+.md-grid-2{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.md-grid-3{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+
+/* STREET FOOD CARDS */
+.sf-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:10px}
+.sf-item{
+  background:linear-gradient(135deg,rgba(255,77,109,.06) 0%,var(--bg2) 100%);
+  border:1px solid rgba(255,77,109,.2);border-radius:10px;padding:13px 12px;
+  transition:.18s;display:flex;flex-direction:column;gap:5px;
+}
+.sf-item:hover{border-color:rgba(255,77,109,.4);transform:translateY(-1px)}
+.sf-emoji{font-size:1.8rem;line-height:1}
+.sf-name{font-size:12.5px;font-weight:700;color:#fff}
+.sf-desc{font-size:10.5px;color:var(--muted);line-height:1.4}
+.sf-price{font-size:13px;font-weight:800;color:var(--neon);margin-top:auto;padding-top:4px}
+.sf-hot{font-size:9.5px;color:rgba(255,77,109,.6)}
+
+@media(max-width:600px){
+  .md-grid-2,.md-grid-3,.sf-row{grid-template-columns:1fr}
+  .md-hero-title{font-size:1.7rem}
+}
+
+
+/* MYEONGDONG ACCORDION */
+.md-hero{cursor:pointer;user-select:none}
+.md-hero:hover{border-color:rgba(255,77,109,.4)}
+.md-hero:hover .md-hero-title{color:var(--neon2)}
+.md-toggle-row{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid rgba(255,77,109,.15)}
+.md-toggle-hint{font-size:11px;color:rgba(255,255,255,.4);display:flex;align-items:center;gap:6px}
+.md-toggle-hint.open{color:rgba(255,77,109,.7)}
+.md-arrow{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:rgba(255,77,109,.15);color:var(--neon);font-size:11px;transition:transform .3s}
+.md-arrow.open{transform:rotate(180deg)}
+
+.md-content{overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1),opacity .35s ease;max-height:0;opacity:0}
+.md-content.open{max-height:9999px;opacity:1}
+
+
+/* TEXT READABILITY FIXES */
+.plist li{color:#b0aaa6 !important}
+.sc-lbl{color:#8a847f !important}
+.hrating .rcount{color:#8a847f !important}
+.mdish-note{color:#b0aaa6 !important}
+.sf-desc{color:#b5b0ad !important}
+.md-hero-sub{color:rgba(255,255,255,.65) !important}
+.slim-loc{color:#a8a39f !important}
+.slim-stars{color:var(--gold2) !important}
+.tips .tip{color:#b5b0ad !important}
+.area-desc{color:#b0aaa6 !important}
+.rdesc{color:#c4bdb8 !important}
+.f-desc{color:#c4bdb8 !important}
+
+
+/* MOBILE FIXES */
+@media(max-width:480px){
+  .md-grid-2,.md-grid-3{grid-template-columns:1fr}
+  .md-photo{height:160px}
+  .sf-row{grid-template-columns:repeat(2,1fr)}
+  .md-hero-title{font-size:1.5rem}
+  .budget-row{grid-template-columns:1fr 1fr}
+  .hero-chips{gap:4px}
+  .chip{font-size:10px;padding:2px 8px}
+  .cnav-btn{font-size:11.5px;padding:12px 11px}
+  .b-item{padding:7px 10px}
+  .b-range{font-size:12px}
+  .booked-banner-head{flex-wrap:wrap;gap:4px}
+  .bhead-sub{margin-left:0 !important}
+  .arex-grid{grid-template-columns:1fr 1fr}
+  .pc{grid-template-columns:1fr}
+  .scores{flex-wrap:wrap;gap:7px}
+  .mcards-grid{grid-template-columns:1fr}
+  table{font-size:11px}
+  table th, table td{padding:6px 8px}
+}
+
 </style>
 </head>
 <body>
 <header class="hero">
   <div class="hero-tag">June 2026 · South Korea · Couple Travel Guide</div>
   <h1 class="hero-h1">Korea <span>2026</span></h1>
-  <p class="hero-sub">All 5 cities booked ✅ · Hotels · Hanoks · Attractions · Food & Nightlife</p>
-  <div class="hero-chips">
+  <p class="hero-sub">All 5 cities booked ✅ · Hotels · Attractions · Food & Nightlife</p>
+  <div class="hero-chips" style="display:none">
     <span class="chip green">✅ All 6 Bookings Confirmed</span>
     <span class="chip gold">Rate: 1 EUR = 1,715 KRW</span>
     <span class="chip">TikTok Trending Spots</span>
     <span class="chip">Public Transport Focus</span>
   </div>
-  <div class="budget-row">
+  <div class="budget-row" style="display:none">
     <div class="b-item"><div class="b-city">📍 Seoul</div><div class="b-range">€50–60/night</div><div class="b-note ok">✅ Travelodge €53 + DW €51.5</div></div>
     <div class="b-item"><div class="b-city">📍 Jeonju</div><div class="b-range">€30–40/night</div><div class="b-note warn">⚠ Jungdam €47.7 (above target)</div></div>
     <div class="b-item"><div class="b-city">📍 Busan Sea</div><div class="b-range">€35–45/night</div><div class="b-note ok">✅ Sunset Hotel €36.5</div></div>
@@ -234,9 +410,9 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
     <button class="cnav-btn" onclick="showCity('busan-city',this)">🏢 Busan City ✅</button>
     <button class="cnav-btn" onclick="showCity('jeju',this)">🌺 Jeju ✅</button>
   </div>
-  <div class="sub-nav" id="sub-seoul" style="display:none"><button class="snav-btn on" onclick="showSub('seoul','seoul-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('seoul','seoul-hanoks')">🏯 Hanoks</button><button class="snav-btn " onclick="showSub('seoul','seoul-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('seoul','seoul-food')">🍽 Food</button></div><div class="sub-nav" id="sub-jeonju" style="display:none"><button class="snav-btn on" onclick="showSub('jeonju','jeonju-hanoks')">🏯 Hanoks</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-food')">🍽 Food</button></div><div class="sub-nav" id="sub-busan-sea" style="display:none"><button class="snav-btn on" onclick="showSub('busan-sea','busan-sea-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('busan-sea','busan-sea-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('busan-sea','busan-sea-food')">🍽 Food</button></div><div class="sub-nav" id="sub-busan-city" style="display:none"><button class="snav-btn on" onclick="showSub('busan-city','busan-city-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('busan-city','busan-city-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('busan-city','busan-city-food')">🍽 Food</button></div><div class="sub-nav" id="sub-jeju" style="display:none"><button class="snav-btn on" onclick="showSub('jeju','jeju-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('jeju','jeju-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('jeju','jeju-food')">🍽 Food</button></div>
+  <div class="sub-nav" id="sub-seoul" style="display:none"><button class="snav-btn on" onclick="showSub('seoul','seoul-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('seoul','seoul-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('seoul','seoul-food')">🍽 Food</button></div><div class="sub-nav" id="sub-jeonju" style="display:none"><button class="snav-btn on" onclick="showSub('jeonju','jeonju-hanoks')">🏯 Hanoks</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('jeonju','jeonju-food')">🍽 Food</button></div><div class="sub-nav" id="sub-busan-sea" style="display:none"><button class="snav-btn on" onclick="showSub('busan-sea','busan-sea-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('busan-sea','busan-sea-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('busan-sea','busan-sea-food')">🍽 Food</button></div><div class="sub-nav" id="sub-busan-city" style="display:none"><button class="snav-btn on" onclick="showSub('busan-city','busan-city-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('busan-city','busan-city-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('busan-city','busan-city-food')">🍽 Food</button></div><div class="sub-nav" id="sub-jeju" style="display:none"><button class="snav-btn on" onclick="showSub('jeju','jeju-hotels')">🏨 Hotels</button><button class="snav-btn " onclick="showSub('jeju','jeju-spots')">🗺 Attractions</button><button class="snav-btn " onclick="showSub('jeju','jeju-food')">🍽 Food</button></div>
 </div>
-<div class="city-page on" id="city-seoul"><div class="sub-tab on" id="seoul-hotels"><div class="content"><div class="vcb-box"><span class="vcb-lbl">💱 Exchange Rate</span><span class="vcb-src">VCB Benchmark · 25/05/2026</span><div class="vcb-rates"><span class="vcb-rate">1 EUR = 1,715 KRW</span><span class="vcb-rate">1 EUR = 30,150 VND</span></div></div><div class="callout c-good">✅ <strong>Seoul:</strong> Both hotels confirmed and within €50–60 budget. Travelodge Dongdaemun <strong>€53.0/night</strong> ✓ · DW Design Residence <strong>€51.5/night</strong> ✓</div><div class="bwrap"><div class="bhead"><span style="font-size:15px">✅</span><span class="bhead-title">Confirmed Booking</span><span class="bhead-sub">Jun 15–19 · 4 nights</span></div><div class="binner"><div class="hcard booked-card" data-r="top">
+<div class="city-page on" id="city-seoul"><div class="sub-tab on" id="seoul-hotels"><div class="content"></div><div class="callout c-good">✅ <strong>Seoul:</strong> Both hotels confirmed and within €50–60 budget. Travelodge Dongdaemun <strong>€53.0/night</strong> ✓ · DW Design Residence <strong>€51.5/night</strong> ✓</div><div class="bwrap"><div class="bhead"><span style="font-size:15px">✅</span><span class="bhead-title">Confirmed Booking</span><span class="bhead-sub">Jun 15–19 · 4 nights</span></div><div class="binner"><div class="hcard booked-card" data-r="top">
   <div class="hhead"><div class="hname">Travelodge Dongdaemun Seoul</div><div class="hbadges"><span class="hb hb-booked">✅ BOOKED</span><span class="hb hb-type">Hotel 3★</span></div></div>
   <div class="price-row"><span class="pr-eur pr-fits">€53.0/night · ₩90,882/night · Total ₩363,528 = €212.0</span><span class="pr-tag pt-fits">Jun 15–19 · 4 nights</span></div>
   <div class="hrating"><span class="stars">★ 4.3</span><span class="rcount">(1,447 reviews)</span></div>
@@ -257,7 +433,413 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
   <div class="hrating"><span class="stars">★ 7.7</span><span class="rcount">(629 reviews)</span></div>
   <div class="hloc">📍 Mapo-gu · Hongdae · 5 min walk Hongik Univ. Stn (Line 2)</div>
   <div class="scores"><div class="sc"><div class="sc-lbl">Safety</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div><div class="sc"><div class="sc-lbl">Transit</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Food/Fun</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div></div></div><div class="sc"><div class="sc-lbl">Value</div><div class="sc-dots"><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot on"></div><div class="dot"></div></div></div></div><div class="pc"><div class="pros"><div class="pc-t">Pros</div><ul class="plist"><li>FREE continental breakfast daily</li><li>5 min walk to Hongdae Station → AREX All-Stop to Incheon Airport</li><li>Kitchenette + fridge, AC, flat-screen TV</li><li>Couples rated 8.5/10 on Booking.com</li><li>Free parking, tour desk, luggage storage</li></ul></div><div class="cons"><div class="pc-t">Cons</div><ul class="plist"><li>Front desk 8:30 AM–11:30 PM only</li><li>Small property — 15 rooms total</li></ul></div></div><div class="htags"><span class="ht gr">Confirmed</span><span class="ht g">FREE Breakfast</span><span class="ht t">AREX Hongdae</span><span class="ht ">Couples 8.5/10</span><span class="ht ">Kitchenette</span></div><div class="hnote hn-green">✅ 5 min walk → Hongdae Station → AREX All-Stop (~60 min T1 / ~68 min T2). ₩4,750 ≈ €2.8.</div>
-</div></div></div><div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Other Hotels</div><div class="sec-cnt">Top 3 alternatives · Name / Price / Address only</div></div><div style="margin-bottom:1.3rem"><div class="prio-lbl">Reference only</div><div class="slim-grid"><div class="slim-card" data-r="top"><div class="slim-name">M&LUCKY HOTEL<span class="slim-rank sr-top">★ TOP</span></div><div class="slim-price ">€40–48/night</div><div class="slim-loc">📍 Jongno-gu · Insadong · Near Jonggak Stn</div><div class="slim-stars">★ 4.0</div></div><div class="slim-card" data-r="top"><div class="slim-name">Step Inn Myeongdong 1<span class="slim-rank sr-top">★ TOP</span></div><div class="slim-price ">€40–55/night</div><div class="slim-loc">📍 Jung-gu · On Myeongdong Night Market street</div><div class="slim-stars">★ 4.1</div></div><div class="slim-card" data-r="good"><div class="slim-name">24 Guest House Seoul Station<span class="slim-rank sr-good">✦ GOOD</span></div><div class="slim-price ">€36–48/night</div><div class="slim-loc">📍 Jung-gu · 1 min from Seoul Station (backup Jun 28)</div><div class="slim-stars">★ 4.2</div></div></div></div></div><div class="tips"><div class="tips-h">💡 Local Tips</div><div class="tips-g"><div class="tip">🚄 Jun 29: Walk 5 min DW → Hongdae Station → AREX All-Stop → Incheon T1 (~60 min, ₩4,750 ≈ €2.8)</div><div class="tip">📍 Travelodge: 10 min walk to DDP night lights + Gwangjang Market</div><div class="tip">💳 T-money card at any convenience store — works on subway, buses and AREX All-Stop</div><div class="tip">🌡 June = 26–30°C humid. Both hotels have AC confirmed</div></div></div></div></div><div class="sub-tab " id="seoul-hanoks"><div class="content"><div class="callout c-info">🏯 <strong>Seoul Hanoks:</strong> Not booked. Budget hanoks at €36–60/night. Top 3 options below.</div><div class="sec"><div class="sec-head"><div class="sec-lbl ">🏯 Hanok Stays</div><div class="sec-cnt">Top 3 · Traditional houses</div></div>teal<div style="margin-bottom:1.3rem"><div class="prio-lbl">Options — Name / Price / Address</div><div class="slim-grid"><div class="slim-card hanok" data-r="top"><div class="slim-name">Dajayon Hanok Stay<span class="slim-rank sr-top">★ TOP</span></div><div class="slim-price ">€48–58/night</div><div class="slim-loc">📍 Ikseon-dong · Jongno · Metro Lines 1,3,5</div><div class="slim-stars">★ 4.9</div></div><div class="slim-card hanok" data-r="good"><div class="slim-name">Bukchonmaru Hanok Guesthouse<span class="slim-rank sr-good">✦ GOOD</span></div><div class="slim-price ">€48–60/night</div><div class="slim-loc">📍 Bukchon · Between Gyeongbokgung & Changdeokgung</div><div class="slim-stars">★ 4.5</div></div><div class="slim-card hanok" data-r="good"><div class="slim-name">Hanok Guesthouse Suni<span class="slim-rank sr-good">✦ GOOD</span></div><div class="slim-price ">€36–52/night</div><div class="slim-loc">📍 Seongbuk-gu · Quieter residential area</div><div class="slim-stars">★ 4.7</div></div></div></div></div></div></div><div class="sub-tab " id="seoul-spots"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See Attractions</div><div class="sec-cnt">7 spots</div></div>gold<div class="spot-grid"><div class="acard top"><div class="a-icon-row"><span class="a-icon">🏯</span><div class="a-title-block"><div class="a-name">Gyeongbokgung Palace</div><div class="a-type">Royal Palace · UNESCO</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>9AM–6PM (closed Tue)</strong></span><span class="a-meta-item">💰 <strong>₩3,000 (~€1.8)</strong></span></div><div class="a-desc">Korea's grandest 14th-century royal palace. Guard ceremony 10AM & 2PM. Rent hanbok for free entry.</div><div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Hanbok</span><span class="a-tag">UNESCO</span></div><div class="a-tip">💡 Arrive 9AM. Gyeonghoeru Pavilion reflection pool = most photogenic.</div></div><div class="acard top"><div class="a-icon-row"><span class="a-icon">☕</span><div class="a-title-block"><div class="a-name">Ikseon-dong Café Street</div><div class="a-type">Trending Hanok Cafés 2025–26</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>11AM–10PM · Bars 2AM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">Seoul's most-filmed neighbourhood 2025–26. Hanok alleyways with specialty coffee + cocktail bars.</div><div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Cafés</span><span class="a-tag">Cocktails</span></div><div class="a-tip">💡 5–6PM golden hour for photos. Stay for cocktails after.</div></div><div class="acard top"><div class="a-icon-row"><span class="a-icon">🌊</span><div class="a-title-block"><div class="a-name">Han River Chimaek Picnic</div><div class="a-type">Iconic Couple Date</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7 · Best at sunset</strong></span><span class="a-meta-item">💰 <strong>₩0 + food</strong></span></div><div class="a-desc">Buy fried chicken + beer from CU/GS25, sit on Han River grass with blue mat. Most viral Korean couple TikTok.</div><div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">TikTok</span><span class="a-tag">Picnic</span></div><div class="a-tip">💡 Yeouido Hangang Park on Friday evening.</div></div><div class="acard top"><div class="a-icon-row"><span class="a-icon">🎨</span><div class="a-title-block"><div class="a-name">Seongsu-dong</div><div class="a-type">Seoul's Trendiest District 2025–26</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>11AM–9PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">Industrial-turned-creative district. Concept stores, galleries, specialty coffee. Seoul Forest park nearby.</div><div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Art</span><span class="a-tag">Coffee</span></div><div class="a-tip">💡 Line 2 to Seongsu Station. Start at Daelim Warehouse café.</div></div><div class="acard good"><div class="a-icon-row"><span class="a-icon">🏘</span><div class="a-title-block"><div class="a-name">Bukchon Hanok Village</div><div class="a-type">750+ Traditional Houses</div></div></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">735 hanok on a hillside. Dawn 6–8AM = zero crowds + golden light.</div><div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Photos</span></div><div class="a-tip">💡 7AM for best photos. Gahoe-dong alley has the best views.</div></div><div class="acard good"><div class="a-icon-row"><span class="a-icon">🗼</span><div class="a-title-block"><div class="a-name">Namsan N Seoul Tower</div><div class="a-type">Iconic Night View</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>Cable car 10AM–11PM</strong></span><span class="a-meta-item">💰 <strong>₩16,000 (~€9.3)</strong></span></div><div class="a-desc">Panoramic city view + love locks. Magical at night.</div><div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">Night View</span></div><div class="a-tip">💡 Best at 7–8PM: sunset + city lights.</div></div><div class="acard good"><div class="a-icon-row"><span class="a-icon">🌌</span><div class="a-title-block"><div class="a-name">Dongdaemun DDP</div><div class="a-type">Zaha Hadid Architecture</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7 outdoor</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">Neo-futuristic building glows blue at night. 24h fashion market nearby.</div><div class="a-tags"><span class="a-tag">Architecture</span><span class="a-tag">Night</span></div><div class="a-tip">💡 After 8PM for full light display.</div></div></div></div></div></div><div class="sub-tab " id="seoul-food"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks</div><div class="sec-cnt">6 must-eats</div></div>gold<div class="food-grid"><div class="fcard must"><div class="f-head"><span class="f-emoji">🥞</span><div class="f-info"><div class="f-name">Gwangjang Market</div><div class="f-sub">Daily 8AM–11PM</div></div></div><span class="f-must">Must Order: Bindaetteok + Mayak Gimbap</span><div class="f-price">₩5,000–8,000 · €2.9–4.7</div><div class="f-desc">Seoul's oldest market. Mung bean pancakes at live stalls + bite-sized rice rolls. Eat with makgeolli rice wine.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard must"><div class="f-head"><span class="f-emoji">🍗</span><div class="f-info"><div class="f-name">Han River Chimaek</div><div class="f-sub">24/7</div></div></div><span class="f-must">Must Order: Half-half fried chicken + beer</span><div class="f-price">₩15,000–25,000 for 2 · €8.7–14.6</div><div class="f-desc">Buy fried chicken + canned beer from 7-Eleven, sit on Han River. Korea's iconic couple date activity.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard must"><div class="f-head"><span class="f-emoji">🌮</span><div class="f-info"><div class="f-name">Myeongdong Night Market</div><div class="f-sub">Daily 5PM–11PM</div></div></div><span class="f-must">Must Order: Tornado potato + grilled cheese</span><div class="f-price">₩3,000–8,000/item · €1.7–4.7</div><div class="f-desc">Nightly outdoor market: tornado potato ₩4,000, cheese lobster ₩8,000, tteokbokki ₩4,000.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard must"><div class="f-head"><span class="f-emoji">🔥</span><div class="f-info"><div class="f-name">Korean BBQ AYCE</div><div class="f-sub">Daily 11AM–midnight</div></div></div><span class="f-must">Must Order: Samgyeopsal + Soju</span><div class="f-price">₩13,000–18,000/pax · €7.6–10.5</div><div class="f-desc">All-you-can-eat pork belly, wrapped in lettuce + garlic + ssamjang. Wash with soju.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard good"><div class="f-head"><span class="f-emoji">🏪</span><div class="f-info"><div class="f-name">Convenience Store Mukbang</div><div class="f-sub">24/7</div></div></div><span class="f-must">Must Order: Cup ramen + triangle gimbap</span><div class="f-price">₩800–3,000/item · €0.5–1.7</div><div class="f-desc">CU or GS25 at midnight with cup ramyeon + beer. Globally viral TikTok.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard good"><div class="f-head"><span class="f-emoji">🧊</span><div class="f-info"><div class="f-name">Bingsu at Sulbing</div><div class="f-sub">Daily 10AM–10PM</div></div></div><span class="f-must">Must Order: Injeolmi or strawberry bingsu</span><div class="f-price">₩7,000–12,000 · €4.1–7.0</div><div class="f-desc">Shaved milk ice with red beans + mochi. Perfect for hot June.</div></div></div></div></div></div></div><div class="city-page " id="city-jeonju"><div class="sub-tab on" id="jeonju-hanoks"><div class="content"><div class="vcb-box"><span class="vcb-lbl">💱 Exchange Rate</span><span class="vcb-src">VCB Benchmark · 25/05/2026</span><div class="vcb-rates"><span class="vcb-rate">1 EUR = 1,715 KRW</span><span class="vcb-rate">1 EUR = 30,150 VND</span></div></div><div class="callout c-warn">✅ <strong>Jeonju:</strong> Jungdam confirmed at <strong>€47.7/night</strong>. Note: above €40 target but already paid. Highest-rated hanok in village (9.8/10 couples). Other options below for reference.</div><div class="bwrap"><div class="bhead"><span style="font-size:15px">✅</span><span class="bhead-title">Confirmed Booking</span><span class="bhead-sub">Jun 19–20 · 2 nights · Jeonju Hanok Village</span></div><div class="binner"><div class="hcard booked-card hanok" data-r="top">
+</div></div></div><div class="sec"><div class="sec-head"><div class="sec-lbl ">🏨 Other Hotels</div><div class="sec-cnt">Top 3 alternatives · Name / Price / Address only</div></div><div style="margin-bottom:1.3rem"><div class="prio-lbl">Reference only</div><div class="slim-grid"><div class="slim-card" data-r="top"><div class="slim-name">M&LUCKY HOTEL<span class="slim-rank sr-top">★ TOP</span></div><div class="slim-price ">€40–48/night</div><div class="slim-loc">📍 Jongno-gu · Insadong · Near Jonggak Stn</div><div class="slim-stars">★ 4.0</div></div><div class="slim-card" data-r="top"><div class="slim-name">Step Inn Myeongdong 1<span class="slim-rank sr-top">★ TOP</span></div><div class="slim-price ">€40–55/night</div><div class="slim-loc">📍 Jung-gu · On Myeongdong Night Market street</div><div class="slim-stars">★ 4.1</div></div><div class="slim-card" data-r="good"><div class="slim-name">24 Guest House Seoul Station<span class="slim-rank sr-good">✦ GOOD</span></div><div class="slim-price ">€36–48/night</div><div class="slim-loc">📍 Jung-gu · 1 min from Seoul Station (backup Jun 28)</div><div class="slim-stars">★ 4.2</div></div></div></div></div><div class="tips"><div class="tips-h">💡 Local Tips</div><div class="tips-g"><div class="tip">🚄 Jun 29: Walk 5 min DW → Hongdae Station → AREX All-Stop → Incheon T1 (~60 min, ₩4,750 ≈ €2.8)</div><div class="tip">📍 Travelodge: 10 min walk to DDP night lights + Gwangjang Market</div><div class="tip">💳 T-money card at any convenience store — works on subway, buses and AREX All-Stop</div><div class="tip">🌡 June = 26–30°C humid. Both hotels have AC confirmed</div></div></div></div></div><div class="sub-tab " id="seoul-hanoks" style="display:none!important"><div class="content"><div class="callout c-info">🏯 <strong>Seoul Hanoks:</strong> Not booked. Budget hanoks at €36–60/night. Top 3 options below.</div><div class="sec"><div class="sec-head"><div class="sec-lbl ">🏯 Hanok Stays</div><div class="sec-cnt">Top 3 · Traditional houses</div></div>teal<div style="margin-bottom:1.3rem"><div class="prio-lbl">Options — Name / Price / Address</div><div class="slim-grid"><div class="slim-card hanok" data-r="top"><div class="slim-name">Dajayon Hanok Stay<span class="slim-rank sr-top">★ TOP</span></div><div class="slim-price ">€48–58/night</div><div class="slim-loc">📍 Ikseon-dong · Jongno · Metro Lines 1,3,5</div><div class="slim-stars">★ 4.9</div></div><div class="slim-card hanok" data-r="good"><div class="slim-name">Bukchonmaru Hanok Guesthouse<span class="slim-rank sr-good">✦ GOOD</span></div><div class="slim-price ">€48–60/night</div><div class="slim-loc">📍 Bukchon · Between Gyeongbokgung & Changdeokgung</div><div class="slim-stars">★ 4.5</div></div><div class="slim-card hanok" data-r="good"><div class="slim-name">Hanok Guesthouse Suni<span class="slim-rank sr-good">✦ GOOD</span></div><div class="slim-price ">€36–52/night</div><div class="slim-loc">📍 Seongbuk-gu · Quieter residential area</div><div class="slim-stars">★ 4.7</div></div></div></div></div></div></div><div class="sub-tab " id="seoul-spots"><div class="content"><div class="sec"><div class="sec-head"><div class="sec-lbl ">🗺 Must-See Attractions</div><div class="sec-cnt">7 spots</div></div>gold<div class="spot-grid"><div class="acard top"><div class="a-icon-row"><span class="a-icon">🏯</span><div class="a-title-block"><div class="a-name">Gyeongbokgung Palace</div><div class="a-type">Royal Palace · UNESCO</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>9AM–6PM (closed Tue)</strong></span><span class="a-meta-item">💰 <strong>₩3,000 (~€1.8)</strong></span></div><div class="a-desc">Korea's grandest 14th-century royal palace. Guard ceremony 10AM & 2PM. Rent hanbok for free entry.</div><div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Hanbok</span><span class="a-tag">UNESCO</span></div><div class="a-tip">💡 Arrive 9AM. Gyeonghoeru Pavilion reflection pool = most photogenic.</div></div><div class="acard top"><div class="a-icon-row"><span class="a-icon">☕</span><div class="a-title-block"><div class="a-name">Ikseon-dong Café Street</div><div class="a-type">Trending Hanok Cafés 2025–26</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>11AM–10PM · Bars 2AM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">Seoul's most-filmed neighbourhood 2025–26. Hanok alleyways with specialty coffee + cocktail bars.</div><div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Cafés</span><span class="a-tag">Cocktails</span></div><div class="a-tip">💡 5–6PM golden hour for photos. Stay for cocktails after.</div></div><div class="acard top"><div class="a-icon-row"><span class="a-icon">🌊</span><div class="a-title-block"><div class="a-name">Han River Chimaek Picnic</div><div class="a-type">Iconic Couple Date</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7 · Best at sunset</strong></span><span class="a-meta-item">💰 <strong>₩0 + food</strong></span></div><div class="a-desc">Buy fried chicken + beer from CU/GS25, sit on Han River grass with blue mat. Most viral Korean couple TikTok.</div><div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">TikTok</span><span class="a-tag">Picnic</span></div><div class="a-tip">💡 Yeouido Hangang Park on Friday evening.</div></div><div class="acard top"><div class="a-icon-row"><span class="a-icon">🎨</span><div class="a-title-block"><div class="a-name">Seongsu-dong</div><div class="a-type">Seoul's Trendiest District 2025–26</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>11AM–9PM</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">Industrial-turned-creative district. Concept stores, galleries, specialty coffee. Seoul Forest park nearby.</div><div class="a-tags"><span class="a-tag">TikTok Hotspot</span><span class="a-tag">Art</span><span class="a-tag">Coffee</span></div><div class="a-tip">💡 Line 2 to Seongsu Station. Start at Daelim Warehouse café.</div></div><div class="acard good"><div class="a-icon-row"><span class="a-icon">🏘</span><div class="a-title-block"><div class="a-name">Bukchon Hanok Village</div><div class="a-type">750+ Traditional Houses</div></div></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">735 hanok on a hillside. Dawn 6–8AM = zero crowds + golden light.</div><div class="a-tags"><span class="a-tag">Cultural</span><span class="a-tag">Photos</span></div><div class="a-tip">💡 7AM for best photos. Gahoe-dong alley has the best views.</div></div><div class="acard good"><div class="a-icon-row"><span class="a-icon">🗼</span><div class="a-title-block"><div class="a-name">Namsan N Seoul Tower</div><div class="a-type">Iconic Night View</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>Cable car 10AM–11PM</strong></span><span class="a-meta-item">💰 <strong>₩16,000 (~€9.3)</strong></span></div><div class="a-desc">Panoramic city view + love locks. Magical at night.</div><div class="a-tags"><span class="a-tag">Romantic</span><span class="a-tag">Night View</span></div><div class="a-tip">💡 Best at 7–8PM: sunset + city lights.</div></div><div class="acard good"><div class="a-icon-row"><span class="a-icon">🌌</span><div class="a-title-block"><div class="a-name">Dongdaemun DDP</div><div class="a-type">Zaha Hadid Architecture</div></div><span class="a-tiktok">🔥 TikTok Trending</span></div><div class="a-meta"><span class="a-meta-item">🕐 <strong>24/7 outdoor</strong></span><span class="a-meta-item">💰 <strong>Free</strong></span></div><div class="a-desc">Neo-futuristic building glows blue at night. 24h fashion market nearby.</div><div class="a-tags"><span class="a-tag">Architecture</span><span class="a-tag">Night</span></div><div class="a-tip">💡 After 8PM for full light display.</div></div></div></div></div></div><div class="sub-tab " id="seoul-food"><div class="content">
+
+<div id="myeongdong-spotlight">
+
+<!-- ═══ HERO BANNER ═══ -->
+<div class="md-hero">
+  <div class="md-hero-tag">✦ Myeongdong Food Spotlight · 명동 맛집</div>
+  <div class="md-hero-title">Seoul's<br><em>Tastiest District</em></div>
+  <div class="md-hero-sub">Korea's #1 dining &amp; shopping strip — breakfast to 2 AM Korean BBQ, Michelin noodles, live-music crab, night market madness.</div>
+  <div class="md-meta-row">
+    <span class="md-chip metro">🚇 Line 4 Myeongdong Stn · Exit 5 or 8</span>
+    <span class="md-chip area">📍 Jung-gu, Seoul · 명동</span>
+    <span class="md-chip hours">🌙 Restaurants open till 2 AM</span>
+  </div>
+  <div class="md-toggle-row" id="md-toggle-hint">
+    <span class="md-toggle-hint" id="md-hint-text">👆 Tap to see 5 restaurants · Myeongdong food guide</span>
+    <span class="md-arrow" id="md-arrow">▼</span>
+  </div>
+</div>
+<div class="md-content" id="md-content">
+
+
+<!-- ═══ MAIN MEALS ═══ -->
+<div class="md-cat">
+  <div class="md-cat-pill meal"><span class="cat-icon">🍽</span>Main Meals · 정식</div>
+  <div class="md-cat-line"></div>
+</div>
+
+<div class="md-grid-2">
+
+  <!-- Myeongdong Kyoja -->
+  <div class="md-card meal">
+    <div class="md-photo">
+      <img src="https://southkoreahallyu.com/wp-content/uploads/2021/08/myeongdong-kyoja-kalguksu-noodle-soup-seoul-south-korea-hallyu.jpg"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           alt="Myeongdong Kyoja Kalguksu" loading="lazy"/>
+      <div class="md-photo-fallback" style="display:none">🍜</div>
+      <div class="md-photo-overlay"></div>
+      <span class="md-badge michelin">⬢ Michelin Bib 9yr</span>
+    </div>
+    <div class="md-body">
+      <div>
+        <div class="md-name">Myeongdong Kyoja</div>
+        <div class="md-korean">명동교자 · Since 1966</div>
+      </div>
+      <div class="md-info-row">
+        <div class="md-addr">📍 29 Myeongdong 10-gil, Jung-gu, Seoul</div>
+        <div class="md-area">🗺 Myeongdong · Exit 8 → 3 min walk</div>
+        <div class="md-hours">🕐 10:30 AM – 9:30 PM · Daily · No break</div>
+      </div>
+      <div class="md-menu">
+        <div class="md-item star">
+          <div><div class="md-iname">🍜 Kalguksu 칼국수</div><div class="md-idesc">Hand-cut noodles in rich chicken broth — THE signature. Available in June: Kongguksu (cold soy milk noodle, summer only)</div></div>
+          <div class="md-iprice">₩11,000</div>
+        </div>
+        <div class="md-item star">
+          <div><div class="md-iname">🥟 Mandu 만두 (10pcs)</div><div class="md-idesc">Juicy pork dumplings finished with sesame oil</div></div>
+          <div class="md-iprice">₩12,000</div>
+        </div>
+        <div class="md-item">
+          <div><div class="md-iname">🌶 Bibimguksu 비빔국수</div><div class="md-idesc">Spicy cold mixed noodles · Great for hot June days</div></div>
+          <div class="md-iprice">₩11,000</div>
+        </div>
+      </div>
+      <div class="md-tip">💡 Arrive exactly at 10:30 AM opening → order & pay at machine by entrance before being seated. Queue moves in 5–10 min. Solo-friendly!</div>
+      <div class="md-rating">
+        <span class="md-stars">★ 4.7</span><span class="md-revs">Family-owned · 60+ yrs</span>
+        <span class="md-tag">Michelin 9yr straight</span><span class="md-tag">Only 4 dishes</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Odarijip -->
+  <div class="md-card meal">
+    <div class="md-photo">
+      <img src="https://www.stellanspice.com/wp-content/uploads/2021/08/ganjang-gejang-soy-marinated-crab.jpg"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           alt="Ganjang Gejang soy marinated crab" loading="lazy"/>
+      <div class="md-photo-fallback" style="display:none">🦀</div>
+      <div class="md-photo-overlay"></div>
+      <span class="md-badge must">★ Reservation Required</span>
+    </div>
+    <div class="md-body">
+      <div>
+        <div class="md-name">Odarijip Ganjang Gejang</div>
+        <div class="md-korean">오다리집 간장게장 · Savoy Hotel 2F–3F</div>
+      </div>
+      <div class="md-info-row">
+        <div class="md-addr">📍 28 Myeongdong 8na-gil, Jung-gu, Seoul (2F–3F Savoy Hotel)</div>
+        <div class="md-area">🗺 Myeongdong · Exit 5–6 → 3 min walk</div>
+        <div class="md-hours">🕐 9:00 AM – 11:00 PM · Last order 10:20 PM · BBQ from 11 AM</div>
+      </div>
+      <div class="md-menu">
+        <div class="md-item star">
+          <div><div class="md-iname">🦀 Ganjang Gejang Set M</div><div class="md-idesc">2 soy-marinated raw crabs + seaweed rice + steamed egg + kimchi soup + banchan</div></div>
+          <div class="md-iprice">₩50,000–60,000<br><span style="font-size:9.5px;color:var(--muted);font-weight:400">/person</span></div>
+        </div>
+        <div class="md-item star">
+          <div><div class="md-iname">🍚 Seaweed bibimbap (crab shell)</div><div class="md-idesc">THE method: scoop crab roe into seaweed rice inside the shell, mix &amp; eat</div></div>
+          <div class="md-iprice">included</div>
+        </div>
+        <div class="md-item">
+          <div><div class="md-iname">🎵 Live K-pop performance</div><div class="md-idesc">Live music every evening — full experience</div></div>
+          <div class="md-iprice">free</div>
+        </div>
+      </div>
+      <div class="md-tip">💡 Book via Naver or email at least 1 week ahead. Weekday ~4 PM = least queue. Crab roe + seaweed bibimbap in the shell = the iconic eating experience.</div>
+      <div class="md-warn">⚠ Raw marinated crab. No fishy smell when fresh. 4.7★ / 5,277+ reviews. Korean celebrity food destination.</div>
+      <div class="md-rating">
+        <span class="md-stars">★ 4.7</span><span class="md-revs">5,277 reviews</span>
+        <span class="md-tag">Reserve 1 week ahead</span><span class="md-tag">Live music evenings</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mongvely Korean BBQ -->
+  <div class="md-card bbq">
+    <div class="md-photo">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/KBBQ_at_Hangang_Park.jpg/1280px-KBBQ_at_Hangang_Park.jpg"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           alt="Korean BBQ charcoal grill" loading="lazy"/>
+      <div class="md-photo-fallback" style="display:none">🔥</div>
+      <div class="md-photo-overlay"></div>
+      <span class="md-badge ayce">🔥 AYCE</span>
+    </div>
+    <div class="md-body">
+        <div>
+          <div class="md-name">Myeongdong Korean BBQ Mongvely</div>
+          <div class="md-korean">몽블리 명동 · All-You-Can-Eat Charcoal BBQ</div>
+        </div>
+        <div class="md-info-row">
+          <div class="md-addr">📍 Main: 3F, 9 Myeongdong 8na-gil, Jung-gu · 2nd: 2F, 44 Myeongdong 3-gil</div>
+          <div class="md-area">🗺 Myeongdong · 1 min from Myeongdong Station</div>
+          <div class="md-hours">🕐 11:30 AM – 2:00 AM · Daily · <span style="color:var(--neon)">Open till 2 AM!</span></div>
+        </div>
+        <div class="md-menu">
+          <div class="md-item star">
+            <div><div class="md-iname">🥩 AYCE Set A — Beef + Pork</div><div class="md-idesc">Unlimited: rib eye, beef brisket, pork belly (samgyupsal), LA galbi, bulgogi · unlimited sides &amp; sauce bar</div></div>
+            <div class="md-iprice">₩31,700/pax</div>
+          </div>
+          <div class="md-item star">
+            <div><div class="md-iname">🔥 AYCE Set B — Full Premium</div><div class="md-idesc">All Set A + beef intestines (gopchang) + extra soup/noodle/ramen course + soft drinks</div></div>
+            <div class="md-iprice">₩42,700/pax</div>
+          </div>
+          <div class="md-item">
+            <div><div class="md-iname">🍚 Unlimited sides bar</div><div class="md-idesc">Kimchi (red + white), pickled radish, grilled vegetables, sauce bar (cheese powder, spicy teriyaki, sesame oil…)</div></div>
+            <div class="md-iprice">included</div>
+          </div>
+          <div class="md-item">
+            <div><div class="md-iname">🍜 Ramen / Rice / Noodles</div><div class="md-idesc">End-of-BBQ carb course (Set B) · Korean BBQ tradition</div></div>
+            <div class="md-iprice">Set B only</div>
+          </div>
+        </div>
+        <div class="md-tip">💡 Real charcoal grill (not gas) = smoky authentic BBQ flavour. Walk-in fine for 2 people. 2nd Branch has solo-diner tables all day. EN/JP/CN menu available. International cards accepted.</div>
+        <div class="md-hot">🌙 Open till 2 AM — perfect for late-night KBBQ after Myeongdong night market! The only AYCE BBQ in Myeongdong open this late.</div>
+        <div class="md-rating">
+          <span class="md-stars">★ 4.2</span><span class="md-revs">TripAdvisor verified</span>
+          <span class="md-tag">Real Charcoal</span><span class="md-tag">2 Branches</span>
+          <span class="md-tag">AYCE from ₩31,700</span><span class="md-tag">Open till 2 AM</span>
+        </div>
+    </div>
+  </div>
+
+</div><!-- end md-grid-2 -->
+
+<!-- ═══ STREET FOOD ═══ -->
+<div class="md-cat">
+  <div class="md-cat-pill street"><span class="cat-icon">🌮</span>Night Market Street Food · 야시장</div>
+  <div class="md-cat-line"></div>
+</div>
+
+<div class="md-card bbq" style="overflow:visible">
+  <div class="md-photo" style="height:200px">
+    <img src="https://10mag.com/wp-content/uploads/2017/10/streetfood_01.jpg"
+         onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+         alt="Myeongdong night market street food" loading="lazy"/>
+    <div class="md-photo-fallback" style="display:none">🌙</div>
+    <div class="md-photo-overlay"></div>
+    <span class="md-badge viral">🔥 TikTok Viral</span>
+  </div>
+  <div class="md-body" style="gap:12px">
+    <div>
+      <div class="md-name">Myeongdong Night Market</div>
+      <div class="md-korean">명동 야시장 · Main pedestrian street, both sides</div>
+    </div>
+    <div class="md-info-row">
+      <div class="md-addr">📍 Myeongdong-gil (명동길) Pedestrian Street, Jung-gu</div>
+      <div class="md-hours">🕐 Stalls open from 5 PM · Peak 7–10 PM · Some till midnight · CASH preferred</div>
+    </div>
+    <div class="sf-row">
+      <div class="sf-item">
+        <div class="sf-emoji">🌀</div>
+        <div class="sf-name">Tornado Potato</div>
+        <div class="sf-desc">회오리 감자 · Whole potato spiralled on stick, fried golden, seasoned</div>
+        <div class="sf-price">₩4,000</div>
+        <div class="sf-hot">🔥 Most photographed</div>
+      </div>
+      <div class="sf-item">
+        <div class="sf-emoji">🧀</div>
+        <div class="sf-name">Cheese Lobster Skewer</div>
+        <div class="sf-desc">Grilled lobster on stick dipped in molten cheese — ultra-viral</div>
+        <div class="sf-price">₩8,000–10,000</div>
+        <div class="sf-hot">🔥 TikTok #1 item</div>
+      </div>
+      <div class="sf-item">
+        <div class="sf-emoji">🍢</div>
+        <div class="sf-name">Tteokbokki 떡볶이</div>
+        <div class="sf-desc">Spicy chewy rice cakes in gochujang sauce — Korea's soul food</div>
+        <div class="sf-price">₩4,000–6,000</div>
+        <div class="sf-hot">Must eat</div>
+      </div>
+      <div class="sf-item">
+        <div class="sf-emoji">🥞</div>
+        <div class="sf-name">Hotteok 호떡</div>
+        <div class="sf-desc">Sweet pancake filled with brown sugar + cinnamon + seeds</div>
+        <div class="sf-price">₩2,000</div>
+        <div class="sf-hot">Classic Korean</div>
+      </div>
+      <div class="sf-item">
+        <div class="sf-emoji">🍡</div>
+        <div class="sf-name">Grilled Skewers 꼬치</div>
+        <div class="sf-desc">Squid, sausage, chicken, fishcake — pick anything</div>
+        <div class="sf-price">₩2,000–5,000</div>
+        <div class="sf-hot">Local favourite</div>
+      </div>
+      <div class="sf-item">
+        <div class="sf-emoji">🌽</div>
+        <div class="sf-name">Grilled Corn 구운 옥수수</div>
+        <div class="sf-desc">Sweet roasted corn slathered in butter and soy sauce</div>
+        <div class="sf-price">₩3,000</div>
+        <div class="sf-hot">Comfort food</div>
+      </div>
+    </div>
+    <div class="md-tip">💡 Walk from Exit 5 down the main pedestrian street. Stalls line BOTH sides all the way to Myeongdong Cathedral. Budget ₩15,000–25,000/person for a full crawl. 💰 CASH preferred at most stalls.</div>
+  </div>
+</div>
+
+<!-- ═══ BREAKFAST ═══ -->
+<div class="md-cat">
+  <div class="md-cat-pill bfast"><span class="cat-icon">☀</span>Breakfast · 아침 식사</div>
+  <div class="md-cat-line"></div>
+</div>
+
+<div class="md-grid-2">
+
+  <!-- Isaac Toast -->
+  <div class="md-card bfast">
+    <div class="md-photo">
+      <img src="https://southkoreahallyu.com/wp-content/uploads/2021/12/isaac-toast-korea-menu-prices-photo-2022-ham-cheese.jpg"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           alt="Isaac Toast grilled sandwich Korea" loading="lazy"/>
+      <div class="md-photo-fallback" style="display:none">🥪</div>
+      <div class="md-photo-overlay"></div>
+      <span class="md-badge bfast">☀ Takeout Only</span>
+    </div>
+    <div class="md-body">
+      <div>
+        <div class="md-name">Isaac Toast & Coffee</div>
+        <div class="md-korean">이삭토스트 명동성당점 · Myeongdong Cathedral Branch</div>
+      </div>
+      <div class="md-info-row">
+        <div class="md-addr">📍 17-1 Myeongdong 10-gil, Jung-gu, Seoul</div>
+        <div class="md-area">🗺 In front of Myeongdong Cathedral · Exit 8 → walk straight 5 min</div>
+        <div class="md-hours">🕐 7:00 AM – 10:00 PM · Daily · Takeout only</div>
+      </div>
+      <div class="md-menu">
+        <div class="md-item star">
+          <div><div class="md-iname">🥚 Ham Special 햄스페셜</div><div class="md-idesc">Ham + egg + cabbage + pickle + sweet secret sauce on grilled buttered bread — the classic</div></div>
+          <div class="md-iprice">₩4,500</div>
+        </div>
+        <div class="md-item star">
+          <div><div class="md-iname">🥩 Bulgogi Toast 불고기토스트</div><div class="md-idesc">Korean BBQ beef patty in toast — juicy, sweet, distinctly Korean</div></div>
+          <div class="md-iprice">₩5,000</div>
+        </div>
+        <div class="md-item">
+          <div><div class="md-iname">🥑 Chicken Avocado 치킨아보카도</div><div class="md-idesc">Grilled chicken + creamy avocado — lighter option</div></div>
+          <div class="md-iprice">₩5,500–6,000</div>
+        </div>
+        <div class="md-item">
+          <div><div class="md-iname">☕ Iced Americano</div><div class="md-idesc">Perfect pairing with toast — grab and go</div></div>
+          <div class="md-iprice">₩2,500–3,000</div>
+        </div>
+      </div>
+      <div class="md-tip">💡 Arrive 7–8 AM for zero queue. Takeout only — eat on cathedral steps or walk toward the shops. Multilingual menu (EN/JP/CN). One of Korea's most iconic street food experiences since 1995.</div>
+      <div class="md-rating">
+        <span class="md-stars">★ 4.5</span><span class="md-revs">1,239 reviews</span>
+        <span class="md-tag">Korea's #1 toast chain</span><span class="md-tag">900+ branches</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Eggdrop -->
+  <div class="md-card bfast2">
+    <div class="md-photo">
+      <img src="https://cookerru.com/wp-content/uploads/2023/07/Korean-Egg-Drop-Sandwich-feature.jpg"
+           onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+           alt="Eggdrop Korean egg sandwich" loading="lazy"/>
+      <div class="md-photo-fallback" style="display:none">🥚</div>
+      <div class="md-photo-overlay"></div>
+      <span class="md-badge viral">🔥 TikTok Viral</span>
+    </div>
+    <div class="md-body">
+      <div>
+        <div class="md-name">Eggdrop 에그드랍</div>
+        <div class="md-korean">에그드랍 동대문점 · Dongdaemun Branch · 2F Terrace</div>
+      </div>
+      <div class="md-info-row">
+        <div class="md-addr">📍 255 Euljiro (Gisseung Bldg B), Jung-gu, Seoul</div>
+        <div class="md-area">🗺 Dongdaemun · DDP Station (L2/4/5) Exit 13 → 2 min</div>
+        <div class="md-hours">🕐 7:00 AM – 10:00 PM · Daily · 1F kiosk + 2F terrace seating</div>
+      </div>
+      <div class="md-menu">
+        <div class="md-item star">
+          <div><div class="md-iname">🌟 Seoul Eggdrop 서울에그드랍</div><div class="md-idesc">SPAM + mango + nori = sweet-savory combo that went viral worldwide. The must-order.</div></div>
+          <div class="md-iprice">₩7,900</div>
+        </div>
+        <div class="md-item star">
+          <div><div class="md-iname">🥓 Gwangju Eggdrop 광주에그드랍</div><div class="md-idesc">Bacon + sweet corn — Korean comfort food in sandwich form</div></div>
+          <div class="md-iprice">₩7,500</div>
+        </div>
+        <div class="md-item">
+          <div><div class="md-iname">🥑 Jeju Eggdrop 제주에그드랍</div><div class="md-idesc">Premium ham + avocado — gourmet option</div></div>
+          <div class="md-iprice">₩8,500</div>
+        </div>
+        <div class="md-item">
+          <div><div class="md-iname">☕ Handmade Latte / Americano</div><div class="md-idesc">Freshly made, perfect pairing</div></div>
+          <div class="md-iprice">₩4,000–5,000</div>
+        </div>
+      </div>
+      <div class="md-tip">💡 Order at self-service kiosk outside (EN/KR/JP). Go to 2F terrace for seating. Seoul Eggdrop (SPAM+mango+nori) = most TikTok-famous Korean breakfast item. 15 min walk from Myeongdong or combine with DDP night visit.</div>
+      <div class="md-warn">⚠ 15 min walk from Myeongdong main strip. Worth combining with a DDP (Dongdaemun) visit for the Zaha Hadid building + night market.</div>
+      <div class="md-rating">
+        <span class="md-stars">★ 4.3</span>
+        <span class="md-tag">Premium antibiotic-free eggs</span><span class="md-tag">Viral worldwide</span>
+      </div>
+    </div>
+  </div>
+
+</div><!-- end breakfast grid -->
+
+<!-- QUICK REFERENCE TABLE -->
+<div style="margin-top:1.8rem;background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:hidden">
+  <div style="padding:12px 16px;background:linear-gradient(90deg,rgba(200,162,74,.1),transparent);border-bottom:1px solid var(--border);font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--gold)">⚡ Myeongdong Quick Reference</div>
+  <div style="overflow-x:auto">
+  <table style="width:100%;border-collapse:collapse;font-size:12px">
+    <thead><tr>
+      <th style="padding:8px 12px;text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap">Restaurant</th>
+      <th style="padding:8px 12px;text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap">Must Order</th>
+      <th style="padding:8px 12px;text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap">Price for 2</th>
+      <th style="padding:8px 12px;text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap">Hours</th>
+      <th style="padding:8px 12px;text-align:left;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;border-bottom:1px solid var(--border);white-space:nowrap">Note</th>
+    </tr></thead>
+    <tbody>
+      <tr style="border-bottom:1px solid var(--border2)">
+        <td style="padding:9px 12px;font-weight:700;color:#fff">Myeongdong Kyoja</td>
+        <td style="padding:9px 12px;color:var(--text)">Kalguksu + Mandu</td>
+        <td style="padding:9px 12px;color:var(--amber);font-weight:700">₩22,000–23,000</td>
+        <td style="padding:9px 12px;color:var(--faint)">10:30AM–9:30PM</td>
+        <td style="padding:9px 12px;color:var(--gold2);font-size:10px">⬢ Michelin 9yr</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border2)">
+        <td style="padding:9px 12px;font-weight:700;color:#fff">Odarijip Ganjang Gejang</td>
+        <td style="padding:9px 12px;color:var(--text)">Ganjang Gejang Set M</td>
+        <td style="padding:9px 12px;color:var(--amber);font-weight:700">₩100,000–120,000</td>
+        <td style="padding:9px 12px;color:var(--faint)">9AM–11PM</td>
+        <td style="padding:9px 12px;color:var(--neon);font-size:10px">⚠ Book 1 week ahead</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border2)">
+        <td style="padding:9px 12px;font-weight:700;color:#fff">Mongvely KBBQ</td>
+        <td style="padding:9px 12px;color:var(--text)">AYCE Set A or B</td>
+        <td style="padding:9px 12px;color:var(--amber);font-weight:700">₩63,400–85,400</td>
+        <td style="padding:9px 12px;color:var(--faint)">11:30AM–2:00AM</td>
+        <td style="padding:9px 12px;color:var(--lime);font-size:10px">Open till 2 AM!</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border2)">
+        <td style="padding:9px 12px;font-weight:700;color:#fff">Night Market</td>
+        <td style="padding:9px 12px;color:var(--text)">Tornado potato + cheese lobster</td>
+        <td style="padding:9px 12px;color:var(--amber);font-weight:700">₩15,000–25,000</td>
+        <td style="padding:9px 12px;color:var(--faint)">5PM–midnight</td>
+        <td style="padding:9px 12px;color:var(--faint);font-size:10px">Cash preferred</td>
+      </tr>
+      <tr style="border-bottom:1px solid var(--border2)">
+        <td style="padding:9px 12px;font-weight:700;color:#fff">Isaac Toast</td>
+        <td style="padding:9px 12px;color:var(--text)">Ham Special + Bulgogi Toast</td>
+        <td style="padding:9px 12px;color:var(--amber);font-weight:700">₩9,000–11,000</td>
+        <td style="padding:9px 12px;color:var(--faint)">7AM–10PM</td>
+        <td style="padding:9px 12px;color:var(--green);font-size:10px">Takeout only</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 12px;font-weight:700;color:#fff">Eggdrop (Dongdaemun)</td>
+        <td style="padding:9px 12px;color:var(--text)">Seoul Eggdrop (SPAM+Mango+Nori)</td>
+        <td style="padding:9px 12px;color:var(--amber);font-weight:700">₩15,000–18,000</td>
+        <td style="padding:9px 12px;color:var(--faint)">7AM–10PM</td>
+        <td style="padding:9px 12px;color:var(--faint);font-size:10px">15 min from Myeongdong</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</div>
+
+
+</div>
+</div><!-- #myeongdong-spotlight -->
+
+
+
+<div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks</div><div class="sec-cnt">Myeongdong · 6 general + 5 spotlight</div></div>gold<div class="food-grid"><div class="fcard must"><div class="f-head"><span class="f-emoji">🥞</span><div class="f-info"><div class="f-name">Gwangjang Market</div><div class="f-sub">Daily 8AM–11PM</div></div></div><span class="f-must">Must Order: Bindaetteok + Mayak Gimbap</span><div class="f-price">₩5,000–8,000 · €2.9–4.7</div><div class="f-desc">Seoul's oldest market. Mung bean pancakes at live stalls + bite-sized rice rolls. Eat with makgeolli rice wine.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard must"><div class="f-head"><span class="f-emoji">🍗</span><div class="f-info"><div class="f-name">Han River Chimaek</div><div class="f-sub">24/7</div></div></div><span class="f-must">Must Order: Half-half fried chicken + beer</span><div class="f-price">₩15,000–25,000 for 2 · €8.7–14.6</div><div class="f-desc">Buy fried chicken + canned beer from 7-Eleven, sit on Han River. Korea's iconic couple date activity.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard must"><div class="f-head"><span class="f-emoji">🌮</span><div class="f-info"><div class="f-name">Myeongdong Night Market</div><div class="f-sub">Daily 5PM–11PM</div></div></div><span class="f-must">Must Order: Tornado potato + grilled cheese</span><div class="f-price">₩3,000–8,000/item · €1.7–4.7</div><div class="f-desc">Nightly outdoor market: tornado potato ₩4,000, cheese lobster ₩8,000, tteokbokki ₩4,000.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard must"><div class="f-head"><span class="f-emoji">🔥</span><div class="f-info"><div class="f-name">Korean BBQ AYCE</div><div class="f-sub">Daily 11AM–midnight</div></div></div><span class="f-must">Must Order: Samgyeopsal + Soju</span><div class="f-price">₩13,000–18,000/pax · €7.6–10.5</div><div class="f-desc">All-you-can-eat pork belly, wrapped in lettuce + garlic + ssamjang. Wash with soju.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard good"><div class="f-head"><span class="f-emoji">🏪</span><div class="f-info"><div class="f-name">Convenience Store Mukbang</div><div class="f-sub">24/7</div></div></div><span class="f-must">Must Order: Cup ramen + triangle gimbap</span><div class="f-price">₩800–3,000/item · €0.5–1.7</div><div class="f-desc">CU or GS25 at midnight with cup ramyeon + beer. Globally viral TikTok.</div><span class="f-tiktok">🎵 TikTok Viral</span></div><div class="fcard good"><div class="f-head"><span class="f-emoji">🧊</span><div class="f-info"><div class="f-name">Bingsu at Sulbing</div><div class="f-sub">Daily 10AM–10PM</div></div></div><span class="f-must">Must Order: Injeolmi or strawberry bingsu</span><div class="f-price">₩7,000–12,000 · €4.1–7.0</div><div class="f-desc">Shaved milk ice with red beans + mochi. Perfect for hot June.</div></div></div></div></div></div></div><div class="city-page " id="city-jeonju"><div class="sub-tab on" id="jeonju-hanoks"><div class="content"><div class="vcb-box"><span class="vcb-lbl">💱 Exchange Rate</span><span class="vcb-src">VCB Benchmark · 25/05/2026</span><div class="vcb-rates"><span class="vcb-rate">1 EUR = 1,715 KRW</span><span class="vcb-rate">1 EUR = 30,150 VND</span></div></div><div class="callout c-warn">✅ <strong>Jeonju:</strong> Jungdam confirmed at <strong>€47.7/night</strong>. Note: above €40 target but already paid. Highest-rated hanok in village (9.8/10 couples). Other options below for reference.</div><div class="bwrap"><div class="bhead"><span style="font-size:15px">✅</span><span class="bhead-title">Confirmed Booking</span><span class="bhead-sub">Jun 19–20 · 2 nights · Jeonju Hanok Village</span></div><div class="binner"><div class="hcard booked-card hanok" data-r="top">
   <div class="hhead"><div class="hname">Jungdam (정담)</div><div class="hbadges"><span class="hb hb-booked">✅ BOOKED</span><span class="hb hb-type">Hanok Guesthouse</span></div></div>
   <div class="price-row"><span class="pr-eur pr-fits">€47.7/night · ₩81,818/night · Total ₩163,636 = €95.4</span><span class="pr-tag pt-fits">Jun 19–20 · 2 nights · Jeonju Hanok Village</span></div>
   <div class="hrating"><span class="stars">★ 9.8 (couples)</span><span class="rcount">(50+ verified reviews)</span></div>
@@ -288,7 +870,7 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
   <p style="margin-top:5px">All prices per room / 2 people / per night · Book attractions (Sky Capsule!) ahead online</p>
 </footer>
 <script>
-const S={'seoul':['seoul-hotels','seoul-hanoks','seoul-spots','seoul-food'],'jeonju':['jeonju-hanoks','jeonju-hotels','jeonju-spots','jeonju-food'],'busan-sea':['busan-sea-hotels','busan-sea-spots','busan-sea-food'],'busan-city':['busan-city-hotels','busan-city-spots','busan-city-food'],'jeju':['jeju-hotels','jeju-spots','jeju-food']};
+const S={'seoul':['seoul-hotels','seoul-spots','seoul-food'],'jeonju':['jeonju-hanoks','jeonju-hotels','jeonju-spots','jeonju-food'],'busan-sea':['busan-sea-hotels','busan-sea-spots','busan-sea-food'],'busan-city':['busan-city-hotels','busan-city-spots','busan-city-food'],'jeju':['jeju-hotels','jeju-spots','jeju-food']};
 function showCity(id,btn){
   document.querySelectorAll('.city-page').forEach(p=>p.classList.remove('on'));
   document.querySelectorAll('.cnav-btn').forEach(b=>b.classList.remove('on'));
@@ -317,6 +899,26 @@ document.addEventListener('DOMContentLoaded',()=>{
   document.querySelectorAll('.sub-nav').forEach(n=>n.style.display='none');
   const sn=document.getElementById('sub-seoul');if(sn)sn.style.display='flex';
 });
+
+// Myeongdong accordion
+(function(){
+  var hero = document.querySelector('.md-hero');
+  var content = document.getElementById('md-content');
+  var arrow = document.getElementById('md-arrow');
+  var hint = document.getElementById('md-hint-text');
+  if(!hero||!content) return;
+  hero.addEventListener('click', function(){
+    var isOpen = content.classList.contains('open');
+    content.classList.toggle('open');
+    arrow.classList.toggle('open');
+    if(!isOpen){
+      hint.textContent = '👆 Tap to collapse';
+      hint.classList.add('open');
+    } else {
+      hint.textContent = '👆 Tap to see 5 restaurants · Myeongdong food guide';
+      hint.classList.remove('open');
+    }
+  });
+})();
+
 </script>
-</body>
-</html>
