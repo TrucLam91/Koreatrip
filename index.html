@@ -575,6 +575,19 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
 }
 html,body{overflow-x:hidden;max-width:100vw}
 
+
+.area-hero.namdaemun{background:linear-gradient(135deg,#1a0a06 0%,#2e1208 40%,#0d0d0d 100%);border-color:rgba(232,100,80,.25)}
+.area-hero.namdaemun::before{content:"남대문";position:absolute;right:-8px;top:-18px;font-size:7rem;font-weight:900;color:rgba(232,100,80,.04);font-family:"Playfair Display",serif;line-height:1;pointer-events:none}
+.area-hero.namdaemun:hover{border-color:rgba(232,100,80,.5)}
+.area-hero.namdaemun .area-hero-tag{color:#e86450}
+.area-hero.namdaemun .area-hero-title em{color:#f0927e;font-style:normal}
+.area-hero.namdaemun .area-hint-arrow{background:rgba(232,100,80,.15);color:#e86450}
+.area-hero.namdaemun:hover .area-hint-arrow{background:rgba(232,100,80,.3);transform:translateX(2px)}
+.area-modal-box.namdaemun{border:1px solid rgba(232,100,80,.3)}
+.area-modal-box.namdaemun .area-modal-head{background:linear-gradient(90deg,rgba(232,100,80,.18) 0%,rgba(232,100,80,.04) 100%);border-bottom:1px solid rgba(232,100,80,.2)}
+.area-modal-box.namdaemun .area-modal-head-sub{color:#e86450}
+.area-chip.coral{background:rgba(232,100,80,.12);color:#f0927e;border:1px solid rgba(232,100,80,.25)}
+
 </style>
 </head>
 <body>
@@ -877,6 +890,22 @@ html,body{overflow-x:hidden;max-width:100vw}
     <span class="area-hint-arrow">↗</span>
   </div>
 </div>
+
+<div class="area-hero namdaemun" id="area-ndm-trigger" role="button" tabindex="0" onclick="openNDMModal()">
+  <div class="area-hero-tag">✦ Namdaemun Market Food Spotlight · 남대문시장 맛집</div>
+  <div class="area-hero-title">Namdaemun's<br><em>Hidden Food Alleys</em></div>
+  <div class="area-hero-sub">Korea's oldest market since 1414 — hand-cut noodle alley, hotteok vendors, grilled skewers, savory dumplings and the legendary hairtail fish stew alley.</div>
+  <div class="area-hero-chips">
+    <span class="area-chip coral">🚇 Hoehyeon Stn (Line 4) Exit 5 · Hoehyeon 회현역</span>
+    <span class="area-chip amber">📍 Jung-gu · Namdaemunno 5-ga</span>
+    <span class="area-chip coral">🕐 Best 11:30 AM – 4:00 PM · Some stalls close by 6:30 PM</span>
+  </div>
+  <div class="area-open-hint">
+    <span class="area-hint-txt">👆 Tap to see 8 foods · Namdaemun Market food guide</span>
+    <span class="area-hint-arrow">↗</span>
+  </div>
+</div>
+
 
 
 <div class="sec"><div class="sec-head"><div class="sec-lbl ">🍽 Food & Drinks</div><div class="sec-cnt">6 must-eats</div></div>gold<div class="food-grid"><div class="fcard must">
@@ -2661,5 +2690,161 @@ document.addEventListener('DOMContentLoaded',()=>{
   modal.querySelectorAll('[data-close]').forEach(function(c){c.addEventListener('click',closeM);});
 })();
 </script>
+
+<!-- NAMDAEMUN FOOD MODAL -->
+<div class="area-modal-overlay" id="area-modal-ndm" role="dialog" aria-modal="true">
+  <div class="area-modal-box namdaemun">
+    <div class="area-modal-head">
+      <div class="area-modal-head-title">🏛 Namdaemun Market Food Guide <span class="area-modal-head-sub">남대문시장 맛집 · 8 foods + tips</span></div>
+      <button class="area-modal-close" id="area-close-ndm">✕</button>
+    </div>
+    <div class="area-modal-body">
+
+<div style="font-size:12px;color:rgba(232,100,80,.8);background:rgba(232,100,80,.06);border:1px solid rgba(232,100,80,.18);border-radius:8px;padding:10px 14px;margin-bottom:1.2rem;line-height:1.6">
+  🏛 <strong>Korea's oldest market since 1414</strong> — over 10,000 stalls across multiple alleys. Best enjoyed on foot with cash. Most stalls: 11:30 AM – 6:00 PM. Avoid after 6:30 PM. Some big shops closed on Sundays.
+</div>
+
+<div class="md-cat" style="margin-top:0"><div class="md-cat-pill street"><span>🍢</span>Street Food & Stalls · 길거리 음식</div><div class="md-cat-line"></div></div>
+<div class="md-grid-2">
+
+  <div class="md-card bbq">
+    <div class="md-photo" style="height:100px;background:linear-gradient(135deg,#1a0d06,#2a1810);display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.5">🍢</div>
+    <div class="md-body">
+      <div class="md-name">Grilled Skewers (Kkochi 꼬치)</div>
+      <div class="md-korean">꼬치구이 · Right at the market entrance</div>
+      <div class="md-addr">📍 Namdaemun Market entrance stalls</div>
+      <div class="md-hours">🕐 Daily ~10 AM – 7 PM</div>
+      <div class="md-menu">
+        <div class="md-item star"><div><div class="md-iname">🍗 Dak-kkochi (chicken skewer)</div><div class="md-idesc">Sweet and savoury marinated chicken grilled with alternating onion, brushed with rich soy-based glaze while hot. The best item on the stall.</div></div><div class="md-iprice">₩2,000–3,000</div></div>
+        <div class="md-item"><div><div class="md-iname">🦐 Shrimp skewer</div><div class="md-idesc">Firm plump shrimp on a skewer — simple, charred, great with a cold beer after.</div></div><div class="md-iprice">₩2,000–3,000</div></div>
+        <div class="md-item"><div><div class="md-iname">🦑 Squid skewer (sweet-sour sauce)</div><div class="md-idesc">Tender squid in tangy sweet-sour gochujang glaze — slightly chewy, very addictive.</div></div><div class="md-iprice">₩2,000–3,000</div></div>
+      </div>
+      <div class="md-tip">💡 Start here — stalls are right at the entrance. Buy all three and snack while you explore deeper into the market.</div>
+    </div>
+  </div>
+
+  <div class="md-card bbq">
+    <div class="md-photo" style="height:100px;background:linear-gradient(135deg,#1a1206,#2a1e08);display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.5">🥞</div>
+    <div class="md-body">
+      <div class="md-name">Yachae Hotteok (야채호떡)</div>
+      <div class="md-korean">야채호떡 · Savoury Glass Noodle-Filled Pancake</div>
+      <div class="md-addr">📍 Gate 2 (Cổng số 2) · next to IBK Bank · 남대문시장 2번 게이트</div>
+      <div class="md-hours">🕐 ~10 AM – sell out · closes when ingredients run out</div>
+      <div class="md-menu">
+        <div class="md-item star"><div><div class="md-iname">🌿 Yachae Hotteok 야채호떡 (veggie + noodle)</div><div class="md-idesc">Pan-fried to golden crispiness. Inside: japchae glass noodles + vegetables. Finished with a drizzle of exclusive fruity soy sauce — sweet, savoury, insanely addictive. The Namdaemun legend.</div></div><div class="md-iprice">₩2,000–3,000</div></div>
+        <div class="md-item"><div><div class="md-iname">🔥 Grilled Hotteok (nướng áp chảo)</div><div class="md-idesc">Non-deep-fried version — dry-grilled on a cast iron. Crispy shell, light apple jam + cinnamon + black sesame inside. Not greasy at all.</div></div><div class="md-iprice">₩2,000</div></div>
+      </div>
+      <div class="md-tip">💡 Queue 15–20 min — absolutely worth it. Gate 2 next to IBK Bank. Go before 2 PM before it sells out.</div>
+    </div>
+  </div>
+
+  <div class="md-card meal">
+    <div class="md-photo" style="height:100px;background:linear-gradient(135deg,#0a0f1a,#0d1830);display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.5">🍜</div>
+    <div class="md-body">
+      <div class="md-name">Kalguksu Alley (칼국수 골목)</div>
+      <div class="md-korean">칼국수 골목 · Hand-Cut Noodle Alley near Gate 5</div>
+      <div class="md-addr">📍 Near Exit 5 (Hoehyeon Station) · narrow alley with vinyl curtains both ends</div>
+      <div class="md-hours">🕐 ~11 AM – 5 PM · Peak: 12–2 PM</div>
+      <div class="md-menu">
+        <div class="md-item star"><div><div class="md-iname">🍜 Kalguksu 칼국수 (hand-cut noodles)</div><div class="md-idesc">Noodles hand-rolled and knife-cut on-site, in a clean seaweed-and-chive broth. Silky, chewy, deeply comforting. Order 1 main → aunties bring free side dishes: cold spicy bibim noodles + barley bibimbap. Eat one, get three!</div></div><div class="md-iprice">₩6,000–8,000</div></div>
+        <div class="md-item"><div><div class="md-iname">🥣 Bibim Naengmyeon 비빔냉면 (free bonus)</div><div class="md-idesc">Spicy cold mixed noodles — automatically brought as a free side when you order kalguksu. Traditional Korean market generosity.</div></div><div class="md-iprice">Free with kalguksu</div></div>
+        <div class="md-item"><div><div class="md-iname">🍚 Barley Bibimbap 보리비빔밥 (free bonus)</div><div class="md-idesc">Mixed barley rice with vegetables — another free side dish. Market haenyeo hospitality at its finest.</div></div><div class="md-iprice">Free with kalguksu</div></div>
+      </div>
+      <div class="md-tip">💡 Look for the narrow alley with vinyl curtain doors near Gate 5 (Hoehyeon Station Exit 5). Around 10–15 identical stalls sell the same menu — just pick whichever has space. Order 1 main and you get 3 dishes.</div>
+    </div>
+  </div>
+
+  <div class="md-card bbq">
+    <div class="md-photo" style="height:100px;background:linear-gradient(135deg,#1a0a0a,#2a1010);display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.5">🌭</div>
+    <div class="md-body">
+      <div class="md-name">Soondae Bokkeum (순대볶음)</div>
+      <div class="md-korean">순대볶음 · Stir-Fried Blood Sausage & Offal</div>
+      <div class="md-addr">📍 Throughout market inner stalls</div>
+      <div class="md-hours">🕐 Daily ~11 AM – 6 PM</div>
+      <div class="md-menu">
+        <div class="md-item star"><div><div class="md-iname">🌶 Soondae Bokkeum 순대볶음</div><div class="md-idesc">Stir-fried blood sausage and assorted offal with crispy vegetables, toasted sesame and bold spicy sauce. Crunchy-savoury-aromatic — addictively spicy and warming for cold weather.</div></div><div class="md-iprice">₩8,000–12,000/portion</div></div>
+        <div class="md-item"><div><div class="md-iname">🍜 Japchae 잡채 (glass noodles stir-fried)</div><div class="md-idesc">Glass noodles stir-fried hot at the stall — chewy, seasoned, great alongside the spicy soondae.</div></div><div class="md-iprice">₩3,000–5,000</div></div>
+      </div>
+      <div class="md-tip">💡 Perfect cold-weather food — the spice level warms you right up. Great pairing: soondae bokkeum + japchae + a small bottle of soju.</div>
+    </div>
+  </div>
+
+  <div class="md-card meal">
+    <div class="md-photo" style="height:100px;background:linear-gradient(135deg,#0a1a0a,#0d2812);display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.5">🥟</div>
+    <div class="md-body">
+      <div class="md-name">Gamegol Son Wangmandu (가메골손왕만두)</div>
+      <div class="md-korean">가메골손왕만두 · King-Size Handmade Dumplings</div>
+      <div class="md-addr">📍 42 Namdaemun Market 4-gil, Jung-gu · 남대문시장 4길 42</div>
+      <div class="md-hours">🕐 ~10 AM – 7 PM · Closed Sun · 2F seating available</div>
+      <div class="md-menu">
+        <div class="md-item star"><div><div class="md-iname">🥟 Wangmandu 왕만두 (king-size steamed dumplings)</div><div class="md-idesc">Enormous handmade dumplings — always steaming, always queued. Juicy pork or kimchi filling, soft-chewy skin. 2F seating if you don't want to eat standing.</div></div><div class="md-iprice">₩5,000–7,000 for 3–4 pcs</div></div>
+        <div class="md-item"><div><div class="md-iname">🌿 Kimchi Mandu 김치만두</div><div class="md-idesc">Kimchi-filled version — slightly tangy, spiced, great contrast to the milder pork version.</div></div><div class="md-iprice">₩5,000–7,000</div></div>
+      </div>
+      <div class="md-tip">💡 Always steaming with a constant queue. Go early (before 12PM) to avoid the longest waits. Eat 1F standing or climb to 2F for proper seating.</div>
+    </div>
+  </div>
+
+  <div class="md-card meal">
+    <div class="md-photo" style="height:100px;background:linear-gradient(135deg,#1a0806,#2a1008);display:flex;align-items:center;justify-content:center;font-size:3.5rem;opacity:.5">🐟</div>
+    <div class="md-body">
+      <div class="md-name">Galchi Jorim Alley (갈치조림 골목)</div>
+      <div class="md-korean">갈치조림 골목 · Hairtail Fish Stew Alley</div>
+      <div class="md-addr">📍 Namdaemun Market-gil 16–17 · next to Kalguksu Alley · Heerak Galchi or Jungang Galchi</div>
+      <div class="md-hours">🕐 ~11 AM – 5 PM · Sit-down meal experience</div>
+      <div class="md-menu">
+        <div class="md-item star"><div><div class="md-iname">🐟 Galchi Jorim 갈치조림 (braised hairtail fish)</div><div class="md-idesc">Hairtail fish slow-braised for hours in a small aluminium pot with daikon radish and bold red chili sauce. Served with steamed rice, steamed egg, and crispy fried hairtail on the side. A proper sit-down lunch — not a snack.</div></div><div class="md-iprice">₩12,000–15,000/set</div></div>
+      </div>
+      <div class="md-tip">💡 The oldest restaurants here are Heerak Galchi and Jungang Galchi — beloved by older Seoul locals. This is a full lunch experience, not street food. Go before 1PM for a seat.</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="md-cat" style="margin-top:1.6rem"><div class="md-cat-pill bfast"><span>💰</span>Budget Guide & Tips · 예산 &amp; 팁</div><div class="md-cat-line"></div></div>
+<div class="md-grid-2">
+  <div class="md-card bfast" style="border-top-color:#e86450">
+    <div class="md-body">
+      <div class="md-name" style="color:#e86450">Namdaemun Budget Guide</div>
+      <div class="md-menu" style="margin-top:6px">
+        <div class="md-item star"><div><div class="md-iname">💰 Snack crawl (3–4 items)</div><div class="md-idesc">Skewers + Yachae Hotteok + Japchae = a full entrance street food tour</div></div><div class="md-iprice">₩10,000–15,000</div></div>
+        <div class="md-item star"><div><div class="md-iname">🍽 Full market lunch</div><div class="md-idesc">Kalguksu set (get 3 dishes!) + Wangmandu + drinks = deeply satisfying</div></div><div class="md-iprice">₩15,000–22,000</div></div>
+        <div class="md-item"><div><div class="md-iname">🐟 Sit-down meal</div><div class="md-idesc">Galchi Jorim fish stew set + rice + side dishes</div></div><div class="md-iprice">₩12,000–15,000</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="md-card bfast" style="border-top-color:var(--amber)">
+    <div class="md-body">
+      <div class="md-name">Practical Tips</div>
+      <div class="md-menu" style="margin-top:6px">
+        <div class="md-item"><div><div class="md-iname">🕐 Best time</div><div class="md-idesc">11:30 AM – 4:00 PM. After 6:30 PM many food stalls close or run out. Some big shops closed Sunday.</div></div><div class="md-iprice"></div></div>
+        <div class="md-item"><div><div class="md-iname">💳 Payment</div><div class="md-idesc">Bring cash (small bills) for inner-alley food stalls. Larger shops accept cards.</div></div><div class="md-iprice">Cash preferred</div></div>
+        <div class="md-item"><div><div class="md-iname">🗺 Navigation</div><div class="md-idesc">Kalguksu Alley: Gate 5 (Exit 5 Hoehyeon Stn). Yachae Hotteok: Gate 2 next to IBK Bank. Wangmandu: Market 4-gil #42.</div></div><div class="md-iprice"></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// Namdaemun food modal
+function openNDMModal(){
+  var m=document.getElementById('area-modal-ndm');
+  if(!m)return;
+  m.classList.add('open');
+  document.body.style.overflow='hidden';
+  m.scrollTop=0;
+}
+document.addEventListener('DOMContentLoaded',function(){
+  var c=document.getElementById('area-close-ndm');
+  var m=document.getElementById('area-modal-ndm');
+  if(c&&m){
+    c.onclick=function(){m.classList.remove('open');document.body.style.overflow='';};
+    m.addEventListener('click',function(e){if(e.target===m){m.classList.remove('open');document.body.style.overflow='';}});
+  }
+});
+</script>
+
 </body>
 </html>
