@@ -530,15 +530,15 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
 }
 
 
-.dist-banner.nami{background:linear-gradient(135deg,#091609 0%,#0d2a18 40%,#0d0d0d 100%);border-color:rgba(75,186,124,.25)}
-.dist-banner.nami::before{content:"남이섬";position:absolute;right:-8px;top:-18px;font-size:7rem;font-weight:900;color:rgba(75,186,124,.04);font-family:"Playfair Display",serif;line-height:1;pointer-events:none}
-.dist-banner.nami:hover{border-color:rgba(75,186,124,.55)}
-.dist-banner.nami .dist-tag{color:#7ddbb2}
-.dist-banner.nami .dist-title em{color:#7ddbb2;font-style:normal}
-.dist-banner.nami .dist-hint-arrow{background:rgba(75,186,124,.15);color:var(--green)}
-.dist-banner.nami:hover .dist-hint-arrow{background:rgba(75,186,124,.3);transform:translateX(3px)}
-.spot-modal-box.nami{border:1px solid rgba(75,186,124,.3)}
-.spot-modal-box.nami .spot-modal-head{background:linear-gradient(90deg,rgba(75,186,124,.18) 0%,rgba(75,186,124,.04) 100%);border-bottom:1px solid rgba(75,186,124,.2)}
+.dist-banner.nami{background:linear-gradient(135deg,#060f1a 0%,#0a1f35 40%,#0d0d0d 100%);border-color:rgba(56,182,232,.25)}
+.dist-banner.nami::before{content:"남이섬";position:absolute;right:-8px;top:-18px;font-size:7rem;font-weight:900;color:rgba(56,182,232,.04);font-family:"Playfair Display",serif;line-height:1;pointer-events:none}
+.dist-banner.nami:hover{border-color:rgba(56,182,232,.55)}
+.dist-banner.nami .dist-tag{color:#38b6e8}
+.dist-banner.nami .dist-title em{color:#38b6e8;font-style:normal}
+.dist-banner.nami .dist-hint-arrow{background:rgba(56,182,232,.15);color:#38b6e8}
+.dist-banner.nami:hover .dist-hint-arrow{background:rgba(56,182,232,.3);transform:translateX(3px)}
+.spot-modal-box.nami{border:1px solid rgba(56,182,232,.3)}
+.spot-modal-box.nami .spot-modal-head{background:linear-gradient(90deg,rgba(56,182,232,.18) 0%,rgba(56,182,232,.04) 100%);border-bottom:1px solid rgba(56,182,232,.2)}
 /* HOW TO GET THERE BOX */
 .nami-transport{background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:1.4rem}
 .nami-transport-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7ddbb2;margin-bottom:12px}
@@ -556,6 +556,24 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
 .nami-opt-price{font-size:12px;font-weight:700;color:var(--amber);margin-top:4px}
 .nami-opt.recommended{border-color:rgba(75,186,124,.3);background:rgba(75,186,124,.04)}
 .nami-opt.recommended .nami-opt-name::after{content:" ✓ Recommended";font-size:9px;color:var(--green);font-weight:400}
+
+
+/* MOBILE CRASH FIX: disable expensive backdrop-filter on mobile */
+@media(max-width:768px){
+  .md-modal-overlay,.area-modal-overlay,.spot-modal-overlay{
+    backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+    background:rgba(5,5,5,.96) !important;
+  }
+  .md-modal-head,.area-modal-head,.spot-modal-head,
+  .area-modal-box .area-modal-head,.spot-modal-box .spot-modal-head{
+    backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+  }
+  .sticky{
+    backdrop-filter:none !important;-webkit-backdrop-filter:none !important;
+    background:rgba(10,10,10,1) !important;
+  }
+}
+html,body{overflow-x:hidden;max-width:100vw}
 
 </style>
 </head>
@@ -765,8 +783,8 @@ footer{text-align:center;padding:2rem 1.5rem;color:var(--faint);font-size:11.5px
   <div class="dist-title"><em>Nami Island</em> — Korea's Most Romantic Escape</div>
   <div class="dist-sub">60 km from Seoul · K-drama filming location (Winter Sonata) · Iconic tree-lined paths, zipline over the river, cycling, cafés and nearby Petite France.</div>
   <div class="dist-meta">
-    <span class="dist-chip green">🚂 ITX-Cheongchun from Seoul (55–60 min)</span>
-    <span class="dist-chip green">⛴ 5-min ferry or zipline to the island</span>
+    <span class="dist-chip" style="background:rgba(56,182,232,.1);color:#70ccf0;border:1px solid rgba(56,182,232,.22)">🚂 ITX-Cheongchun from Seoul (55–60 min)</span>
+    <span class="dist-chip" style="background:rgba(56,182,232,.1);color:#70ccf0;border:1px solid rgba(56,182,232,.22)">⛴ 5-min ferry or zipline to the island</span>
     <span class="dist-chip amber">📍 Gapyeong-gun, Gangwon Province · Full day trip</span>
   </div>
   <div class="dist-open-hint">
@@ -1459,13 +1477,13 @@ document.addEventListener('DOMContentLoaded',()=>{
       <tr><td style="font-weight:700;color:#fff">Night Market</td><td style="color:var(--text)">Tornado potato + cheese lobster</td><td style="color:var(--amber);font-weight:700">₩15,000–25,000</td><td style="color:#78716c">5PM–midnight</td><td style="color:#78716c;font-size:10px">Cash preferred</td></tr>
       <tr><td style="font-weight:700;color:#fff">Isaac Toast</td><td style="color:var(--text)">Ham Special + Bulgogi Toast</td><td style="color:var(--amber);font-weight:700">₩9,000–11,000</td><td style="color:#78716c">7AM–10PM</td><td style="color:var(--green);font-size:10px">Takeout only</td></tr>
       <tr><td style="font-weight:700;color:#fff">Eggdrop Dongdaemun</td><td style="color:var(--text)">Seoul Eggdrop (SPAM+Mango+Nori)</td><td style="color:var(--amber);font-weight:700">₩15,000–18,000</td><td style="color:#78716c">7AM–10PM</td><td style="color:#78716c;font-size:10px">15 min walk</td></tr>
-      <tr><td colspan="5" style="padding:6px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#78716c;background:rgba(255,77,109,.05)">🎵 Hongdae · Sinchon Area</td></tr>
-      <tr><td style="font-weight:700;color:#fff">Hong's Zzuggumi</td><td style="color:var(--text)">Jjukkumi + Zzu-samgyeop</td><td style="color:var(--amber);font-weight:700">₩30,000–37,000</td><td style="color:#78716c">11AM–2AM</td><td style="color:var(--neon);font-size:10px">🔥 Very spicy</td></tr>
-      <tr><td style="font-weight:700;color:#fff">Sinchon Hwangso Gopchang</td><td style="color:var(--text)">Daechang + Fried rice</td><td style="color:var(--amber);font-weight:700">₩35,000–50,000</td><td style="color:#78716c">2PM–1:30AM</td><td style="color:#78716c;font-size:10px">60yr old</td></tr>
-      <tr><td style="font-weight:700;color:#fff">MokGuMung BBQ</td><td style="color:var(--text)">Samgyeopsal + Moksal</td><td style="color:var(--amber);font-weight:700">₩40,000–55,000</td><td style="color:#78716c">12PM–12AM (Closed T/W)</td><td style="color:#c9f542;font-size:10px">Celebrity spot</td></tr>
-      <tr><td style="font-weight:700;color:#fff">Mibbedong 미쁘동</td><td style="color:var(--text)">Salmon Donburi / Cold Soba</td><td style="color:var(--amber);font-weight:700">₩32,000–50,000</td><td style="color:#78716c">11AM–10PM</td><td style="color:var(--neon);font-size:10px">TikTok viral</td></tr>
-      <tr><td colspan="5" style="padding:6px 12px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#78716c;background:rgba(255,77,109,.05)">🌌 Dongdaemun</td></tr>
-      <tr><td style="font-weight:700;color:#fff">일품손짜장</td><td style="color:var(--text)">Jjajangmyeon (수타면)</td><td style="color:var(--amber);font-weight:700">₩16,000–22,000</td><td style="color:#78716c">10:30AM–8:30PM (Closed Mon)</td><td style="color:var(--neon);font-size:10px">📺 Netflix feat.</td></tr>
+      
+      
+      
+      
+      
+      
+      
     </tbody>
   </table>
   </div>
@@ -2503,12 +2521,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     <div class="nami-step" style="border:none"><div class="nami-step-num">🚌</div><div><div class="nami-step-label">Direct shuttle from Hongdae / Myeongdong / Dongdaemun</div><div class="nami-step-detail">Shuttle buses operate daily from major Seoul tourist areas direct to Nami Island ferry terminal. Book via Klook or KKday. Includes return. No transfers, air-conditioned, door-to-door.</div><div class="nami-step-price">₩30,000–45,000 round-trip including ferry (~€17–26)</div></div></div>
   </div>
 
-  <div style="font-size:11px;padding:7px 11px;background:rgba(75,186,124,.06);border-left:2.5px solid var(--green);border-radius:0 5px 5px 0;color:#88d8cc;line-height:1.5;margin-top:10px">
+  <div style="font-size:11px;padding:7px 11px;background:rgba(56,182,232,.06);border-left:2.5px solid #38b6e8;border-radius:0 5px 5px 0;color:#88d8cc;line-height:1.5;margin-top:10px">
     💡 <strong>Best combo for 1 day</strong>: ITX train → City Tour Bus (₩6,000 covers all stops) → Nami Island ferry → explore island → Petite France → Garden of Morning Calm → train back. Budget ~₩40,000–50,000/person for transport + entry.
   </div>
 </div>
 
-<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#7ddbb2;margin-bottom:10px;padding-top:4px">🌿 Things to Do on Nami Island &amp; Nearby</div>
+<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#38b6e8;margin-bottom:10px;padding-top:4px">🌿 Things to Do on Nami Island &amp; Nearby</div>
 <div class="attr-grid"><div class="attr-card must">
   <div class="attr-icon-row">
     <span class="attr-icon">🌲</span>
@@ -2612,8 +2630,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   <div class="attr-tip">💡 Check if night illumination is running during your June visit — it's worth timing your day trip for it. The Morning Garden (오전 정원) and Korean Traditional Garden are the most beautiful sections.</div>
   <div class="attr-tags"><span class="attr-tag">Botanical Garden</span><span class="attr-tag">Night Illumination</span><span class="attr-tag">Seasonal Festival</span><span class="attr-tag">Nearby</span></div>
 </div></div>
-<div class="dist-route-box" style="background:rgba(75,186,124,.05);border-color:rgba(75,186,124,.2)">
-  <div class="dist-route-title" style="color:#7ddbb2">💡 Recommended Full Day Itinerary</div>
+<div class="dist-route-box" style="background:rgba(56,182,232,.05);border-color:rgba(56,182,232,.2)">
+  <div class="dist-route-title" style="color:#38b6e8">💡 Recommended Full Day Itinerary</div>
   <div class="dist-route-stops">
     <strong style="color:#fff">8:00 AM</strong> — Depart Yongsan/Cheongnyangni Station by ITX-Cheongchun · 
     <strong style="color:#fff">9:10 AM</strong> — Arrive Gapyeong Station → City Tour Bus / taxi to wharf · 
